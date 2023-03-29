@@ -7,6 +7,7 @@ import BlogModel from "../models/BlogModel.js";
 export const getAllBlogs = async (req, res) =>{
     try {
         const blogs = await BlogModel.findAll();
+        console.debug(blogs)
         res.json(blogs)
     } catch (error) {
         res.json({ error: error.message})

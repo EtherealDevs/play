@@ -5,5 +5,4 @@ const db= new Sequelize('react_db', 'root','',{
     dialect: 'mysql',
 })
 
-
 export default db

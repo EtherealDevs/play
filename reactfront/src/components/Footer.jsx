@@ -8,7 +8,7 @@ const Footer = ()=>{
     return(
          
         
-            <footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
+            <footer class="p-4 bg-white  shadow md:px-6 md:py-8 dark:bg-gray-900 fixed inset-x-0 bottom-0">
                 <div class="sm:flex sm:items-center sm:justify-between">
                     <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
                         <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
