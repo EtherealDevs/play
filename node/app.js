@@ -15,7 +15,7 @@ app.use( cors())
 app.use(express.json())
 //seteo el motor de plantillas
 app.set('view engine', 'ejs')
-
+app.use(express.static('public'))
 
 
 //para procesar los datos enviados desde forms

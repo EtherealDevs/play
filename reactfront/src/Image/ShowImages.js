@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 
 const URI = 'http://localhost:8000/image'
 
+
+
 const CompShowImages = ()=>{
     const [images, setImage] = useState([])
     useEffect(()=>{
@@ -60,6 +62,7 @@ const CompShowImages = ()=>{
                             </thead>
                             <tbody>
                                 { images.map( (image) => (
+                                    
                                     <tr key={image.id} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {image.id}
@@ -68,13 +71,13 @@ const CompShowImages = ()=>{
                                         {image.filename}
                                     </td>
                                     <td className="px-6 py-4">
-                                        <img src={'../' + image.path} />
+                                        <img src={'http://localhost:8000/img/'+ image.filename} />
                                     </td>
                                     <td className="px-6 py-4">
                                         {image.mimetype}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {image.size}
+                                        {image.size} Bytes
                                     </td>
                                     <td className="px-6 py-4">
                                         {image.path}
