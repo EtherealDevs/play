@@ -1,4 +1,7 @@
 import ImageModel from "../models/ImageModel.js";
+import fs from 'fs';
+import { promisify } from "util";
+const unlinkAsync = promisify(fs.unlink)
 
 export const uploadImage = async (req, res) => {
   try {
@@ -14,7 +17,7 @@ export const uploadImage = async (req, res) => {
 export const getAllImages = async (req, res) =>{
   try {
       const images = await ImageModel.findAll();
-      console.debug(images)
+      
       res.json(images)
   } catch (error) {
       res.json({ error: error.message})
@@ -35,10 +38,12 @@ export const getImage = async (req, res) =>{
 }
 export const deleteImage = async (req,res) => {
   try {
-    console.debug(ImageModel)
-      await ImageModel.destroy({
+    
+      const image = await ImageModel.findOne({
           where :{ id : req.params.id}
       })
+      await unlinkAsync(image.path)
+      await image.destroy()
       res.json({
           "message": "¡REGISTRO ELIMINADO!"
       })
