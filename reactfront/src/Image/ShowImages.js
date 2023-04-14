@@ -64,9 +64,11 @@ const CompShowImages = ()=>{
                                 { images.map( (image) => (
                                     
                                     <tr key={image.id} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                        <Link to={"/image/"+image.id}>
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {image.id}
                                     </th>
+                                    </Link>
                                     <td className="px-6 py-4">
                                         {image.filename}
                                     </td>
@@ -77,7 +79,7 @@ const CompShowImages = ()=>{
                                         {image.mimetype}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {image.size} Bytes
+                                        {parseFloat(image.size/1024/1024).toFixed(2)} Megabytes
                                     </td>
                                     <td className="px-6 py-4">
                                         {image.path}

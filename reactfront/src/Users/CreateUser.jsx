@@ -2,9 +2,9 @@ import axios from 'axios'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 
-const URI = 'http://localhost:8000/register'
+const URI = 'http://localhost:8000/users'
 
-const CompRegister = () =>{
+const CreateUser = () =>{
     const [username, setUsername]= useState('')
     const [email, setEmail]= useState('')
     const [password, setPassword]= useState('')
@@ -16,7 +16,7 @@ const CompRegister = () =>{
     }
     return(
         <div className='container'>
-            <h3>Register</h3>
+            <h3>Create User</h3>
             <form onSubmit={store}>
                 <div className='m-3 '>
                     <label className='block mb-2 text-sm font-medium text-gray-900 '>Username</label>
@@ -29,10 +29,10 @@ const CompRegister = () =>{
                 </div>
                 <div className='m-3'>
                     <label className='block mb-2 text-sm font-medium text-gray-900 '>Email</label>
-                    <input
+                    <textarea
                         value={email}
                         onChange={(e)=>setEmail(e.target.value)}
-                        type="email"
+                        type="text"
                         className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' 
                     />
                 </div>
@@ -52,4 +52,4 @@ const CompRegister = () =>{
 
 } 
 
-export default CompRegister
+export default CreateUser

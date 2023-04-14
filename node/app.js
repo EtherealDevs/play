@@ -8,13 +8,21 @@ import multer from "multer";
 
 import images from './routes/images.js'
 import blogs from './routes/blogs.js'
-
+import auth from "./routes/auth.js";
+import users from "./routes/users.js";
 
 const app = express();
+
+// CORS. Cross Origin Resource Sharing. Un protocolo que permite compartir recursos entre dominios diferentes. Por ej. Localhost::3000 a localhost:8000
 app.use( cors())
+
+// JSON parser desde express
 app.use(express.json())
+
 //seteo el motor de plantillas
 app.set('view engine', 'ejs')
+
+// 
 app.use(express.static('public'))
 
 
@@ -35,6 +43,7 @@ app.use(function(req, res, next){
     next()
 })
 
+// Autentificar la conexion con la base de datos
 try {
     await db.authenticate()
     console.log('Conexion Exitosa')
@@ -42,14 +51,14 @@ try {
     console.log('Error: ${error}')
 }
 
+// Rutas
 app.use('/blogs', blogs)
 app.use('/image', images)
+app.use('/', auth)
+app.use('/users', users)
 
 
 
-// app.get('/', (req,res)=>{
-//     res.send('HOLA MUNDO')
-// })
 app.listen(8000, ()=>{
     console.log('Server UP running in http://localhost:8000/')
 } )
