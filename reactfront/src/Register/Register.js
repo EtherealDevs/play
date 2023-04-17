@@ -11,8 +11,12 @@ const CompRegister = () =>{
     const navigate = useNavigate()
     const store = async (e) =>{
         e.preventDefault()
-        await axios.post(URI,{username: username, email:email, password:password})
-        navigate('/')
+        await axios.post(URI,{username: username, email:email, password:password}).then((response) => {
+            console.log(response);
+          }, (error) => {
+            console.log(error);
+          });
+        
     }
     return(
         <div className='container'>

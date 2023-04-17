@@ -14,6 +14,7 @@ import CompRegister from './Register/Register';
 import CreateUser from './Users/CreateUser';
 import ShowUsers from './Users/ShowUsers';
 import EditUser from './Users/EditUser';
+import Login from './SignIn/Login';
 // import Footer from './components/Footer.jsx';
 
 
@@ -36,6 +37,7 @@ function App() {
               <Route path="/blogs/edit/:id" element={ <CompEditBlog/> }/>
 
               <Route path="/register" element={ <CompRegister/> }/>
+              <Route path='/login' element={<Login />} />
 
               <Route path='/image' element={ <CompShowImages />} />
               <Route path='/image/upload' element={ <UploadImage />} />
@@ -43,8 +45,7 @@ function App() {
               <Route path='/users' element={ <ShowUsers/>} />
               <Route path='/users/create' element={ <CreateUser/>} />
               <Route path='/users/edit/:id' element={ <EditUser/>} />
-
-              <Route path='/login' element={<Form />} />         
+         
             </Routes>
         </BrowserRouter>
 

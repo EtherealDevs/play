@@ -12,119 +12,61 @@ export const register = async (req, res) => {
         user.password = passHash
         await user.save()
         console.debug(user)
-        res.json({
-            "message": "¡REGISTRO CREADO!"
-        })
+        res.redirect('/users')
     } catch (error) {
-        res.json({ error: error.message})
+        res.status(500).send({ error: error.message})
     }
 }
 export const login = async (req, res)=> {
-    // try {
-    //         const user = req.body.user
-    //         const pass = req.body.pass
+    try {
+            const username = req.body.username
+            const pass = req.body.pass
         
-    //             if (!user || !pass) {
-    //                 res.render('login', {
-    //                     alert: true,
-    //                     alertTitle: 'Advertencia',
-    //                     alertMessage: 'Ingrese su usuario y su contraseña',
-    //                     alertIcon: 'info',
-    //                     showConfirmButton: true,
-    //                     timer: false,
-    //                     ruta: 'login'
-    //                 })
-    //             }else {
-    //                 db.query('SELECT * FROM users WHERE user = ?', [user], async (error, results)=> {
-    //                     if(results.length === 0 || !(await bcryptjs.compare(pass, results[0].pass))){
-    //                         res.render('login', {
-    //                             alert: true,
-    //                             alertTitle: 'Advertencia',
-    //                             alertMessage: 'Ingrese su usuario y su contraseña',
-    //                             alertIcon: 'info',
-    //                             showConfirmButton: true,
-    //                             timer: false,
-    //                             ruta: 'login'
-    //                         })
-    //                     }else{
-    //                         const id = results[0].id
-    //                         const token = jwt.sign({id:id}, process.env.JWT_SECRET)
+                if (!username || !pass) {
+                    console.log('no username or password')
+                }else {
+            
+                    const user = await UserModel.findOne({
+                        where: {
+                            username: username 
+                        }
+                    })
+                    const results = user
+                        if (!results){
+                            return res.status(401).json({
+                                error: "Usuario no encontrado!"
+                              })
+                        }
+                        if (!(await bcryptjs.compare(pass, results.password))){
+                            return res.status(401).json({
+                                error: "Contraseña incorrecta!"
+                              })
+                        }
+                        else{
+                            console.log(results.id)
+
+                            const token = jwt.sign({id:results.id}, `${process.env.JWT_SECRET}`)
+
+                            console.log('login correcto')
+                            console.log(token)
         
-    //                         const cookiesOptions = {
-    //                             expires: new Date(Date.now()+process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 1000),
-    //                             httpOnly: true
-    //                         }
-    //                         res.cookie('jwt', token, cookiesOptions)
-    //                         res.render('login', {
-    //                             alert: true,
-    //                             alertTitle: 'db Exitosa',
-    //                             alertMessage: 'Login correcto',
-    //                             alertIcon: 'succes',
-    //                             showConfirmButton: false,
-    //                             timer: 1000,
-    //                             ruta: ''
-    //                         })
-    //                     }
-    //                 })
-    //             }
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
+                            const cookiesOptions = {
+                                maxAge: '900000',
+                                httpOnly: true
+                            }
+                         
+                            res.cookie('name', 'tobi', { path: '/', secure: true })
+                            res.cookie('jwt', token, cookiesOptions)
+                            res.send('test')
+                            
+                            
+                        }
+                }
+            } catch (error) {
+                console.log(error)
+            }
 
 }
-
-// exports.login = async (req, res)=> {
-//     try {
-//         const user = req.body.user
-//         const pass = req.body.pass
-
-//         if (!user || !pass) {
-//             res.render('login', {
-//                 alert: true,
-//                 alertTitle: 'Advertencia',
-//                 alertMessage: 'Ingrese su usuario y su contraseña',
-//                 alertIcon: 'info',
-//                 showConfirmButton: true,
-//                 timer: false,
-//                 ruta: 'login'
-//             })
-//         }else {
-//             db.query('SELECT * FROM users WHERE user = ?', [user], async (error, results)=> {
-//                 if(results.length === 0 || !(await bcryptjs.compare(pass, results[0].pass))){
-//                     res.render('login', {
-//                         alert: true,
-//                         alertTitle: 'Advertencia',
-//                         alertMessage: 'Ingrese su usuario y su contraseña',
-//                         alertIcon: 'info',
-//                         showConfirmButton: true,
-//                         timer: false,
-//                         ruta: 'login'
-//                     })
-//                 }else{
-//                     const id = results[0].id
-//                     const token = jwt.sign({id:id}, process.env.JWT_SECRET)
-
-//                     const cookiesOptions = {
-//                         expires: new Date(Date.now()+process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 1000),
-//                         httpOnly: true
-//                     }
-//                     res.cookie('jwt', token, cookiesOptions)
-//                     res.render('login', {
-//                         alert: true,
-//                         alertTitle: 'db Exitosa',
-//                         alertMessage: 'Login correcto',
-//                         alertIcon: 'succes',
-//                         showConfirmButton: false,
-//                         timer: 1000,
-//                         ruta: ''
-//                     })
-//                 }
-//             })
-//         }
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 
 // exports.isAuthenticated = async (req, res, next) => {
 //     if (req.cookies.jwt) {

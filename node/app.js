@@ -14,7 +14,10 @@ import users from "./routes/users.js";
 const app = express();
 
 // CORS. Cross Origin Resource Sharing. Un protocolo que permite compartir recursos entre dominios diferentes. Por ej. Localhost::3000 a localhost:8000
-app.use( cors())
+app.use( cors({
+    credentials: true,
+    origin: 'http://localhost:3000'
+}))
 
 // JSON parser desde express
 app.use(express.json())
@@ -40,6 +43,12 @@ app.use(cookieParser())
 app.use(function(req, res, next){
     if(!req.user)
         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+        res.header('Content-Type', 'application/json;charset=UTF-8')
+        res.header('Access-Control-Allow-Credentials', true)
+        res.header(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept'
+          )
     next()
 })
 
