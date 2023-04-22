@@ -40,7 +40,6 @@ const CompShowBlogs = ()=>{
                                     <th colSpan='2' scope="col" className="px-6 py-3 text-center">
                                         Actions
                                     </th>
-                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,8 +57,7 @@ const CompShowBlogs = ()=>{
                                     <td className="px-6 py-4">
                                         <button onClick={ ()=>deleteBlog(blog.id) } className='font-medium text-center text-red-600 dark:text-red-500 hover:underline'>Delete</button>
                                     </td>
-                                
-                                </tr>   
+                                </tr>
                                 ))}
                             </tbody>
                         </table>
