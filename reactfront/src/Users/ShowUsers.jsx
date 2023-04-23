@@ -1,18 +1,29 @@
 import axios from 'axios'
 import { useState , useEffect } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+
+let axiosConfig = {
+    withCredentials: true,
+  }
 
 const URI = 'http://localhost:8000/users'
 
 const ShowUsers = ()=>{
     const [users, setUser] = useState([])
+    const navigate = useNavigate()
     useEffect(()=>{
         getAllUsers()
     },[])
     //mostrar todos los users
     const getAllUsers = async ()=>{
-        const res = await axios.get(URI)
-        setUser(res.data)
+        try {
+            const res = await axios.get(URI, axiosConfig)
+            console.log(res)
+            setUser(res.data)
+        } catch (error) {
+            console.log(error)
+            navigate(error.response.data.redirect)
+        }
     }
     //eliminar user
     const deleteUser = async (id)=>{

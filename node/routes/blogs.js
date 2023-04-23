@@ -1,5 +1,6 @@
 import express from 'express'
 import { createBlog, deleteBlog, getAllBlogs, getBlog, updateBlog } from '../controllers/BlogController.js'
+import { isAuthenticated } from '../controllers/AuthController.js'
  
 const blogs = express.Router()
 

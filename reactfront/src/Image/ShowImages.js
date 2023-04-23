@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState , useEffect } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const URI = 'http://localhost:8000/image'
 
@@ -8,13 +8,19 @@ const URI = 'http://localhost:8000/image'
 
 const CompShowImages = ()=>{
     const [images, setImage] = useState([])
+    const navigate = useNavigate()
     useEffect(()=>{
         getAllImages()
     },[])
     //mostrar todos las imagenes
     const getAllImages = async ()=>{
         const res = await axios.get(URI)
-        setImage(res.data)
+        .then((response)=>{
+            setImage(response.data)
+        }, (error)=>{
+            console.log(error)
+            navigate('/')
+        })
     }
     //eliminar imagen
     const deleteImage = async (id)=>{

@@ -12,7 +12,6 @@ export const register = async (req, res) => {
         user.password = passHash
         await user.save()
         console.debug(user)
-        res.redirect('/users')
     } catch (error) {
         res.status(500).send({ error: error.message})
     }
@@ -51,13 +50,12 @@ export const login = async (req, res)=> {
                             console.log(token)
         
                             const cookiesOptions = {
-                                maxAge: '900000',
                                 httpOnly: true
                             }
                          
-                            res.cookie('name', 'tobi', { path: '/', secure: true })
                             res.cookie('jwt', token, cookiesOptions)
-                            res.send('test')
+                            res.cookie('auth', true)
+                            res.send('Auth Successful')
                             
                             
                         }
@@ -68,27 +66,81 @@ export const login = async (req, res)=> {
 
 }
 
-// exports.isAuthenticated = async (req, res, next) => {
-//     if (req.cookies.jwt) {
-//         try {
-//             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET)
-//             db.query('SELECT * FROM users WHERE id = ?', [decodificada.id], (error, results)=> {
-//                 if (!results) {
-//                     return next()
-//                 }
-//                 req.user = results[0]
-//                 return next()
-//             })
-//         } catch (error) {
-//             console.log(error)
-//             return next()
-//         }
-//     } else {
-//         res.redirect('/login')
-//     }
-// }
+export const isAuthenticated = async (req, res, next) => {
+    console.log(req.cookies)
+    if (req.cookies.jwt) {
+        try {
+            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, `${process.env.JWT_SECRET}`)
+            
+            const user = await UserModel.findOne({
+                where: {
+                    id : decodificada.id
+                } 
+            })
+            const results = user
+            
+            
+                if (!results) {
+                    return next()
+                } else{
+                    req.user = results
+                    
+                    return next()
+                }
+        } catch (error) {
+            console.log(error)
+            return next()
+        }
+    } else {
+        console.log('401 Error, unauthorized access')
+        res.status(401)
+        res.send({redirect: '/login'})
+    }
+}
 
-// exports.logout = (req, res) => {
-//     res.clearCookie('jwt')
-//     return res.redirect('/')
-// }
+export const checkUserToken = async (req, res, next)=>{
+    console.log(req.cookies)
+    if (req.cookies.jwt) {
+        try {
+            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, `${process.env.JWT_SECRET}`)
+            
+            const user = await UserModel.findOne({
+                where: {
+                    id : decodificada.id
+                } 
+            })
+            const results = user
+            
+                if (!results) {
+                    return next()
+                } else{
+                    req.user = results
+                    
+                    return next()
+                }
+        } catch (error) {
+            console.log(error)
+            return next()
+        }
+    } else {
+        console.log('No user token')
+        next()
+    }
+}
+
+export const logout = (req, res) => {
+    console.log(req.cookies)
+    if (req.cookies.jwt) {
+        res.clearCookie('jwt')
+        res.clearCookie('auth')
+        console.log('Logout function executed')
+        res.status(200)
+        return res.send({redirect: '/'})
+    } else {
+        console.log('Logout function cannot be executed, no available user records')
+        console.log('Redirecting...')
+        res.status(100)
+        return res.send({redirect: '/'})
+    }
+    // res.header({Location: "http://localhost:3000/"})
+}

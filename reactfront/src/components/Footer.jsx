@@ -1,13 +1,8 @@
 import React from "react"
 
 
-
-
 const Footer = ()=>{
-
     return(
-         
-        
             <footer class="p-4 bg-white  shadow md:px-6 md:py-8 dark:bg-gray-900 fixed inset-x-0 bottom-0">
                 <div class="sm:flex sm:items-center sm:justify-between">
                     <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
@@ -33,8 +28,7 @@ const Footer = ()=>{
                 <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 3 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
                 </span>
             </footer>
-        
-
     )
 }
+
 export default Footer

@@ -1,18 +1,23 @@
 import axios from 'axios'
 import { useState , useEffect } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const URI = 'http://localhost:8000/blogs'
 
 const CompShowBlogs = ()=>{
     const [blogs, setBlog] = useState([])
+    const navigate = useNavigate()
     useEffect(()=>{
         getBlog()
     },[])
     //mostrar todos los blogs
     const getBlog = async ()=>{
-        const res = await axios.get(URI)
-        setBlog(res.data)
+        const res = await axios.get(URI, {withCredentials:true}).then((response)=>{
+            setBlog(response.data)
+        }, (error)=>{
+            console.log(error)
+            navigate('/')
+        })
     }
     //eliminar blog
     const deleteBlog = async (id)=>{

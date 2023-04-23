@@ -1,5 +1,6 @@
 import express from 'express'
 import { createUser, deleteUser, getAllUsers, getUser, updateUser } from '../controllers/UserController.js'
+import { isAuthenticated } from '../controllers/AuthController.js'
  
 const users = express.Router()
 

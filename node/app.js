@@ -5,13 +5,21 @@ import db from "./database/db.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import multer from "multer";
+import jwt from 'jsonwebtoken'
+import bcryptjs from 'bcryptjs'
+import { promisify } from 'util'
 
 import images from './routes/images.js'
 import blogs from './routes/blogs.js'
 import auth from "./routes/auth.js";
 import users from "./routes/users.js";
+import { checkUserToken, isAuthenticated } from "./controllers/AuthController.js";
+import UserModel from "./models/UserModel.js";
 
 const app = express();
+
+//para trabajar con las cookies
+app.use(cookieParser())
 
 // CORS. Cross Origin Resource Sharing. Un protocolo que permite compartir recursos entre dominios diferentes. Por ej. Localhost::3000 a localhost:8000
 app.use( cors({
@@ -36,19 +44,28 @@ app.use(express.urlencoded({extended:true}))
 //seteamos las variables de entorno
 dotenv.config()
 
-//para trabajar con las cookies
-app.use(cookieParser())
+
 
 //para eliminar la cache y que no se pueda volver con el boton back despues de desloguearse
-app.use(function(req, res, next){
-    if(!req.user)
-        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
-        res.header('Content-Type', 'application/json;charset=UTF-8')
-        res.header('Access-Control-Allow-Credentials', true)
+app.use(checkUserToken, function(req, res, next){
+    console.log(`Node server (app.js): checking user data from request...`)
+    res.header('Access-Control-Allow-Credentials', true)
         res.header(
             'Access-Control-Allow-Headers',
             'Origin, X-Requested-With, Content-Type, Accept'
-          )
+          )          
+    if(!req.user){
+        
+        console.log(" No user token found, setting up headers to clear cache...")
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+        res.header('Content-Type', 'application/json;charset=UTF-8')
+        console.log("Headers Set.")
+    }
+    else {
+        console.log("Success!")
+        console.log(` User ID: ${req.user.id}\n Username: ${req.user.username}\n User Email: ${req.user.email}`)
+    }
+  
     next()
 })
 
@@ -61,10 +78,10 @@ try {
 }
 
 // Rutas
-app.use('/blogs', blogs)
-app.use('/image', images)
+app.use('/blogs', isAuthenticated, blogs)
+app.use('/image', isAuthenticated, images)
 app.use('/', auth)
-app.use('/users', users)
+app.use('/users', isAuthenticated, users)
 
 
 

@@ -33,13 +33,12 @@ const EditUser=()=>{
     }
 
     return(
-
         <div className='container'>
             <h3>Edit User</h3>
             <form onSubmit={update}>
                 <div className='m-3 '>
                     <label className='block mb-2 text-sm font-medium text-gray-900 '>Username</label>
-                    <input 
+                    <input
                         value={username}
                         onChange={(e)=>setUsername(e.target.value)}
                         type="text"

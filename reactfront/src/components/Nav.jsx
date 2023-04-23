@@ -1,13 +1,16 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import axios from 'axios'
+import { Link, redirect, useLocation, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
+  { name: 'Blogs', href: '/blogs', current: true },
+  { name: 'Images', href: '/image', current: false },
+  { name: 'Users', href: '/users', current: false },
   { name: 'Calendar', href: '#', current: false },
 ]
 
@@ -15,7 +18,48 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Nav() {
+
+const URI = 'http://localhost:8000/logout'
+let axiosConfig = {
+  withCredentials: true,
+}
+
+export default function Nav( {isAuthenticated, state} ) {
+      const navigate = useNavigate()
+
+      useEffect(()=>{
+        handleLogin()
+      }, [isAuthenticated, state])
+
+      const handleLogin = (param) => {
+        const isAuth = isAuthenticated
+        if (isAuth){
+          return <form onSubmit={Logout}><button
+            type='submit'
+            className={classNames(param ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+          >
+            Sign out
+          </button></form>
+        } else{
+          return <div><Link to={"/login"}><button
+            className={classNames(param ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+          >
+            Log in
+          </button></Link></div>;
+        }
+      }
+
+    const Logout = async (e) => {
+      e.preventDefault()
+      await axios.get(URI, axiosConfig).then((response) => {
+        console.log(response)
+        navigate("/", {state:2})
+      }, (error) => {
+        console.log(error)
+        navigate("/")
+      })
+    }
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -49,9 +93,8 @@ export default function Nav() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link to={item.href}
                         key={item.name}
-                        href={item.href}
                         className={classNames(
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
@@ -59,7 +102,7 @@ export default function Nav() {
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -67,8 +110,7 @@ export default function Nav() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
+                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
@@ -81,8 +123,7 @@ export default function Nav() {
                       <img
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                        alt=""/>
                     </Menu.Button>
                   </div>
                   <Transition
@@ -92,8 +133,7 @@ export default function Nav() {
                     enterTo="transform opacity-100 scale-100"
                     leave="transition ease-in duration-75"
                     leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
+                    leaveTo="transform opacity-0 scale-95">
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
@@ -117,12 +157,7 @@ export default function Nav() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
+                          handleLogin(active)
                         )}
                       </Menu.Item>
                     </Menu.Items>
