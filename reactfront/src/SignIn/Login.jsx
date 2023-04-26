@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import { USER_STATUS } from '../constDictionary'
 
 let axiosConfig = {
     withCredentials: true,
@@ -16,7 +17,7 @@ const Login = () =>{
         e.preventDefault()
         await axios.post(URI,{username: username, pass:password}, axiosConfig).then((response) => {
             console.log(response);
-            navigate('/', {state:1})
+            navigate('/', {state:USER_STATUS.ONLINE})
         }, (error) => {
             console.log(error);
         });

@@ -5,8 +5,7 @@ import CompShowBlogs from './blog/ShowBlogs.jsx';
 import CompCreateBlog from './blog/CreateBlog.jsx';
 import CompEditBlog from './blog/EditBlog.jsx';
 import Nav from './components/Nav.jsx';
-// import Footer from './components/Footer';
-import Form from './SignIn/SignIn'
+import Footer from './components/Footer.jsx';
 import UploadImage from './Image/UploadImage'
 import Welcome from './Welcome/Welcome'
 import CompShowImages from './Image/ShowImages';
@@ -19,25 +18,20 @@ import axios from 'axios';
 import Cookies from 'js-cookie'
 import { useState, useEffect } from 'react';
 import ProtectedRoute from './components/ProtectedRoutes';
-import MenuBar from './components/Test';
-import { Cookie } from '@mui/icons-material';
-// import Footer from './components/Footer.jsx';
+import { USER_STATUS } from './constDictionary';
 
 const URI = 'http://localhost:8000/checkAuth'
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(Cookies.get('auth'))
   let { state } = useLocation();
-  console.log(isAuthenticated)
-  console.log(state)
 
   useEffect(()=>{
-    if (state == 2){
-      userHasAuthenticated(false);
-    }
-    if (state == 1){
-      userHasAuthenticated(true);
+    if (state == USER_STATUS.ONLINE){
       checkAuth();
+    }
+    if (state == USER_STATUS.OFFLINE){
+      userHasAuthenticated(false);
     }
   }, [state])
 
@@ -45,11 +39,14 @@ function App() {
   const checkAuth = async ()=>{
     if (Cookies.get('auth')){
       await axios.get(URI).then((response)=>{
+        userHasAuthenticated(true);
+        console.log("Http Response:")
         console.log(response)
-        console.log(state)
-        console.log(isAuthenticated)
+        console.log(`State Prop: ${state}`)
+        console.log(`User auth status: ${isAuthenticated}`)
       }, (error)=>{
         console.log(error)
+        console.log("User auth status:")
         console.log(isAuthenticated)
       })
 
@@ -62,7 +59,7 @@ function App() {
       <header>
         <Nav isAuthenticated={isAuthenticated} state={state}/>
       </header>
-      <div className='container mx-auto'>
+      <div className='container mx-auto h-screen'>
             <Routes>
               <Route path='/' element={ <Welcome/>} />
               <Route path="/register" element={ <CompRegister/> }/>
@@ -70,45 +67,17 @@ function App() {
               <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
                 <Route path="/blogs" element={<CompShowBlogs/>} />
                 <Route path="/blogs/create" element={<CompCreateBlog/>} />
+                <Route path="/blogs/edit/:id" element={<CompEditBlog/>}/>
+                <Route path='/image' element={<CompShowImages />} />
+                <Route path='/image/upload' element={<UploadImage />} />
+                <Route path='/users' element={<ShowUsers/>} />
+                <Route path='/users/create' element={<CreateUser/>} />
+                <Route path='/users/edit/:id' element={<EditUser/>} />
               </Route>
-              {/* <Route path='/blogs' element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <CompShowBlogs/>
-                </ProtectedRoute>} /> */}
-              {/* <Route path="/blogs/create" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <CompCreateBlog/>
-                </ProtectedRoute> }/> */}
-              <Route path="/blogs/edit/:id" element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <CompEditBlog/>
-                </ProtectedRoute> }/>
-              <Route path='/image' element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <CompShowImages />
-                </ProtectedRoute>} />
-              <Route path='/image/upload' element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <UploadImage />
-                </ProtectedRoute>} />
-              <Route path='/users' element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <ShowUsers/>
-                </ProtectedRoute>
-              } />
-              <Route path='/users/create' element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <CreateUser/>
-                </ProtectedRoute>
-              } />
-              <Route path='/users/edit/:id' element={
-                <ProtectedRoute isAuthenticated={isAuthenticated}>
-                  <EditUser/>
-                </ProtectedRoute>
-              } />
+              
             </Routes>
       </div>
-      {/* {<Footer/>} */}
+      {<Footer/>}
     </div>
   );
 }

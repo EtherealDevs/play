@@ -1,17 +1,30 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const UploadImage = () => {
     const [image, setImage] = useState({ preview: '', data: '' })
     const [status, setStatus] = useState('')
+    const [msg, setMsg] = useState('')
+    const navigate = useNavigate()
+    
+    
     const handleSubmit = async (e) => {
       e.preventDefault()
       let formData = new FormData()
       formData.append('file', image.data)
-      const response = await fetch('http://localhost:8000/image/upload', {
-        method: 'POST',
-        body: formData,
+      const response = await axios.post('http://localhost:8000/image/upload', formData, {
+        headers:{
+          'Content-Type': 'multiplart/form-data'
+        }
       })
-      if (response) setStatus(response.statusText)
+        .then((response) =>{
+        console.log(response)
+        setStatus(response.statusText)
+        counterToRedirect()
+      }, (error) => {
+        console.log(error)
+      })
     }
   
     const handleFileChange = (e) => {
@@ -21,6 +34,20 @@ const UploadImage = () => {
       }
       setImage(img)
     }
+    const counterToRedirect = () =>{
+      let count = 3
+      setMsg(`Redirecting in [${count}] seconds...`)
+      var interval = setInterval(() => {
+        console.log(count)
+          count = count - 1
+          setMsg(`Redirecting in ${count} seconds...`)
+        if (count <= 0){
+          clearInterval(interval)
+          navigate("/image")
+        }
+      }, 1000);
+      }
+    
       return (
           <div className='App'>
               <h1>Upload to server</h1>
@@ -30,7 +57,8 @@ const UploadImage = () => {
                   <input type='file' name='file' onChange={handleFileChange}></input>
                   <button type='submit'>Submit</button>
                 </form>
-                {status && <h4>{status}</h4>}
+                {status &&<h4>{status}</h4>}
+                {msg && <h4>{msg}</h4>}
               </div>
           
       )

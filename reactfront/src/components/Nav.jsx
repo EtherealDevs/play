@@ -4,6 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import { Link, redirect, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { USER_STATUS } from '../constDictionary'
 
 
 
@@ -11,7 +12,7 @@ const navigation = [
   { name: 'Blogs', href: '/blogs', current: true },
   { name: 'Images', href: '/image', current: false },
   { name: 'Users', href: '/users', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Dashboard', href: '/', current: false },
 ]
 
 function classNames(...classes) {
@@ -53,7 +54,7 @@ export default function Nav( {isAuthenticated, state} ) {
       e.preventDefault()
       await axios.get(URI, axiosConfig).then((response) => {
         console.log(response)
-        navigate("/", {state:2})
+        navigate("/", {state:USER_STATUS.OFFLINE})
       }, (error) => {
         console.log(error)
         navigate("/")
