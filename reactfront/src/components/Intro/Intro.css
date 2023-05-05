@@ -1,3 +1,8 @@
-.fondo{
-    background: #FFEF98;
+.fondo {
+    background-color: #B1D3EC;
+    background-image: url('../../assets/fondo1.svg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    height: 100vh;
 }

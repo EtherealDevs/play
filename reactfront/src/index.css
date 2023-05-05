@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --play-bold: 'Alfa Slab One'
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, cursive, 'Alfa Slab One', 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

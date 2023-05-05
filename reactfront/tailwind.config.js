@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      "alfa": ['Alfa Slab One'],
+      "poppins": ['Poppins']
+    }
   },
   plugins: [],
 }
