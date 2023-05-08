@@ -8,6 +8,11 @@ import multer from "multer";
 import jwt from 'jsonwebtoken'
 import bcryptjs from 'bcryptjs'
 import { promisify } from 'util'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 import images from './routes/images.js'
 import blogs from './routes/blogs.js'
@@ -58,7 +63,7 @@ app.use(checkUserToken, function(req, res, next){
         
         console.log(" No user token found, setting up headers to clear cache...")
         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
-        res.header('Content-Type', 'application/json;charset=UTF-8')
+        // res.header('Content-Type', 'text/html;application/json;charset=UTF-8')
         console.log("Headers Set.")
     }
     else {
@@ -81,6 +86,11 @@ try {
 app.use('/blogs', isAuthenticated, blogs)
 app.use('/image', isAuthenticated, images)
 app.use('/', auth)
+app.get('/', function (req, res) {
+ 
+    // Rendering home.ejs page
+    res.render('index');
+})
 app.use('/users', isAuthenticated, users)
 
 
