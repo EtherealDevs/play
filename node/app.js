@@ -12,12 +12,12 @@ try {
     await db.authenticate()
     console.log('Conexion Exitosa')
 } catch (error) {
-    console.log('Error: ${error}')
+    console.log(`Error: ${error}`)
 }
-
-// app.get('/', (req,res)=>{
-//     res.send('HOLA MUNDO')
-// })
+app.set('view engine', 'ejs');
+app.get('/', (req,res)=>{
+    res.render('pages/index')
+})
 app.listen(8000, ()=>{
     console.log('Server UP running in http://localhost:8000/')
 } )
