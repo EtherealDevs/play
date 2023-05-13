@@ -14,9 +14,24 @@ try {
 } catch (error) {
     console.log(`Error: ${error}`)
 }
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs')
+
+
+// app.use((req,res,next)=>{
+//     res.status(404).render('pages/404',{
+//         title: "ERROR-404",
+//         message: "Página no encontrada"
+//     })
+// })
+
 app.get('/', (req,res)=>{
-    res.render('pages/index')
+    res.render('pages/index', {title:"Inicio"})
+})
+app.get('/create', (req,res)=>{
+    res.render('pages/create', {title:"Crear"})
+})
+app.get('/edit', (req,res)=>{
+    res.render('pages/edit', {title:"Editar"})
 })
 app.listen(8000, ()=>{
     console.log('Server UP running in http://localhost:8000/')
