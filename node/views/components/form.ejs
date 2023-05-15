@@ -1,0 +1,26 @@
+<div class="py-12 px-48">
+    <form class="border-4 rounded-tl-3xl rounded-br-3xl border-black drop-shadow-2xl">
+        <div class="border-b-4 border-black text-center py-3">
+            <%= title %>
+        </div>
+        <div class="p-2 px-8">
+            <input class="border-2 border-black rounded-md bg-pink-200 px-2 my-4 text-black h-10 w-full placeholder-black text-lg" type="text" id="title" name="title" placeholder="Titulo"  required>
+            <textarea class="border-2 border-black rounded-md bg-orange-100 px-2 my-4 text-black h-10 w-full placeholder-black text-lg" id="content" name="content" placeholder="Contenido" required> </textarea>
+            <div class="flex my-2 border-dashed rounded-lg px-6 py-10 border-2 border-[#0D0D0D] justify-center">
+                <div class="text-center">
+                    <label for="file-upload" class="cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current mx-auto w-10 h-10">
+                            <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+                        </svg>
+                        <input id="file-upload" name="file-upload" type="file" class="sr-only" required>
+                    </label>
+                    <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                </div>
+            </div>
+            <div class="flex my-4 mx-2 justify-end">
+                <button class="border-2 rounded-md py-1 px-1 border-black bg-yellow-200"><%= submit %></button>
+            </div>
+        </div>
+    </form>
+    
+</div>
