@@ -23,6 +23,7 @@ import UserModel from "./models/UserModel.js";
 
 const app = express();
 
+
 //para trabajar con las cookies
 app.use(cookieParser())
 
@@ -32,7 +33,6 @@ app.use( cors({
     origin: 'http://localhost:3000'
 }))
 
-// JSON parser desde express
 app.use(express.json())
 
 //seteo el motor de plantillas
@@ -75,12 +75,14 @@ app.use(checkUserToken, function(req, res, next){
 })
 
 // Autentificar la conexion con la base de datos
+
 try {
     await db.authenticate()
     console.log('Conexion Exitosa')
 } catch (error) {
-    console.log('Error: ${error}')
+    console.log(`Error: ${error}`)
 }
+app.set('view engine', 'ejs')
 
 // Rutas
 app.use('/blogs', isAuthenticated, blogs)
@@ -94,6 +96,25 @@ app.get('/', function (req, res) {
 app.use('/users', isAuthenticated, users)
 
 
+
+
+
+// app.use((req,res,next)=>{
+//     res.status(404).render('pages/404',{
+//         title: "ERROR-404",
+//         message: "Página no encontrada"
+//     })
+// })
+
+app.get('/', (req,res)=>{
+    res.render('pages/index', {title:"Inicio"})
+})
+app.get('/create', (req,res)=>{
+    res.render('pages/create', {title:"Crear"})
+})
+app.get('/edit', (req,res)=>{
+    res.render('pages/edit', {title:"Editar"})
+})
 
 app.listen(8000, ()=>{
     console.log('Server UP running in http://localhost:8000/')
