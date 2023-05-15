@@ -4,9 +4,12 @@ import db from "./database/db.js";
 import blogRoutes from './routes/routes.js'
 
 const app = express();
+
 app.use( cors())
 app.use(express.json())
 app.use('/blogs', blogRoutes)
+
+app.use(express.static('public'))
 
 try {
     await db.authenticate()
