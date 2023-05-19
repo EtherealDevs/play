@@ -21,7 +21,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -35,4 +34,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.backround-paint {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+  background-image: url(
+    ./assets/fondo2.svg
+  );
+}
+
+.puzzle1 {
+  background-image: url('./assets/puzzle1.svg');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  width: 95%;
+}
+
+.puzzle2 {
+  background-image: url('./assets/puzzle2.svg');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  width: 100%;
+}
+
+.footer {
+  background-color: transparent;
+  background-image: url('./assets/footer.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }

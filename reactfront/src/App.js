@@ -3,35 +3,42 @@ import './App.css';
 // import CompCreateBlog from './blog/CreateBlog.jsx';
 // import CompEditBlog from './blog/EditBlog.jsx';
 // import CompShowBlog from './blog/ShowBlogs.jsx'
-import Nav from './components/Nav.jsx';
-import Contact from './components/Contact/Contact.jsx'
+import Nav from './components//Navigation/NavBar/Nav';
+import Contact from './components/Contact.jsx'
 import Intro from './components/Intro/Intro.jsx'
 import We from './components/We.jsx'
 import Posts from './components/Posts.jsx'
 import Start from './components/Start.jsx'
-import Footer from './components/Footer.jsx';
-
-
+import Footer from './components/Navigation/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-        <Nav/>
-        <Intro />
-        <Start/>
-        <We />
-        <Posts />
-          {/* <div className='container mx-auto'>
-            <BrowserRouter>
-                <Routes>
-                  <Route path='/' element={ <CompShowBlog/>} />
-                  <Route path="/create" element={ <CompCreateBlog/> }/>
-                  <Route path="/edit/:id" element={ <CompEditBlog/> }/>
-                </Routes>
-            </BrowserRouter>
-          </div> */}
-        <Contact />
-        <Footer />
+      <Nav/>
+      <div className='snap-y snap-mandatory relative h-screen overflow-auto'>
+        <div className='snap-center'>
+          <Intro />
+        </div>
+        <div className='backround-paint'>
+          <div className='snap-center'>
+            <Start/>
+          </div>
+          <div className='snap-center'>
+              <We />
+            </div>
+            <div className='snap-center'>
+              <Posts />
+            </div>
+            <div className=''>
+            <div className='snap-center'>
+            <Contact />
+            </div>
+            <div className='snap-end'>
+              <Footer/>
+            </div>
+          </div>
+          </div>
+        </div>
     </div>
   );
 }

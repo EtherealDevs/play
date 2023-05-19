@@ -1,13 +1,23 @@
 import React from 'react'
 import './Intro.css'
-import '../../assets/fondo1.svg'
 
 function Intro() {
   return (
-    <div className='fondo text-center'>
-        <h1 className='font-alfa flex justify-center text-center text-white text-7xl'>Play</h1>
-        <h2 className='font-poppins text-center'>Multi-Espacio Infantil</h2>
-    </div>
+    <section className='justify-center' id='Intro'>
+      <div className='fondo z-10 text-center'>
+        <div className='mt-20 justify-center'>
+        <div className='flex absolute'>
+          <div className='content-center w-full ml-10 px-96 py-80 '>
+          <div className='ml-72'>
+          <a href='#Start'> 
+          <img className='w-72 '  alt='Play' src='./play.png'/>
+          </a>
+          </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
