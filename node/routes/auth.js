@@ -14,8 +14,16 @@ var allowCrossDomain = function (req, res, next) {
 
 
 //router para los metodos del controlador
+auth.get('/', isAuthenticated, (req,res)=>{
+    res.render('pages/index', {title:"Inicio"})
+})
 auth.post('/register', register);
+auth.get('/login', (req,res)=>{
+    res.render('pages/login')
+})
 auth.post('/login', login);
+auth.post('/logout', logout);
+
 auth.get('/logout', logout);
 auth.get('/checkAuth' ,isAuthenticated, (req, res)=>{
     res.status(200).send({authStatus: "Success"})

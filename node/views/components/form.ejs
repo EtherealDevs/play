@@ -1,26 +1,106 @@
 <div class="py-12 px-48">
-    <form class="border-4 rounded-tl-3xl rounded-br-3xl border-black drop-shadow-2xl">
+    <form id="form1" class="border-4 rounded-tl-3xl rounded-br-3xl border-black drop-shadow-2xl card-background-opacity" method="post" action="/blogs/">
         <div class="border-b-4 border-black text-center py-3">
             <%= title %>
         </div>
         <div class="p-2 px-8">
             <input class="border-2 border-black rounded-md bg-pink-200 px-2 my-4 text-black h-10 w-full placeholder-black text-lg" type="text" id="title" name="title" placeholder="Titulo"  required>
-            <textarea class="border-2 border-black rounded-md bg-orange-100 px-2 my-4 text-black h-10 w-full placeholder-black text-lg" id="content" name="content" placeholder="Contenido" required> </textarea>
+
+            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.3.x/dist/index.js"></script>
+            
+<div x-data="{photoName: null, photoPreview: null}" class="col-span-6 ml-2 sm:col-span-4 md:mr-3">
+    <!-- Photo File Input -->
+    <input type="file" class="hidden" x-ref="photo" x-on:change="
+                        photoName = $refs.photo.files[0].name;
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            photoPreview = e.target.result;
+                        };
+                        reader.readAsDataURL($refs.photo.files[0]);
+    " required>
+
+    <label class="block text-gray-700 text-sm font-bold mb-2 text-center" for="photo">
+        Imagen para miniatura <span class="text-red-600"> </span>
+    </label>
+    
+    <div class="text-center">
+        <!-- Current Profile Photo -->
+        <div class="mt-2" x-show="! photoPreview">
             <div class="flex my-2 border-dashed rounded-lg px-6 py-10 border-2 border-[#0D0D0D] justify-center">
                 <div class="text-center">
-                    <label for="file-upload" class="cursor-pointer">
+                   
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current mx-auto w-10 h-10">
                             <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
                         </svg>
-                        <input id="file-upload" name="file-upload" type="file" class="sr-only" required>
-                    </label>
-                    <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                        
+                        <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF hasta 10MB</p>
+                    </div>
                 </div>
-            </div>
-            <div class="flex my-4 mx-2 justify-end">
-                <button class="border-2 rounded-md py-1 px-1 border-black bg-yellow-200"><%= submit %></button>
+            
+        </div>
+        <!-- New Profile Photo Preview -->
+        <div class="mt-2" x-show="photoPreview" style="display: none;">
+            <div class="flex my-2 border-dashed rounded-lg px-6 py-10 border-2 border-[#0D0D0D] justify-center">
+            <div class="text-center">
+                <p class="text-xs leading-5 text-gray-600" x-text="photoName"></p>    
+                <span class="block w-40 h-40 rounded-full m-auto shadow" x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('null');">
+                </span>
+                    <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF hasta 10MB</p>
             </div>
         </div>
+            
+        </div>
+        <button type="button" class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2 ml-3" x-on:click.prevent="$refs.photo.click()">
+            Seleccionar imagen
+        </button>
+    </div>
+</div>
+            <!-- Create the editor container -->
+        <div id="editor">
+            <p>Hello World!</p>
+            <p>Some initial <strong>bold</strong> text</p>
+            <p><br></p>
+        </div>
+        <textarea name="content" style="display:none;" id="hiddenArea"></textarea>
+            
+            <div class="flex my-4 mx-2 justify-end">
+                <button onclick="" type="submit" class="border-2 rounded-md py-1 px-1 border-black bg-yellow-200"><%= submit %></button>
+            </div>
+        </div>
+        
     </form>
+
+    <!-- Include stylesheet -->
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+
+
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+  var quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+  var form = document.getElementById('form1');
+form.onsubmit = function() {
+  // Populate hidden form on submit
+  var content = document.getElementById('hiddenArea');
+  console.log(content.value)
+  content.value = quill.root.innerHTML;
+  console.log(content.value)
+}
+//   function myFunction(event) {
+//     event.preventDefault()
+//       var content = document.getElementById("editor").innerHTML
+//       console.log(content)
+//       document.getElementById('hiddenArea').innerHTML = content
+//       document.getElementById('form1').submit()
+//   }
+
+</script>
     
 </div>

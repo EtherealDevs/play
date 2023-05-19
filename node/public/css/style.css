@@ -25,6 +25,13 @@ justify-content: space-between;
 
 background: linear-gradient(90deg, #F857A6 0%, #FF5858 100%);
 }
+
+.card-background-opacity {
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(175,210,251,1) 100%);
+  opacity: 100%;
+}
+
 #app {
   width: 100vw;
   height: 100vh;

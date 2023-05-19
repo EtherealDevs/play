@@ -4,14 +4,15 @@ import BlogModel from "../models/BlogModel.js";
 
 //Mostrar todos los registros 
 
-export const getAllBlogs = async (req, res) =>{
+export const getAllBlogs = async (req, res, next) =>{
     try {
         const blogs = await BlogModel.findAll();
         console.debug(blogs)
-        res.json(blogs)
+        req.data = JSON.stringify(blogs)
     } catch (error) {
         res.json({ error: error.message})
     }
+    return next()
 }
 
 // Mostrar un registro
@@ -32,6 +33,7 @@ export const getBlog = async (req, res) =>{
 export const createBlog = async (req, res) => {
     try {
         await BlogModel.create(req.body)
+        console.log('test')
         res.json({
             "message": "¡REGISTRO CREADO!"
         })

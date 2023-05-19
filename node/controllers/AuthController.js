@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import bcryptjs from 'bcryptjs'
 import db from '../database/db.js'
 import UserModel from '../models/UserModel.js'
+import AdminModel from '../database/models/admin.js'
 import { promisify } from 'util'
 
 //Crear un registro 
@@ -17,6 +18,9 @@ export const register = async (req, res) => {
     }
 }
 export const login = async (req, res)=> {
+    if (req.cookies.jwt) {
+        return res.redirect('/login')
+    }
     try {
             const username = req.body.username
             const pass = req.body.pass
@@ -25,7 +29,7 @@ export const login = async (req, res)=> {
                     console.log('no username or password')
                 }else {
             
-                    const user = await UserModel.findOne({
+                    const user = await AdminModel.findOne({
                         where: {
                             username: username 
                         }
@@ -55,7 +59,7 @@ export const login = async (req, res)=> {
                          
                             res.cookie('jwt', token, cookiesOptions)
                             res.cookie('auth', true)
-                            res.send('Auth Successful')
+                            res.redirect('/')
                             
                             
                         }
@@ -72,7 +76,7 @@ export const isAuthenticated = async (req, res, next) => {
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, `${process.env.JWT_SECRET}`)
             
-            const user = await UserModel.findOne({
+            const user = await AdminModel.findOne({
                 where: {
                     id : decodificada.id
                 } 
@@ -94,7 +98,7 @@ export const isAuthenticated = async (req, res, next) => {
     } else {
         console.log('401 Error, unauthorized access')
         res.status(401)
-        res.send({redirect: '/login'})
+        res.redirect('/login')
     }
 }
 
@@ -104,7 +108,7 @@ export const checkUserToken = async (req, res, next)=>{
         try {
             const decodificada = await promisify(jwt.verify)(req.cookies.jwt, `${process.env.JWT_SECRET}`)
             
-            const user = await UserModel.findOne({
+            const user = await AdminModel.findOne({
                 where: {
                     id : decodificada.id
                 } 
@@ -135,12 +139,12 @@ export const logout = (req, res) => {
         res.clearCookie('auth')
         console.log('Logout function executed')
         res.status(200)
-        return res.send({redirect: '/'})
+        return res.redirect('/login')
     } else {
         console.log('Logout function cannot be executed, no available user records')
         console.log('Redirecting...')
         res.status(100)
-        return res.send({redirect: '/'})
+        return res.redirect('/login')
     }
     // res.header({Location: "http://localhost:3000/"})
 }

@@ -2,14 +2,14 @@ import express, { Router }  from "express";
 import cors  from 'cors'
 import db from "./database/db.js";
 
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import multer from "multer";
 import jwt from 'jsonwebtoken'
 import bcryptjs from 'bcryptjs'
 import { promisify } from 'util'
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { dirname, resolve } from 'path';
+import dotenv from "dotenv";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,6 +22,12 @@ import { checkUserToken, isAuthenticated } from "./controllers/AuthController.js
 import UserModel from "./models/UserModel.js";
 
 const app = express();
+
+global.appRoot = resolve(__dirname);
+console.log(appRoot)
+
+//seteamos las variables de entorno
+dotenv.config({path: './.env'})
 
 //para trabajar con las cookies
 app.use(cookieParser())
@@ -45,9 +51,6 @@ app.use(express.static('public'))
 //para procesar los datos enviados desde forms
 app.use(express.urlencoded({extended:true}))
 
-
-//seteamos las variables de entorno
-dotenv.config()
 
 
 
@@ -87,32 +90,17 @@ app.set('view engine', 'ejs')
 app.use('/blogs', isAuthenticated, blogs)
 app.use('/image', isAuthenticated, images)
 app.use('/', auth)
-app.get('/', function (req, res) {
- 
-    // Rendering home.ejs page
-    res.render('index');
-})
 app.use('/users', isAuthenticated, users)
 
-
-
-
-// app.use((req,res,next)=>{
-//     res.status(404).render('pages/404',{
-//         title: "ERROR-404",
-//         message: "Página no encontrada"
-//     })
-// })
-
-app.get('/', (req,res)=>{
-    res.render('pages/index', {title:"Inicio"})
+app.use((req,res,next)=>{
+    res.status(404).render('pages/404',{
+        title: "ERROR-404",
+        message: "Página no encontrada",
+        domain: `${process.env.APP_DOMAIN}`
+    })
 })
-app.get('/create', (req,res)=>{
-    res.render('pages/create', {title:"Crear"})
-})
-app.get('/edit', (req,res)=>{
-    res.render('pages/edit', {title:"Editar"})
-})
-app.listen(8000, ()=>{
-    console.log('Server UP running in http://localhost:8000/')
+
+
+app.listen(`${process.env.APP_DOMAIN_PORT}`, ()=>{
+    console.log(`Server UP running in ${process.env.APP_DOMAIN}`)
 } )

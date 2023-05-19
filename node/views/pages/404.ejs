@@ -5,5 +5,24 @@
 </head>
 <body>
     <%= message %>
+    <p> Redireccionando en ...<span id="msg">5</span></p>
+    <div id="mydiv" data-domain=<%= domain %>></div>
+    
+    <p> <script>
+        var redirect = document.getElementById('mydiv').dataset.domain;
+        let msg = document.getElementById('msg')
+        let count = 5
+        msg.innerHTML = count
+      var interval = setInterval(() => {
+        console.log(count)
+          count = count - 1
+          msg.innerHTML = count
+        if (count <= 0){
+          clearInterval(interval)
+            window.location.href = redirect
+        }
+      }, 1000);
+
+    </script></p>
 </body>
 </html>
