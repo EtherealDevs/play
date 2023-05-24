@@ -1,5 +1,9 @@
 //importamos el modelo
 import BlogModel from "../models/BlogModel.js";
+import dotenv from 'dotenv';
+import os from 'os';
+import ImageModel from "../models/ImageModel.js";
+
 // **Metodos para el crud**/
 
 //Mostrar todos los registros 
@@ -7,23 +11,35 @@ import BlogModel from "../models/BlogModel.js";
 export const getAllBlogs = async (req, res, next) =>{
     try {
         const blogs = await BlogModel.findAll();
-        console.debug(blogs)
-        req.data = JSON.stringify(blogs)
+        const images = await ImageModel.findAll();
+        console.debug(req.path)
+        req.data = [blogs, images]
+        if (req.get('origin')){
+            if (req.get('origin') != `${process.env.APP_HOST}`){
+                res.json(blogs)
+            }
+        }
+        return next()
     } catch (error) {
         res.json({ error: error.message})
     }
-    return next()
+    
 }
 
 // Mostrar un registro
-export const getBlog = async (req, res) =>{
+export const getBlog = async (req, res, next) =>{
     try {
         const blog = await BlogModel.findAll({
             where: {
                 id: req.params.id
             }
         });
-        res.json(blog[0])
+        if (req.get('origin')){
+            if (req.get('origin') != `${process.env.APP_HOST}`){
+                res.json(blog[0])
+            }
+        }
+        return next()
     } catch (error) {
         res.json({ error: error.message})
     }
@@ -32,11 +48,21 @@ export const getBlog = async (req, res) =>{
 //Crear un regostro 
 export const createBlog = async (req, res) => {
     try {
-        await BlogModel.create(req.body)
-        console.log('test')
-        res.json({
-            "message": "¡REGISTRO CREADO!"
-        })
+        const image = req.file;
+        if (req.body.repeatImage){
+            console.log("Repeated File!!!")
+            await BlogModel.create({title: req.body.title, content: req.body.content, imageId: 1})
+            res.json({
+                "message": req.body
+            })
+        }
+        else{
+            const img = await ImageModel.create(image)
+            const test = await BlogModel.create({title: req.body.title, content: req.body.content, ImageId: img.dataValues.id})
+            res.json({
+                "message": req.body
+            })
+        }
     } catch (error) {
         res.json({ error: error.message})
     }

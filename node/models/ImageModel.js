@@ -2,6 +2,7 @@
 import db from "../database/db.js";
 //importamos sequelize
 import { DataTypes } from "sequelize";
+import BlogModel from "./BlogModel.js";
 
 const ImageModel = db.define('Image',{
     filename: { type: DataTypes.STRING},
@@ -15,5 +16,10 @@ const ImageModel = db.define('Image',{
     createdAt: 'CREATED_AT',
     updatedAt: 'UPDATED_AT'
 })
-ImageModel.sync({alter:true})
+ImageModel.hasOne(BlogModel, {
+    onDelete: 'SET NULL'
+  });
+  BlogModel.belongsTo(ImageModel)
+  ImageModel.sync({alter:true})
+  BlogModel.sync({alter:true})
 export default ImageModel

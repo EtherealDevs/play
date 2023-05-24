@@ -18,7 +18,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
   
 // Al ser Middleware, es necesario que se utilice el metodo de multer como handler en el images, y luego recien se pasa al controlador
-images.get('/', getAllImages);
+images.get('/', getAllImages, (req, res) =>{
+  res.render('pages/images/index', {title:"Blogs", data:req.data})
+});
+images.get('/upload', (req, res) =>{
+  res.render('pages/images/create', {title:"Crear"})
+});
 images.get('/:id', getImage);
 images.post('/upload', upload.single('file'), uploadImage);
 images.delete('/:id', deleteImage);

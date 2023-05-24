@@ -39,7 +39,7 @@ app.use( cors({
 }))
 
 // JSON parser desde express
-app.use(express.json())
+app.use(express.json({ limit:'10mb' }))
 
 //seteo el motor de plantillas
 app.set('view engine', 'ejs')
@@ -49,7 +49,7 @@ app.use(express.static('public'))
 
 
 //para procesar los datos enviados desde forms
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ limit:'100mb' ,extended:true}))
 
 
 
@@ -87,8 +87,8 @@ try {
 app.set('view engine', 'ejs')
 
 // Rutas
-app.use('/blogs', isAuthenticated, blogs)
-app.use('/image', isAuthenticated, images)
+app.use('/blogs', blogs)
+app.use('/images', isAuthenticated, images)
 app.use('/', auth)
 app.use('/users', isAuthenticated, users)
 

@@ -1,3 +1,8 @@
 <%- include('../../components/open.ejs'); %>
-   <%- data %>
+   <ul>
+      <% data[0].forEach(function(blog){ %>
+      <% var image = data[1][blog.ImageId - 1] %>
+        <%- include('./show', {blog: blog, image: image}); %>
+      <% }); %>
+    </ul>
 <%- include('../../components/close.ejs'); %>

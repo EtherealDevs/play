@@ -7,12 +7,10 @@ const AdminModel = db.define('Admin',{
     username: { type: DataTypes.STRING},
     email: { type: DataTypes.STRING},
     password: { type: DataTypes.STRING},
-    CREATED_AT: { type: DataTypes.DATEONLY},
-    UPDATED_AT: { type: DataTypes.DATEONLY}
+    createdAt: { type: DataTypes.DATEONLY},
+    updatedAt: { type: DataTypes.DATEONLY}
 }, {
-    tableName: 'admins',
-    createdAt: 'CREATED_AT',
-    updatedAt: 'UPDATED_AT'
+    tableName: 'admins'
 })
 AdminModel.sync({alter:true})
 export default AdminModel

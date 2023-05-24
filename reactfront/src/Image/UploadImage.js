@@ -13,7 +13,7 @@ const UploadImage = () => {
       e.preventDefault()
       let formData = new FormData()
       formData.append('file', image.data)
-      const response = await axios.post('http://localhost:8000/image/upload', formData, {
+      const response = await axios.post('http://localhost:8000/images/upload', formData, {
         headers:{
           'Content-Type': 'multiplart/form-data'
         }

@@ -1,0 +1,7 @@
+<%- include('../../components/open.ejs'); %>
+<ul>
+   <% data.forEach(function(image){ %>
+     <%- include('./show', {image: image}); %>
+   <% }); %>
+ </ul>
+<%- include('../../components/close.ejs'); %>
