@@ -1,0 +1,13 @@
+.fondo {
+    background-color: #B1D3EC;
+    background-image: url('../../assets/intro.svg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    height: 100vh;
+}
+
+.logo {
+    background-image: url('../../assets/play.png');
+    background-size: 100vh;
+}
