@@ -1,6 +1,7 @@
 import express from 'express'
 import multer from 'multer'; 
 import { deleteImage, getAllImages, getImage, uploadImage } from '../controllers/imageController.js';
+import ImageModel from '../models/ImageModel.js';
 
 const images = express.Router()
 
@@ -15,7 +16,23 @@ const storage = multer.diskStorage({
   })
   
 // Aca se define la accion de Subir, Upload = Subir. Con la direccion (storage) especificada mas arriba. El comando completo es multer.Multer.upload. Esto se hace para reducir la verbosidad
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage, fileFilter: async (req, file, cb) => {
+  console.log(req)
+  console.log(file)
+  var repeat = await ImageModel.findOne({
+      where: {
+          filename: file.originalname
+          }
+      })
+      console.log(repeat)
+  if (repeat){
+      console.log(repeat)
+      cb(null, false)
+      req.body.repeatImage = true;
+  } else {
+      cb(null, true);
+  }
+} })
   
 // Al ser Middleware, es necesario que se utilice el metodo de multer como handler en el images, y luego recien se pasa al controlador
 images.get('/', getAllImages, (req, res) =>{

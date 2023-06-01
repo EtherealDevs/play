@@ -12,7 +12,6 @@ export const getAllBlogs = async (req, res, next) =>{
     try {
         const blogs = await BlogModel.findAll();
         const images = await ImageModel.findAll();
-        console.debug(req.path)
         req.data = [blogs, images]
         if (req.get('origin')){
             if (req.get('origin') != `${process.env.APP_HOST}`){

@@ -66,30 +66,52 @@
             </div>
         </div>
         
-    
     <script>
-      $('#summernote').summernote({dialogsInBody: true,
-            placeholder: 'Hello stand alone ui',
-            tabsize: 2,
-            height: 360,
-            toolbar: [
-              ['style', ['style']],
-              ['font', ['bold', 'underline', 'clear']],
-              ['color', ['color']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['table', ['table']],
-              ['insert', ['link', 'picture', 'video']],
-              ['view', ['fullscreen', 'help']]
-            ]
-          });
+        $('#summernote').summernote({dialogsInBody: true,
+              placeholder: 'Contenido',
+              tabsize: 2,
+              height: 360,
+              toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'help']]
+              ],
+            });
+
           var form = document.getElementById('form1')
+          $('#summernote').on('summernote.change', function(we, contents, $editable) {
+            console.log(contents);
+            });
           form.onsubmit = async function () {
-            
+            event.preventDefault()
+            var fileList = document.getElementsByName('files').item(0).files
+            for (const file of fileList) {
+                var formdata = new FormData();
+                formdata.append('file',file);
+                formdata.append('noRedirect',true);
+                await $.ajax({
+                    url: "/images/upload",
+                data: formdata,
+                 type: "POST",
+                 cache: false,
+                 processData: false,
+                 contentType: false,
+                success: function(data){
+                    var imgNode = $(`[data-filename="${file.name}"]`).attr('src',`/img/${file.name}`);
+                },
+                error:function (req, status, error) {
+                    console.log(error);
+                }
+                });
+            }
             var markupStr = $('#summernote').summernote('code');
             var content = document.getElementById('summernote');
             content.value = markupStr
           }
-    
     </script>
     </form>
     

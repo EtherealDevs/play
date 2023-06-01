@@ -24,7 +24,6 @@ import UserModel from "./models/UserModel.js";
 const app = express();
 
 global.appRoot = resolve(__dirname);
-console.log(appRoot)
 
 //seteamos las variables de entorno
 dotenv.config({path: './.env'})
@@ -51,31 +50,28 @@ app.use(express.static('public'))
 //para procesar los datos enviados desde forms
 app.use(express.urlencoded({ limit:'100mb' ,extended:true}))
 
-
-
-
 //para eliminar la cache y que no se pueda volver con el boton back despues de desloguearse
-app.use(checkUserToken, function(req, res, next){
-    console.log(`Node server (app.js): checking user data from request...`)
-    res.header('Access-Control-Allow-Credentials', true)
-        res.header(
-            'Access-Control-Allow-Headers',
-            'Origin, X-Requested-With, Content-Type, Accept'
-          )          
-    if(!req.user){
+// app.use(checkUserToken, function(req, res, next){
+//     console.log(`Node server (app.js): checking user data from request...`)
+//     res.header('Access-Control-Allow-Credentials', true)
+//         res.header(
+//             'Access-Control-Allow-Headers',
+//             'Origin, X-Requested-With, Content-Type, Accept'
+//           )          
+//     if(!req.user){
         
-        console.log(" No user token found, setting up headers to clear cache...")
-        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
-        // res.header('Content-Type', 'text/html;application/json;charset=UTF-8')
-        console.log("Headers Set.")
-    }
-    else {
-        console.log("Success!")
-        console.log(` User ID: ${req.user.id}\n Username: ${req.user.username}\n User Email: ${req.user.email}`)
-    }
+//         console.log(" No user token found, setting up headers to clear cache...")
+//         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+//         // res.header('Content-Type', 'text/html;application/json;charset=UTF-8')
+//         console.log("Headers Set.")
+//     }
+//     else {
+//         console.log("Success!")
+//         console.log(` User ID: ${req.user.id}\n Username: ${req.user.username}\n User Email: ${req.user.email}`)
+//     }
   
-    next()
-})
+//     next()
+// })
 
 // Autentificar la conexion con la base de datos
 try {
