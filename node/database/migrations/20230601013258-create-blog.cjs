@@ -30,7 +30,14 @@ module.exports = {
         type: Sequelize.DATE
       },
       ImageId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'images'
+          },
+          key: 'id'
+        },
+        allowNull: true
       }
     });
   },

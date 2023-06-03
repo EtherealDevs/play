@@ -28,14 +28,16 @@ export const getAllBlogs = async (req, res, next) =>{
 // Mostrar un registro
 export const getBlog = async (req, res, next) =>{
     try {
-        const blog = await BlogModel.findAll({
+        const blog = await BlogModel.findOne({
             where: {
                 id: req.params.id
             }
         });
+        const image = await blog.getImage()
+        req.data = [blog, image];
         if (req.get('origin')){
             if (req.get('origin') != `${process.env.APP_HOST}`){
-                res.json(blog[0])
+                res.json(blog)
             }
         }
         return next()
@@ -50,14 +52,14 @@ export const createBlog = async (req, res) => {
         const image = req.file;
         if (req.body.repeatImage){
             console.log("Repeated File!!!")
-            await BlogModel.create({title: req.body.title, content: req.body.content, imageId: 1})
+            await BlogModel.create({title: req.body.title, content: req.body.content, ImageId: image.id})
             res.json({
                 "message": req.body
             })
         }
         else{
             const img = await ImageModel.create(image)
-            const test = await BlogModel.create({title: req.body.title, content: req.body.content, ImageId: img.dataValues.id})
+            const test = await BlogModel.create({title: req.body.title, content: req.body.content, ImageId: img.id})
             res.json({
                 "message": req.body
             })

@@ -35,6 +35,7 @@ const upload = multer({ storage: storage, fileFilter: async (req, file, cb) => {
         console.log(repeat)
         cb(null, false)
         req.body.repeatImage = true;
+        req.file = repeat;
     } else {
         cb(null, true);
     }
@@ -49,7 +50,9 @@ blogs.get('/edit', isAuthenticated, (req,res)=>{
 blogs.get('/', getAllBlogs, (req,res)=>{
     res.render('pages/blogs/index', {title:"Blogs", data:req.data})
 })
-blogs.get('/:id', getBlog)
+blogs.get('/:id', getBlog, (req, res)=>{
+    res.render('pages/blogs/show', {title:req.data.title, blog: req.data[0], image:req.data[1]})
+})
 blogs.post('/', isAuthenticated, upload.single('image'), createBlog)
 blogs.put('/:id', isAuthenticated, updateBlog)
 blogs.delete('/:id', isAuthenticated, deleteBlog)
