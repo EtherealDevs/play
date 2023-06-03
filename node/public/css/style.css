@@ -6,8 +6,8 @@ body {
 }
 .play-background {
   background-color: #FFEF98;
-  background-image: url('/img/play-logo-bg.png'), url('/img/Fondo-16-9.svg');
-  background-size: 25%, cover;
+  background-image:  url('/img/Fondo-16-9.svg');
+  background-size:  cover;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
   background-position: center center,center center;

@@ -1,5 +1,25 @@
-<li>
-    <h1><%= blog.title %></h1>
-    <img height="200" width="200" src="img/<%= image.filename %>"></img>
-    <p><%- blog.content %></p>
-</li>
+<div class="flex justify-center">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>CONTENT</th>
+                <th>IMAGE</th>
+                <th>CREATED_DATE</th>
+                <th colspan="2">ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= blog.id %></td>
+                <td><%= blog.title %></td>
+                <td><%= blog.content %></td>
+                <td><img height="200" width="200" src="img/<%= image.filename %>"></img></td>
+                <td><%= blog.createdAt %></td>
+                <td><a href="">Edit</a></td>
+                <td><button>Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
