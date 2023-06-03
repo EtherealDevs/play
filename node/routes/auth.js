@@ -19,9 +19,21 @@ auth.get('/', isAuthenticated, (req,res)=>{
 })
 auth.post('/register', register);
 auth.get('/login', (req,res)=>{
-    res.render('pages/login')
+    var error = null;
+    if (req.body.error){
+        error = req.body.error
+        console.log("this works")
+    }
+    console.log("this does not work")
+    res.render('pages/login', {error: error})
 })
-auth.post('/login', login);
+auth.post('/login', login, (req, res, next)=>{
+    res.locals.sessionFlash = req.session.sessionFlash;
+    delete req.session.sessionFlash;
+    next();
+}, (req, res)=>{
+    res.render('pages/login', {error: res.locals.sessionFlash})
+});
 auth.post('/logout', logout);
 
 auth.get('/logout', logout);

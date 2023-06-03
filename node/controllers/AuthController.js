@@ -21,49 +21,62 @@ export const register = async (req, res) => {
         });
     }
 };
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
+    // NO se para que nos sirve esto. Tengo miedo de sacarlo
     if (req.cookies.jwt) {
         return res.redirect("/login");
     }
+// Al recibir la request. Intentar lo siguiente:
     try {
+        // Guardar datos para operar con ellos:
         const username = req.body.username;
         const pass = req.body.pass;
-
+        // Si cualquiera de los datos esta vacio.
         if (!username || !pass) {
-            console.log("no username or password");
+            req.session.sessionFlash = "No username or password"
+        return next()
         } else {
+            //GET User
             const user = await AdminModel.findOne({
                 where: {
                     username: username,
                 },
             });
+            // Guardar User en Results
             const results = user;
+            //Si No existe User. No hay resultado.
             if (!results) {
-                return res.status(401).json({
+                return res.status(401).send({
                     error: "Usuario no encontrado!",
                 });
             }
+            // Comprobar contraseña.
+            //Si la contraseña no es correcta. Bcryptjs.compare devuelve FALSE
             if (!(await bcryptjs.compare(pass, results.password))) {
-                return res.status(401).json({
+                return res.status(401).send({
                     error: "Contraseña incorrecta!",
                 });
+            //Si la contraseña es correcta. Bcryptjs.compare devuelve TRUE
             } else {
                 console.log(results.id);
-
+                // Generar una cookie JWT que comprobara la identidad del usuario durante la sesion. El valor de la misma es el ID del usuario codificado
                 const token = jwt.sign({
                         id: results.id,
                     },
                     `${process.env.JWT_SECRET}`
                 );
                 console.log("login correcto");
+                //Configurar httpOnly para la cookie generada, para que su valor no pueda ser accedido por client-side javascript 
                 const cookiesOptions = {
                     httpOnly: true,
                 };
+                // Enviar la respuesta http
                 res.cookie("jwt", token, cookiesOptions);
                 res.cookie("auth", true);
                 res.redirect("/");
             }
         }
+// Si algo falla, agarrar el error y mandarlo a la consola
     } catch (error) {
         console.log(error);
     }
