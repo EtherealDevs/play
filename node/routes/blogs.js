@@ -44,7 +44,7 @@ const upload = multer({ storage: storage, fileFilter: async (req, file, cb) => {
 blogs.get('/create', isAuthenticated, (req,res)=>{
     res.render('pages/blogs/create', {title:"Crear"})
 })
-blogs.get('/edit', isAuthenticated, (req,res)=>{
+blogs.get('/:id/edit', isAuthenticated, getBlog, (req,res)=>{
     res.render('pages/blogs/edit', {title:"Editar"})
 })
 blogs.get('/', getAllBlogs, (req,res)=>{
