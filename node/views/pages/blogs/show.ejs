@@ -1,37 +1,3 @@
 
-<div class="flex justify-center">
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>TITLE</th>
-                <th>CONTENT</th>
-                <th>IMAGE</th>
-                <th>CREATED_DATE</th>
-                <th colspan="2">ACTIONS</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= blog.id %></td>
-                <td><%= blog.title %></td>
-                <td><%= blog.content %></td>
-                <td><img height="200" width="200" src="img/<%= image.filename %>"></img></td>
-                <td><%= blog.createdAt %></td>
-                <td><a href="">Edit</a></td>
-                <td><button>Delete</button></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
 
-<!-- <%- include('../../components/open.ejs'); %>
-<article class="bg-slate-700 flex flex-col items-center mx-20">
-    <img class="bg-emerald-300" height="200" width="200" src="/img/<%= image.filename %>"></img>
-    <h1 class="bg-rose-400 text-center w-full text-2xl font-bold"><%= blog.title %></h1>
-    <div class="w-full p-10">
-        <%- blog.content %>
-    </div>
-</article>
-<%- include('../../components/close.ejs'); %> -->
 
