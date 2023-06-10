@@ -1,30 +1,47 @@
 <%- include('../../components/open.ejs'); %>
-  <div class="flex justify-center">
-      <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>TITLE</th>
-              <th>CONTENT</th>
-              <th>IMAGE</th>
-              <th>CREATED_DATE</th>
-              <th colspan="2">ACTIONS</th>
+  <div class="flex justify-center mx-20">
+      <table class="w-full text-sm  text-gray-500 rounded-lg overflow-hidden">
+          <thead class="text-white text-center h-14 uppercase bg-gray-50 bg-gray-700">
+            <tr> 
+              <th class="text-center rounded-tl p-4">ID</th>
+              <th class="text-center ">IMAGE</th>
+              <th class="text-center">TITLE</th>
+              <th class="text-center">CONTENT</th>
+              <th class="text-center">CREATED_DATE</th>
+              <th class="text-center rounded-tr p-2" colspan="2">ACTIONS</th>
           </tr>
-          </thead>
+        </thead>
           <tbody>
             <% data[0].forEach(function(blog){ %>
               <% var image = data[1][blog.ImageId - 1] %>
-                <tr>
-                  <td><%= blog.id %></td>
-                  <td><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></td>
-                  <td><%= blog.content %></td>
-                  <td><img height="200" width="200" src="img/<%= image.filename %>"></img></td>
-                  <td><%= blog.createdAt %></td>
-                  <td><a href="/blogs/<%=blog.id%>/edit">Edit</a></td>
-                  <td><button>Delete</button></td>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 rounded-lg">
+                  <td class="text-center"><%= blog.id %></td>
+                  <td class="w-32 p-4"><img height="200" width="200" src="/img/<%= image.filename %>"></img></td>
+                  <td class="text-center"><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></td>
+                  <td class="text-center"><%- blog.content %></td>
+                  <td class="text-center"><%= blog.createdAt %></td>
+                  <td class="text-center"><a href="/blogs/<%=blog.id%>/edit" class="font-medium text-blue-600  hover:underline">Edit</a></td>
+                  <td class="text-center"><button onclick="ajaxFunction('<%=blog.id%>')" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button></td>
                 </tr>
               <% }); %>
-          </tbody>
+          </tbody> 
       </table>
   </div>
+  <script>
+    async function ajaxFunction(blogId) {
+      if (confirm("Press a button!")){
+        await $.ajax({
+          url: `/blogs/${blogId}`,
+          type: 'DELETE',
+          success: (data)=>{
+            console.log(data)
+            location.reload()
+          },
+          error: (error)=>{
+            console.log(error)
+          }
+        })
+      }
+    }
+  </script>
 <%- include('../../components/close.ejs'); %>

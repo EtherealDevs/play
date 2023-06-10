@@ -15,7 +15,7 @@ export const getAllBlogs = async (req, res, next) =>{
         req.data = [blogs, images]
         if (req.get('origin')){
             if (req.get('origin') != `${process.env.APP_HOST}`){
-                res.json(blogs)
+                return res.json(blogs)
             }
         }
         return next()
@@ -37,7 +37,7 @@ export const getBlog = async (req, res, next) =>{
         req.data = [blog, image];
         if (req.get('origin')){
             if (req.get('origin') != `${process.env.APP_HOST}`){
-                res.json(blog)
+                return res.json(blog)
             }
         }
         return next()
@@ -53,16 +53,12 @@ export const createBlog = async (req, res) => {
         if (req.body.repeatImage){
             console.log("Repeated File!!!")
             await BlogModel.create({title: req.body.title, content: req.body.content, ImageId: image.id})
-            res.json({
-                "message": req.body
-            })
+            res.redirect('/blogs/')
         }
         else{
             const img = await ImageModel.create(image)
             const test = await BlogModel.create({title: req.body.title, content: req.body.content, ImageId: img.id})
-            res.json({
-                "message": req.body
-            })
+            res.redirect('/blogs/')
         }
     } catch (error) {
         res.json({ error: error.message})
