@@ -19,7 +19,7 @@ function App() {
         <div className='snap-center'>
           <Intro />
         </div>
-        <div className='backround-paint'>
+        <div className='paint'>
           <div className='snap-center'>
             <Start/>
           </div>

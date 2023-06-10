@@ -1,0 +1,40 @@
+#menu-desktop {
+    display: none;
+
+}
+
+#menu-mobile{
+    display: flex;
+    width: auto;
+}
+
+@media (min-width: 576px){
+    #menu-desktop {
+        display: flex;
+    
+    }
+    
+    #menu-mobile{
+        display: none;
+        width: auto;
+    }
+    
+}
+
+#burguer{
+    min-width: 20px;
+    min-height: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+#burguer span{
+    border-radius: 5px;
+    background-color: ;
+    width: ;
+    height: ;
+    transition: all 300ms;
+}
