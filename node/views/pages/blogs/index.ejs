@@ -1,8 +1,30 @@
 <%- include('../../components/open.ejs'); %>
-   <ul>
-      <% data[0].forEach(function(blog){ %>
-      <% var image = data[1][blog.ImageId - 1] %>
-        <%- include('./show', {blog: blog, image: image}); %>
-      <% }); %>
-    </ul>
+  <div class="flex justify-center">
+      <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>TITLE</th>
+              <th>CONTENT</th>
+              <th>IMAGE</th>
+              <th>CREATED_DATE</th>
+              <th colspan="2">ACTIONS</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% data[0].forEach(function(blog){ %>
+              <% var image = data[1][blog.ImageId - 1] %>
+                <tr>
+                  <td><%= blog.id %></td>
+                  <td><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></td>
+                  <td><%= blog.content %></td>
+                  <td><img height="200" width="200" src="img/<%= image.filename %>"></img></td>
+                  <td><%= blog.createdAt %></td>
+                  <td><a href="/blogs/<%=blog.id%>/edit">Edit</a></td>
+                  <td><button>Delete</button></td>
+                </tr>
+              <% }); %>
+          </tbody>
+      </table>
+  </div>
 <%- include('../../components/close.ejs'); %>

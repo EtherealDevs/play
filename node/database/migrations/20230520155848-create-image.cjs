@@ -32,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Images');
+    await queryInterface.sequelize.query('SET FOREIGN_KEY_CHECKS = 0;').then(()=>{queryInterface.sequelize.query('DROP TABLE react_db.images;')}).then(()=>{queryInterface.sequelize.query('SET foreign_key_checks = 1;')})
   }
 };

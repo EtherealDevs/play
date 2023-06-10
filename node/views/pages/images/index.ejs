@@ -3,5 +3,20 @@
    <% data.forEach(function(image){ %>
      <%- include('./show', {image: image}); %>
    <% }); %>
- </ul>
+</ul>
+<script>
+  async function ajaxFunction(imageId) {
+    await $.ajax({
+      url: `/images/${imageId}`,
+      type: 'DELETE',
+      success: (data)=>{
+        console.log(data)
+        location.reload()
+      },
+      error: (error)=>{
+        console.log(error)
+      }
+    })
+  }
+</script>
 <%- include('../../components/close.ejs'); %>

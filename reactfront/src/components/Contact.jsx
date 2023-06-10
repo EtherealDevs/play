@@ -7,9 +7,10 @@ function Contact() {
        <div class="min-h-screen flex items-center justify-center">
         <div className='h-full'>
           <h1 class="font-bold italic text-3xl text-white">Consulta</h1>
-            <div className='content-center w-screen'> 
-            <div className='puzzle'>
-                <div className='py-60'>
+            <div className='content-center'> 
+            <div className='puzzle1'>
+            <div className='puzzle2 translate-x-4 translate-y-4'>
+                <div className='py-60 '>
                     <div className='justify-center flex'>
                       <div class="grid gap-10  sm:grid-cols-2">
                           <div class="grid">
@@ -62,6 +63,7 @@ function Contact() {
               </button>
             </div>
         </div>
+      </div>
       </div>
     </section>
   )

@@ -4,6 +4,7 @@ import { createBlog, deleteBlog, getAllBlogs, getBlog, updateBlog } from '../con
 import { isAuthenticated } from '../controllers/AuthController.js'
 import ImageModel from '../models/ImageModel.js'
 import { Op, or } from 'sequelize'
+import { getAllImages } from '../controllers/imageController.js'
  
 const blogs = express.Router()
 
@@ -34,6 +35,7 @@ const upload = multer({ storage: storage, fileFilter: async (req, file, cb) => {
         console.log(repeat)
         cb(null, false)
         req.body.repeatImage = true;
+        req.file = repeat;
     } else {
         cb(null, true);
     }
@@ -42,13 +44,15 @@ const upload = multer({ storage: storage, fileFilter: async (req, file, cb) => {
 blogs.get('/create', isAuthenticated, (req,res)=>{
     res.render('pages/blogs/create', {title:"Crear"})
 })
-blogs.get('/edit', isAuthenticated, (req,res)=>{
+blogs.get('/:id/edit', isAuthenticated, getBlog, (req,res)=>{
     res.render('pages/blogs/edit', {title:"Editar"})
 })
 blogs.get('/', getAllBlogs, (req,res)=>{
     res.render('pages/blogs/index', {title:"Blogs", data:req.data})
 })
-blogs.get('/:id', getBlog)
+blogs.get('/:id', getBlog, (req, res)=>{
+    res.render('pages/blogs/show', {title:req.data.title, blog: req.data[0], image:req.data[1]})
+})
 blogs.post('/', isAuthenticated, upload.single('image'), createBlog)
 blogs.put('/:id', isAuthenticated, updateBlog)
 blogs.delete('/:id', isAuthenticated, deleteBlog)

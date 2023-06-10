@@ -3,4 +3,5 @@
     <img width="200" height="200" src="/img/<%= image.filename %>"></img>
     <p><%= image.size %></p>
     <p><%- image.path %></p>
+    <button onclick="ajaxFunction('<%- image.id %>')">Delete</button>
 </li>

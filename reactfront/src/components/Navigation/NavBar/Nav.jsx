@@ -20,7 +20,7 @@ export default function Nav() {
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span>
             </a>
         </div>
-        <div id='menu-desktop' class="items-center mx-auto p-4">
+        <div class="items-center mx-auto m-4">
           <div class="items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-cta">
             <ul class="flex flex-col font-medium mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0">
             {navigation.map((item) => (
