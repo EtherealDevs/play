@@ -5,9 +5,9 @@
    <% }); %>
 </ul>
 <script>
-  async function ajaxFunction(imageId) {
+  async function ajaxFunction(ImageId) {
     await $.ajax({
-      url: `/images/${imageId}`,
+      url: `/images/${ImageId}`,
       type: 'DELETE',
       success: (data)=>{
         console.log(data)

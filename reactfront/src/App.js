@@ -13,9 +13,9 @@ import Footer from './components/Navigation/Footer/Footer';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App scroll-smooth snap-y snap-mandatory relative h-screen overflow-auto">
       <Nav/>
-      <div className='snap-y snap-mandatory relative h-screen overflow-auto'>
+      <div className=''>
         <div className='snap-center'>
           <Intro />
         </div>

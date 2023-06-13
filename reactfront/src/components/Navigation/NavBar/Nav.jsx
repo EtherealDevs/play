@@ -13,16 +13,16 @@ function classNames(...classes) {
 
 export default function Nav() {
   return (
-      <nav class="z-30 flex sticky top-0 bg-[#8c4c9d]">
+      <nav className="z-30 flex sticky top-0 bg-[#8c4c9d]">
         <div className='justify-start h-20 ml-20'>
-          <a href="Start" class="flex mt-4 items-center">
-            <img src={PlayLogo} class="h-12 justify-start" alt="Play Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span>
+          <a href="Start" className="flex mt-4 items-center">
+            <img src={PlayLogo} className="h-12 justify-start" alt="Play Logo" />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span>
             </a>
         </div>
-        <div class="items-center mx-auto m-4">
-          <div class="items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-cta">
-            <ul class="flex flex-col font-medium mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0">
+        <div className="items-center mx-auto m-4">
+          <div className="items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-cta">
+            <ul className="flex flex-col font-medium mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0">
             {navigation.map((item) => (
               <li className='hover:bg-fuchsia-800 hover:text-white text-violet-300 rounded-lg py-1 px-2'>
                 <a
@@ -41,8 +41,8 @@ export default function Nav() {
         </div>
 
         <div id='menu-mobile' className='items-center mx-auto p-4'>
-          <div class="items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-cta">
-              <ul class="flex flex-col font-medium mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0">
+          <div className="items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-cta">
+              <ul className="flex flex-col font-medium mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0">
               {navigation.map((item) => (
                 <li className='hover:bg-fuchsia-800 hover:text-white text-violet-300 rounded-lg py-1 px-2'>
                   <a
