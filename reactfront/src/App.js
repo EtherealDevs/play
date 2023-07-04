@@ -15,29 +15,25 @@ function App() {
   return (
     <div className="App scroll-smooth snap-y snap-mandatory relative h-screen overflow-auto">
       <Nav/>
-      <div className=''>
         <div className='snap-center'>
           <Intro />
         </div>
         <div className='paint'>
-          <div className='snap-center'>
-            <Start/>
-          </div>
-          <div className='snap-center'>
+            <div className='snap-center'>
+              <Start/>
+            </div>
+            <div className='snap-center'>
               <We />
             </div>
             <div className='snap-center'>
               <Posts />
             </div>
-            <div className=''>
             <div className='snap-center'>
             <Contact />
             </div>
             <div className='snap-end'>
               <Footer/>
             </div>
-          </div>
-          </div>
         </div>
     </div>
   );

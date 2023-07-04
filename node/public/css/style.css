@@ -5,12 +5,14 @@ body {
   background-color: #ffffff;
 }
 .play-background {
-  background-color: #FFEF98;
-  background-image:  url('/img/Fondo-16-9.svg');
-  background-size:  cover;
+  /* background-color: #FFEF98; */
+  background: rgb(34,193,195);
+  background: linear-gradient(90deg, rgba(255,150,254,1) 43%, rgba(255,255,255,0.7021183473389356) 100%);
+  /* background-image:  url('/img/Fondo-16-9.svg'); */
+  /* background-size:  cover;
   background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
-  background-position: center center,center center;
+  background-position: center center,center center; */
 }
 
 .play-nav {

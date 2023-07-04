@@ -3,29 +3,22 @@ import CardSkills from './CardSkills'
 
 function We() {
   return (
-    <section id='We'>
+    <section id='We' className='flex flex-col h-screen items-center justify-center'>
+       
+          <div className='flex flex-col justify-evenly relative bottom-0'>
 
-      <div className="bg-transparent">
-        <div className="p-8 md:p-12 lg:px-16 lg:py-24">
-          <div className='justify-center'>
-
-            <div className='italic'>
-              <h2 className="text-2xl mb-20 font-bold text-white sm:text-3xl md:text-5xl">
+              <h2  className="italic text-2xl font-bold text-white lg:mt-2 sm:text-3xl md:text-5xl">
                 Nosotros
               </h2>
-            </div>
 
             <div className='bg-[#dcd1fe] rounded-3xl'>
               <div className='bg-[#f1ecff] translate-x-4 translate-y-4 p-5 rounded-3xl'>
-                <div className='w-full'>
-                  <div className='container mx-lg px-10'>
-                    <div className='justify-center mx-44 placeholder:'>
-                      <p className="w-3/6 mx-64 font-extrabold text-purple-900 md:mt-6 md:block">
+{/*                 
+                  <div className='mx-lg px-10 flex justify-center items-center'>
+                        <p className="w-3/6 font-extrabold text-purple-900 w-full lg:w-1/2">
                           Nuestra mision es formar chicos y prepararlos para un futuro mejor, queremos un mundo mejor, con chicos que tengan valores y puedan tener a mano la mejor herramienta para desarrollar tareas de excelencia, el conocimiento.
                         </p>
-                    </div>
-                  </div>
-                </div>
+                  </div> */}
 
                 <div className='mt-10'>
                   <CardSkills/>
@@ -39,8 +32,6 @@ function We() {
               </button>
             </div>
           </div>
-        </div>
-      </div>
     </section>
   )
 }

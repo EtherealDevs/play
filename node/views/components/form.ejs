@@ -1,14 +1,14 @@
 <div class="py-12 px-48">
-    <form id="form1" class="border-4 rounded-tl-3xl rounded-br-3xl border-black drop-shadow-2xl card-background-opacity" enctype="multipart/form-data" method="post" action="/blogs/">
-        <div class="border-b-4 border-black text-center py-3">
+    <form id="form1" class=" rounded-tl-3xl rounded-br-3xl border-black drop-shadow-2xl card-background-opacity" enctype="multipart/form-data" method="post" action="/blogs/">
+        <div class=" border-black text-center py-3">
             <%= title %>
         </div>
         <div class="p-2 px-8">
-            <input class="border-2 border-black rounded-md bg-pink-200 px-2 my-4 text-black h-10 w-full placeholder-black text-lg" type="text" id="title" name="title" placeholder="Titulo"  required>
+            <input class="border-2 border-black rounded-md bg-pink-200 px-2 my-4 text-black h-10 w-full placeholder-black text-lg" type="text" id="title" name="title" placeholder="Titulo" required>
 
             <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
-<script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.3.x/dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.3.x/dist/index.js"></script>
             
 <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 ml-2 sm:col-span-4 md:mr-3">
     <!-- Photo File Input -->
@@ -30,31 +30,29 @@
         <div class="mt-2" x-show="! photoPreview">
             <div class="flex my-2 border-dashed rounded-lg px-6 py-10 border-2 border-[#0D0D0D] justify-center">
                 <div class="text-center">
-                   
+                    <button type="button" class="" x-on:click.prevent="$refs.photo.click()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current mx-auto w-10 h-10">
                             <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
                         </svg>
-                        
+                    </button>
                         <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF hasta 10MB</p>
+                         
                     </div>
                 </div>
-            
         </div>
         <!-- New Profile Photo Preview -->
         <div class="mt-2" x-show="photoPreview" style="display: none;">
             <div class="flex my-2 border-dashed rounded-lg px-6 py-10 border-2 border-[#0D0D0D] justify-center">
-            <div class="text-center">
-                <p class="text-xs leading-5 text-gray-600" x-text="photoName"></p>    
-                <span class="block w-40 h-40 rounded-full m-auto shadow" x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('null');">
-                </span>
-                    <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF hasta 10MB</p>
+                <div class="text-center">
+                    <p class="text-xs leading-5 text-gray-600" x-text="photoName"></p>
+                    <button type="button" class="" x-on:click.prevent="$refs.photo.click()">
+                        <span class="block w-40 h-40 rounded-full m-auto shadow" x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('null');">
+                        </span>
+                    </button>    
+                        <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF hasta 10MB</p>
+                </div>
             </div>
         </div>
-            
-        </div>
-        <button type="button" class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-400 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150 mt-2 ml-3" x-on:click.prevent="$refs.photo.click()">
-            Seleccionar imagen
-        </button>
     </div>
 </div>
 
@@ -62,7 +60,7 @@
         <textarea name="content" id="summernote"></textarea>
             
             <div class="flex my-4 mx-2 justify-end">
-                <button onclick="" type="submit" class="border-2 rounded-md py-1 px-1 border-black bg-yellow-200"><%= submit %></button>
+                <button onclick="" type="submit" class="rounded-md py-1 px-1 border-black bg-yellow-200"><%= submit %></button>
             </div>
         </div>
         

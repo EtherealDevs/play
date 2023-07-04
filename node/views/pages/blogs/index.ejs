@@ -1,14 +1,14 @@
 <%- include('../../components/open.ejs'); %>
-  <div class="flex justify-center mx-20">
-      <table class="w-full text-sm  text-gray-500 rounded-lg overflow-hidden">
-          <thead class="text-white text-center h-14 uppercase bg-gray-50 bg-gray-700">
+    <div class="flex mt-10 justify-center mx-20 p-10 bg-gradient-to-r from-indigo-500 to-blue-500 ">
+      <table class="grid-cols-8 w-full text-sm justify-content-center text-gray-500 rounded-lg overflow-hidden">
+          <thead class="text-white text-center h-14 bg-gray-50 bg-gray-700">
             <tr> 
-              <th class="text-center rounded-tl p-4">ID</th>
-              <th class="text-center ">IMAGE</th>
-              <th class="text-center">TITLE</th>
-              <th class="text-center">CONTENT</th>
-              <th class="text-center">CREATED_DATE</th>
-              <th class="text-center rounded-tr p-2" colspan="2">ACTIONS</th>
+              <th class="text-center rounded-tl p-4">Id</th>
+              <th class="text-center ">Imagen</th>
+              <th class="text-center">Titulo</th>
+              <th class="text-center" colspan="2">Contenido</th>
+              
+              <th class="text-center rounded-tr p-2" colspan="2">Acciones</th>
           </tr>
         </thead>
           <tbody>
@@ -18,9 +18,8 @@
                   <td class="text-center"><%= blog.id %></td>
                   <td class="w-32 p-4"><img height="200" width="200" src="/img/<%= image.filename %>"></img></td>
                   <td class="text-center"><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></td>
-                  <td class="text-center"><%- blog.content %></td>
-                  <td class="text-center"><%= blog.createdAt %></td>
-                  <td class="text-center"><a href="/blogs/<%=blog.id%>/edit" class="font-medium text-blue-600  hover:underline">Edit</a></td>
+                  <td class="text-center p-5" colspan="2"><%- blog.content %></td>
+                  <td class="text-end"><a href="/blogs/<%=blog.id%>/edit" class="font-medium text-blue-600  hover:underline">Edit</a></td>
                   <td class="text-center"><button onclick="ajaxFunction('<%=blog.id%>')" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button></td>
                 </tr>
               <% }); %>
@@ -29,7 +28,7 @@
   </div>
   <script>
     async function ajaxFunction(blogId) {
-      if (confirm("Press a button!")){
+      if (confirm("¿Estas seguro de que quieres borrar?")){
         await $.ajax({
           url: `/blogs/${blogId}`,
           type: 'DELETE',

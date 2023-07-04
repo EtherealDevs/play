@@ -39,6 +39,11 @@
 
 /* Fondo Responsive */
 .paint {
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+
   background-image: url(./assets/fondo2.svg); 
   background-repeat: no-repeat;
   background-size: cover;
@@ -46,6 +51,7 @@
 
 @media only screen and (max-width: 800px) { 
 	.paint { 
+  
 		background-image: url(./assets/phone.svg );
     background-repeat: no-repeat;
     background-size: cover; 
