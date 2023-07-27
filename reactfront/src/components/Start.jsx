@@ -10,13 +10,13 @@ function Start() {
   return (
     <section className='intro1 h-screen flex items-center justify-center' id='Start'>
 
-    <div className="flex items-center justify-evenly flex-col h-4/5 w-full">
+    <div className="flex items-center justify-evenly flex-col h-full sm:pt-16 sm:pb-6 pt-14 pb-6 w-full">
        
             <div className="flex flex-col w-full justify-center items-center text-white text-center">
-                <div className="text-lg mt-2 font-bold font-sans">
+                <div className="text-2xl sm:text-3xl mt-2 font-bold font-sans">
                 <h2>Bienvenidos a Play</h2>
                 </div>
-                <div className="font-light">
+                <div className="text-md sm:text-lg font-light">
                 <span>El Espacio Infantil de los peques</span>
                 </div>
             </div>
@@ -27,7 +27,7 @@ function Start() {
                 <BiDownArrow className='block sm:hidden float-right absolute top-1 right-1'>Button</BiDownArrow>
                     <div className="group-hover:hidden transition ease-in-out 300 my-1 font-semibold text-md md:mx-5 md:mb-3">Emociones nuevas</div>
                     <RiEmotionFill className='group-hover:hidden transition ease-in-out 300 w-auto text-6xl'/>
-                    <div className="hidden lg:block text-sm mt-6 font-light md:w-auto group-hover:block group-hover:text-white group-hover:font-bold group-hover:m-2 ">Desarrollan empatía y responsabilidad social. Capacitandolos para el futuro</div>
+                    <div className="hidden lg:block text-sm mt-6 font-light md:w-auto group-hover:block group-hover:text-white group-hover:font-bold group-hover:m-2 mx-2">Desarrollan empatía y responsabilidad social. Capacitandolos para el futuro</div>
                 </div>
             </div>
             <div className="bg-amber-100 rounded-xl h-full -translate-x-2 -translate-y-2">
@@ -35,7 +35,7 @@ function Start() {
                     <BiDownArrow className='block sm:hidden float-right absolute top-1 right-1'>Button</BiDownArrow>
                     <div className="my-1 font-semibold text-md md:mx-5 md:mb-3 group-hover:hidden transition ease-in-out 300">Desarrollo de la convivencia</div>
                     <LuHeartHandshake className='w-auto text-6xl group-hover:hidden transition ease-in-out 300'/>
-                    <div className="hidden lg:block text-sm mt-6 font-light md:w-auto group-hover:block transition ease-in-out 300 group-hover:text-black group-hover:font-bold group-hover:m-2">Niños y niñas inician su vida social en un mundo cambiante, lleno de nuevos retos en torno a la idea de convivencia</div>
+                    <div className="hidden lg:block text-sm mt-6 font-light md:w-auto group-hover:block transition ease-in-out 300 group-hover:text-black group-hover:font-bold group-hover:m-2 mx-2">Niños y niñas inician su vida social en un mundo cambiante, lleno de nuevos retos en torno a la idea de convivencia</div>
                 </div>
             </div>
             <div className="bg-sky-100 rounded-xl h-full -translate-x-2 -translate-y-2">
@@ -43,7 +43,7 @@ function Start() {
                     <BiDownArrow className='block sm:hidden float-right absolute top-1 right-1'>Button</BiDownArrow>
                     <div className="my-1 font-semibold text-md md:mx-5 md:mb-3 group-hover:hidden transition ease-in-out 300">Capacitacion a padres</div>
                     <CgBoy className='w-auto text-6xl group-hover:hidden transition ease-in-out 300'/>
-                    <div className="hidden lg:block text-sm mt-6 font-light md:w-auto group-hover:block transition ease-in-out 300 group-hover:text-indigo-900 group-hover:font-bold group-hover:m-2">Intentamos inspirar en ellos y en sus familias nuevas formas de entender y asimilar la realidad</div>
+                    <div className="hidden lg:block text-sm mt-6 font-light md:w-auto group-hover:block transition ease-in-out 300 group-hover:text-indigo-900 group-hover:font-bold group-hover:m-2 mx-2">Intentamos inspirar en ellos y en sus familias nuevas formas de entender y asimilar la realidad</div>
                 </div>
             </div>
             {/* <div className="bg-[#F9ECFF] rounded-xl h-full -translate-x-2 -translate-y-2">

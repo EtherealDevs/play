@@ -1,7 +1,7 @@
 <%- include('../../components/open.ejs'); %>
-    <div class="flex mt-10 justify-center mx-20 p-10 bg-gradient-to-r from-indigo-500 to-blue-500 ">
+    <div class="flex mt-10 justify-center  p-10 ">
       <table class="grid-cols-8 w-full text-sm justify-content-center text-gray-500 rounded-lg overflow-hidden">
-          <thead class="text-white text-center h-14 bg-gray-50 bg-gray-700">
+          <thead class="text-white text-center h-14 bg-gray-700 bg-opacity-80">
             <tr> 
               <th class="text-center rounded-tl p-4">Id</th>
               <th class="text-center ">Imagen</th>
@@ -14,7 +14,7 @@
           <tbody>
             <% data[0].forEach(function(blog){ %>
               <% var image = data[1][blog.ImageId - 1] %>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 rounded-lg">
+                <tr class="bg-white border-b bg-opacity-50 rounded-lg">
                   <td class="text-center"><%= blog.id %></td>
                   <td class="w-32 p-4"><img height="200" width="200" src="/img/<%= image.filename %>"></img></td>
                   <td class="text-center"><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></td>

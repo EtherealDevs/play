@@ -60,13 +60,13 @@ export const getImage = async (req, res, next) =>{
 }
 export const deleteImage = async (req,res) => {
   try {
-    
       const image = await ImageModel.findOne({
           where :{ id : req.params.id}
       })
       if (image.id == 1) {
         return res.status('403').send()
       }
+      
       await unlinkAsync(image.path)
       await image.destroy()
       res.status('200').send()

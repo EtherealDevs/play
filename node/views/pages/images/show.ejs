@@ -1,7 +1,8 @@
-<li>
-    <h1><%= image.filename %></h1>
+<li class="border-2 border-sky-500 bg-red-400 flex flex-col col-span-auto items-center justify-evenly">
+    <!-- <h1><%= image.filename %></h1> -->
+    <h1><%= image.id %></h1>
     <img width="200" height="200" src="/img/<%= image.filename %>"></img>
     <p><%= image.size %></p>
-    <p><%- image.path %></p>
+    <!-- <p><%- image.path %></p> -->
     <button onclick="ajaxFunction('<%- image.id %>')">Delete</button>
 </li>
