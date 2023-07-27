@@ -1,12 +1,8 @@
-//importamos el modelo
 import BlogModel from "../models/BlogModel.js";
 import dotenv from 'dotenv';
 import os from 'os';
 import ImageModel from "../models/ImageModel.js";
 
-// **Metodos para el crud**/
-
-//Mostrar todos los registros 
 
 export const getAllBlogs = async (req, res, next) =>{
     try {
@@ -22,7 +18,6 @@ export const getAllBlogs = async (req, res, next) =>{
     } catch (error) {
         res.json({ error: error.message})
     }
-    
 }
 
 // Mostrar un registro
@@ -46,7 +41,7 @@ export const getBlog = async (req, res, next) =>{
     }
 }
 
-//Crear un regostro 
+//Crear un regostro
 export const createBlog = async (req, res) => {
     try {
         const image = req.file;
@@ -69,18 +64,18 @@ export const createBlog = async (req, res) => {
 
 export const updateBlog = async (req, res) => {
     try {
-        await BlogModel.update(req.body, {
+        await BlogModel.update({title: req.body.title, content: req.body.content}, {
             where:{ id: req.params.id}
         })
         res.json({
             "message": "¡REGISTRO ACTUALIZADO!"
         })
-    } catch (error) { 
+    } catch (error) {
         res.json({ error: error.message})
     }
 }
 
-// Eliminar un registro 
+// Eliminar un registro
 
 export const deleteBlog = async (req,res) => {
     try {
