@@ -21,7 +21,41 @@
     
 }
 
-#burguer{
+button {
+    display: flex;
+    flex-direction: column;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background: transparent;
+    gap: .65rem;
+    
+}
+
+button > div {
+    background: black;
+    height: 2px;
+    width: 100%;
+    border-radius: 5px;
+    transition: all .5s;
+    transform-origin: left;
+
+}
+
+button:hover div:first-child {
+    transform: rotate(45deg);
+}
+
+button:hover div:nth-child(2) {
+    opacity: 0;
+}
+
+button:hover div:last-child {
+    transform: rotate(-45deg);
+}
+
+
+/* #burguer{
     min-width: 20px;
     min-height: 15px;
     display: flex;
@@ -37,4 +71,4 @@
     width: ;
     height: ;
     transition: all 300ms;
-}
+} */

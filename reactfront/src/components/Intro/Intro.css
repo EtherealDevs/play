@@ -1,6 +1,4 @@
 .fondo {
-    background-color: #B1D3EC;
-    background-image: url('../../assets/introNoLogo.svg');
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
@@ -18,4 +16,3 @@
     background-size: cover; 
 	}   
 }
-

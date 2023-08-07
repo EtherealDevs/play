@@ -7,11 +7,11 @@ function We() {
        
           <div className='flex flex-col justify-evenly relative bottom-0'>
 
-              <h2  className="italic text-2xl font-bold text-white lg:mt-2 sm:text-3xl md:text-5xl">
+              <h2  className="italic text-2xl mb-10 font-bold text-white lg:mt-2 sm:text-3xl md:text-5xl">
                 Nosotros
               </h2>
 
-            <div className='bg-[#dcd1fe] rounded-3xl'>
+            <div className='bg-[#dcd1fe] mb-10 rounded-3xl'>
               <div className='bg-[#f1ecff] translate-x-4 translate-y-4 p-5 rounded-3xl'>
 {/*                 
                   <div className='mx-lg px-10 flex justify-center items-center'>
@@ -27,8 +27,8 @@ function We() {
             </div>
 
             <div className="flex justify-center">
-            <button href="#" className="inline-block rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-yellow-100 hover:text-black focus:outline-none focus:ring focus:ring-yellow-400">
-                Mas Informacion
+            <button href="#" className="inline-block rounded-full bg-[#b17dc0] px-12 mt-10 py-3 text-sm font-medium text-white transition hover:bg-yellow-100 hover:text-black focus:outline-none focus:ring focus:ring-yellow-400">
+                <p className='content-center'>Mas Informacion</p>
               </button>
             </div>
           </div>

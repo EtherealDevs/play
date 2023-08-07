@@ -15,10 +15,10 @@ function App() {
   return (
     <div className="App scroll-smooth snap-y snap-mandatory relative h-screen overflow-auto">
       <Nav/>
+        <div className='paint'>
         <div className='snap-center'>
           <Intro />
         </div>
-        <div className='paint'>
             <div className='snap-center'>
               <Start/>
             </div>
