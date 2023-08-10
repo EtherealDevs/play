@@ -6,9 +6,8 @@ import ImageModel from "../models/ImageModel.js";
 
 export const getAllBlogs = async (req, res, next) =>{
     try {
-        const blogs = await BlogModel.findAll();
-        const images = await ImageModel.findAll();
-        req.data = [blogs, images]
+        const blogs = await BlogModel.findAll({include: ImageModel});
+        req.data = [blogs]
         if (req.get('origin')){
             if (req.get('origin') != `${process.env.APP_HOST}`){
                 return res.json(blogs)
@@ -64,12 +63,21 @@ export const createBlog = async (req, res) => {
 
 export const updateBlog = async (req, res) => {
     try {
-        await BlogModel.update({title: req.body.title, content: req.body.content}, {
-            where:{ id: req.params.id}
-        })
-        res.json({
-            "message": "¡REGISTRO ACTUALIZADO!"
-        })
+        const image = req.file;
+        if (req.body.repeatImage){
+            console.log("Repeated File!!!")
+            await BlogModel.update({title: req.body.title, content: req.body.content, ImageId: image.id}, {
+                where:{ id: req.params.id}
+            })
+            res.redirect('/blogs/')
+        }
+        else{
+            const img = await ImageModel.create(image)
+            const test = await BlogModel.update({title: req.body.title, content: req.body.content, ImageId: img.id}, {
+                where:{ id: req.params.id}
+            })
+            res.redirect('/blogs/')
+        }
     } catch (error) {
         res.json({ error: error.message})
     }

@@ -2,6 +2,7 @@ import express, { Router }  from "express";
 import cors  from 'cors'
 import db from "./database/db.js";
 
+import methodOverride from 'method-override'
 import cookieParser from "cookie-parser";
 import multer from "multer";
 import jwt from 'jsonwebtoken'
@@ -82,6 +83,9 @@ app.use(express.urlencoded({ limit:'100mb' ,extended:true}))
   
 //     next()
 // })
+
+// MethodOverride para poder utilizar PUT, DELETE, y demas en formularios
+app.use(methodOverride('_method'))
 
 // Autentificar la conexion con la base de datos
 try {

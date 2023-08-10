@@ -42,10 +42,10 @@ const upload = multer({ storage: storage, fileFilter: async (req, file, cb) => {
   } })
 
 blogs.get('/create', isAuthenticated, (req,res)=>{
-    res.render('pages/blogs/create', {title:"Crear"})
+    res.render('pages/blogs/create', {title:"Crear", route: req.url})
 })
 blogs.get('/:id/edit', isAuthenticated, getBlog, (req,res)=>{
-    res.render('pages/blogs/edit', {title:"Editar"})
+    res.render('pages/blogs/edit', {title:"Editar", route: req.params.id})
 })
 blogs.get('/', getAllBlogs, (req,res)=>{
     res.render('pages/blogs/index', {title:"Blogs", data:req.data})
@@ -54,7 +54,7 @@ blogs.get('/:id', getBlog, (req, res)=>{
     res.render('pages/blogs/show', {title:req.data.title, blog: req.data[0], image:req.data[1]})
 })
 blogs.post('/', isAuthenticated, upload.single('image'), createBlog)
-blogs.put('/:id', isAuthenticated, updateBlog)
+blogs.put('/:id', isAuthenticated, upload.single('image'), updateBlog)
 blogs.delete('/:id', isAuthenticated, deleteBlog)
 
 export default blogs

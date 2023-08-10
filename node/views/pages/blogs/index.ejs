@@ -13,7 +13,7 @@
         </thead>
           <tbody>
             <% data[0].forEach(function(blog){ %>
-              <% var image = data[1][blog.ImageId - 1] %>
+              <% var image = blog.Image %>
                 <tr class="bg-white border-b bg-opacity-50 rounded-lg">
                   <td class="text-center"><%= blog.id %></td>
                   <td class="w-32 p-4"><img height="200" width="200" src="/img/<%= image.filename %>"></img></td>
