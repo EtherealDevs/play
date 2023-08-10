@@ -1,3 +1,5 @@
+import { Disclosure} from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import PlayLogo from '../../../assets/play.png'
 import '../NavBar/Nav.css'
 
@@ -12,79 +14,65 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Nav() {
+export default function Example() {
   return (
-      <nav className="z-30 flex sticky top-0 bg-[#8c4c9d] justify-start h-[56px]">
-        <div className='m-1 flex justify-center items-center'>
-          <a href="/" className="flex items-center mx-5 h-fit rounded-full hover:bg-sky-500 duration-300">
-            <img src={PlayLogo} className="h-10 w-10" alt="Play Logo" />
-            {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}
-            </a>
-        </div>
-        <div className="flex items-center m-1 basis-1/3 grow">
-          <div className="items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-cta">
-            <ul className="flex flex-col font-medium mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0 items-center ">
-            {navigation.map((item) => (
-              <li className=''>
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(item.current ? 'block py-2 pl-8 pr-8 font-black rounded hover:bg-fuchsia-800 hover:text-white text-violet-300 rounded-lg py-1 px-2 transition ease-in-out delay-50' : '','')}
-                  aria-current={item.current ? 'page' : undefined}>
-                  {item.name}
-                </a>
-              </li>
-                  )
-                )
-              }
-            </ul>
-          </div>
-
-        
-        </div>
-
-  {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
-  <div class="lg:hidden" role="dialog" aria-modal="true">
-    {/* <!-- Background backdrop, show/hide based on slide-over state. --> */}
-    <div class="fixed inset-0 z-10"></div>
-    <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-      <div class="flex items-center justify-between">
-      <button>
-           <div>
-            <div>
-              <div>
-              
+    <Disclosure as="nav" className="z-30 flex sticky top-0 bg-[#8c4c9d] justify-start h-[56px]">
+      {({ open }) => (
+        <nav>
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="relative flex h-16 items-center justify-between">
+              <div className=" content-end inset-y-0 left-0 flex items-center sm:hidden">
+                {/* Mobile menu button*/}
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 ">
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open main menu</span>
+                  {open ? (
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
+              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div className='m-1 flex justify-center sm:justify-end items-center'>
+                  <a href="/" className="flex items-center mx-5 h-fit rounded-full hover:bg-sky-500 duration-300">
+                  <img src={PlayLogo} className="h-10 w-10" alt="Play Logo" />
+                  {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}
+                  </a>
+                </div>
+                <div className="hidden sm:ml-6 sm:block">
+                  <div className="flex space-x-4">
+                    {navigation.map((item) => (
+                      <a
+                      key={item.name}
+                      href={item.href}
+                      className={classNames(item.current ? 'block py-2 pl-8 pr-8 font-black rounded hover:bg-fuchsia-800 hover:text-white text-violet-300 px-2 transition ease-in-out delay-50' : '','')}
+                      aria-current={item.current ? 'page' : undefined}>
+                      {item.name}
+                    </a>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-           </div>
-        </button>
-      </div>
-      <div class="mt-6 flow-root">
-      <div id='menu-mobile' className='items-center mx-auto p-4'>
-          <div className="items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-cta">
-              <ul className="flex flex-col font-medium mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0">
-              {navigation.map((item) => (
-                <li className='hover:bg-fuchsia-800 hover:text-white text-violet-300 rounded-lg py-1 px-2'>
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(item.current ? 'block py-2 pl-8 pr-8 font-black rounded' : '','')}
-                    aria-current={item.current ? 'page' : undefined}>
-                    {item.name}
-                  </a>
-                </li>
-                    )
-                  )
-                }
-              </ul>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-      </nav>
 
-      
+          <Disclosure.Panel className="bg-white sm:hidden">
+            <div className="space-y-1 w-screen h-3/6 pb-3 pt-2">
+              {navigation.map((item) => (
+                <Disclosure.Button
+                  key={item.name}
+                  as="a"
+                  href={item.href}
+                  className={classNames(item.current ? 'block py-2 pl-8 pr-8 font-black rounded hover:bg-fuchsia-800 hover:text-white text-violet-300 px-2 transition ease-in-out delay-50' : '','')}
+                  aria-current={item.current ? 'page' : undefined}>
+                  {item.name}
+                </Disclosure.Button>
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </nav>
+      )}
+    </Disclosure>
   )
 }
-
