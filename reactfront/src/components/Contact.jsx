@@ -5,9 +5,9 @@ function Contact() {
   return (
     <section id='Contact'>
        <div className="flex items-center justify-center">
-        <div className='h-full'>
+        <div className='h-full w-full'>
           <h1 className="font-bold italic text-3xl text-white">Consulta</h1>
-            <div className='content-center'> 
+            <div className='justify-start'> 
             <div className='puzzle'>
             <div className=''>
                 <div className='py-60 '>
@@ -52,8 +52,8 @@ function Contact() {
               
             </div>
 
-            <div className="flex items-center content-center justify-center">
-            <button href="#" className="sm:mt-8 justify-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-yellow-100 hover:text-black focus:outline-none focus:ring focus:ring-yellow-400">
+            <div className="flex justify-center">
+            <button href="#" className="sm:mt-8 items-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-yellow-100 hover:text-black focus:outline-none focus:ring focus:ring-yellow-400">
                 Enviar
               </button>
             </div>

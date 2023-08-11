@@ -15,10 +15,10 @@ const Footer = ()=>{
                                 <a href="Start" className="hover:underline text-white">Inicio</a>
                             </li>
                             <li className="mt-5 ml-2">
-                                <a href="We" className="hover:underline text-white">Nosotros</a>
+                                <a href="Posts" className="hover:underline text-white">Posts</a>
                             </li>
                             <li className="mt-5 ml-2">
-                                <a href="Posts" className="hover:underline text-white">Eventos</a>
+                                <a href="We" className="hover:underline text-white">Nosotros</a>
                             </li>
                         </ul>
                     </div>

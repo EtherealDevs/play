@@ -26,11 +26,10 @@ function Posts() {
           <div className="flex flex-col items-center sm:px-5 md:flex-row">
             <div className="flex flex-col items-start justify-center w-full h-full pt-6 pr-0 pb-6 pl-0 mb-6 md:mb-0 md:w-1/2">
               <div className="flex flex-col items-start justify-center h-full space-y-3 transform md:pr-10 lg:pr-16 md:space-y-5">
-                <div className='px-20 py-20 rounded-xl bg-white/20'>
+                <div className='px-20 py-20 rounded-xl bg-black/20'>
                   <p className="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">Posts</p>
                   <p className="inline text-white text-sm font-extrabold mr-1">y Anuncios Importantes</p>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -45,6 +44,11 @@ function Posts() {
           </div>
         </div>
       </div>
+      <div className="flex justify-center">
+            <a href='#Contact' className="sm:mt-8 items-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-yellow-100 hover:text-black focus:outline-none focus:ring focus:ring-yellow-400">
+                Continuar
+              </a>
+            </div>
     </section>
   )
 }

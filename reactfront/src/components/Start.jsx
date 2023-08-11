@@ -3,7 +3,6 @@ import '../App.css'
 import { LuHeartHandshake } from "react-icons/lu";
 import { RiEmotionFill } from "react-icons/ri";
 import { CgBoy } from "react-icons/cg";
-import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 function Start() {
   return (
@@ -45,7 +44,11 @@ function Start() {
 
             
             
-           
+            <div className="flex justify-center">
+            <a href='#We' className="sm:mt-8 items-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-yellow-100 hover:text-black focus:outline-none focus:ring focus:ring-yellow-400">
+                Continuar
+              </a>
+            </div>
 
     </div>
     </section>
