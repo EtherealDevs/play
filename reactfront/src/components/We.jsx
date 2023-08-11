@@ -20,11 +20,6 @@ function We() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center">
-          <button href="#" className="inline-block rounded-full bg-[#b17dc0] px-12 mt-10 py-3 text-sm font-medium text-white transition hover:bg-yellow-100 hover:text-black focus:outline-none focus:ring focus:ring-yellow-400">
-            <p className='content-center'>Mas Informacion</p>
-          </button>
-        </div>
       </div>
     </section>
   )

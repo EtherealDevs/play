@@ -33,12 +33,6 @@ function Posts() {
                 
               </div>
             </div>
-            <div className="w-full md:w-1/2">
-              <div className="block">
-                <img
-                    src="https://images.unsplash.com/photo-1626314928277-1d373ddb6428?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzd8fHxlbnwwfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" className="object-cover rounded-lg max-h-64 sm:max-h-96 btn- w-full h-full"/>
-              </div>
-            </div>
           </div>
 
           {/* Posts */}
