@@ -8,7 +8,7 @@ function Contact() {
         <div className='h-full w-full'>
           <h1 className="font-bold italic text-3xl text-white">Consulta</h1>
             <div className='justify-start'> 
-            <div className='puzzle'>
+            <div className='puzzle w-screen h-screen'>
             <div className=''>
                 <div className='py-60 '>
                     <div className='justify-center flex'>
