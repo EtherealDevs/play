@@ -1,11 +1,13 @@
-<div class="py-12 px-48">
+<div class="pb-12 px-48">
     <% var routeParams = ""%>
     <% if (title == "Editar") { routeParams = route + '?_method=PUT' }%>
+    <div class=" border-black text-center py-3">
+        <h2 class="font-semibold text-2xl">
+                <%= title %> un post
+        </h2>
+        <hr>
+    </div>
     <form id="form1" class=" rounded-tl-3xl rounded-br-3xl border-black drop-shadow-2xl card-background-opacity" enctype="multipart/form-data" method="post" action="/blogs/<%= routeParams %>">
-        <div class=" border-black text-center py-3">
-            <%= title %>
-            <%= route %>
-        </div>
         <div class="p-2 px-8">
             <input class="border-2 border-black rounded-md bg-pink-200 px-2 my-4 text-black h-10 w-full placeholder-black text-lg" type="text" id="title" name="title" placeholder="Titulo" required>
 
