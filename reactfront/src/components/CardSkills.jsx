@@ -1,75 +1,109 @@
 import React from "react";
+import { Carousel, Typography } from "@material-tailwind/react";
 
 function CardSkills() {
     return (
-        <div className='grid grid-cols-3 grid-rows-2 ml-18 gap-6'>
-            <div className="relative block overflow-hidden rounded-xl bg-[url(https://plus.unsplash.com/premium_photo-1661380979071-b8aeb4662ebe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2676&q=80)] bg-cover bg-center bg-no-repeat">
-                <div className="absolute inset-0 bg-black/25">
-                {/* Fondo oscurecido */}
-                </div>
-                <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                    <div className="sm:pt-18 py-6 mx-6 pt-12 text-white lg:pt-24">
-                        <h3 className="text-xl font-bold sm:text-2xl">Un lugar</h3>
-                        <p className="text-sm">Con mucho espacio para jugar </p>
-                    </div>
-                </div>
-            </div>
-            <div className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80)] bg-cover bg-center bg-no-repeat">
-                <div className="absolute inset-0 bg-black/25">
-                {/* Fondo oscurecido */}
-                </div>
-                <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                    <div className="sm:pt-18 py-6 mx-6 pt-12 text-white lg:pt-24">
-                        <h3 className="text-xl font-bold sm:text-2xl">Aprendizaje</h3>
-                        <p className="text-sm">Le enseñamos a tu hijo a tomar mates</p>
-                    </div>
-                </div>
-            </div>
-            <div className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3432&q=80)] bg-cover bg-center bg-no-repeat">
-                <div className="absolute inset-0 bg-black/25">
-                {/* Fondo oscurecido */}
-                </div>
-                <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                    <div className="sm:pt-18 py-6 mx-6 pt-12 text-white lg:pt-24">
-                        <h3 className="text-xl font-bold sm:text-2xl">Un espacio </h3>
-                        <p className="text-sm">para que tu crio haga panas</p>
-                    </div>
-                </div>
-            </div>
-            <div className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1560421683-6856ea585c78?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2674&q=80)] bg-cover bg-center bg-no-repeat">
-                <div className="absolute inset-0 bg-black/25">
-                {/* Fondo oscurecido */}
-                </div>
-                <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                    <div className="sm:pt-18 py-6 mx-6 pt-12 text-white lg:pt-24">
-                        <h3 className="text-xl font-bold sm:text-2xl">Actividades</h3>
-                        <p className="text-sm">para la creatividad de tu gentecito</p>
-                    </div>
-                </div>
-            </div>
-            <div className="relative block overflow-hidden rounded-xl bg-[url(https://images.unsplash.com/photo-1494435658045-a657e4a01bcc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3282&q=80)] bg-black/25 bg-cover bg-center bg-no-repeat">
-                <div className="absolute inset-0 bg-black/25">
-                {/* Fondo oscurecido */}
-                </div>
-                <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                    <div className="sm:pt-18 py-6 mx-6 pt-12 text-white lg:pt-24">
-                        <h3 className="text-xl font-bold sm:text-2xl">idiomas</h3>
-                        <p className="text-sm">Asi te sale bilingüe el chaboncito</p>
-                    </div>
-                </div>
-            </div>
-            <div className="relative block overflow-hidden rounded-xl bg-[url(https://iso.500px.com/wp-content/uploads/2015/03/business_cover.jpeg)] bg-black/25 bg-cover bg-center bg-no-repeat">
-                <div className="absolute inset-0 bg-black/25">
-                {/* Fondo oscurecido */}
-                </div>
-                <div className="relative flex items-start justify-between p-4 sm:p-6 lg:p-8">
-                    <div className="sm:pt-18 py-6 mx-6 pt-12 text-white lg:pt-24">
-                        <h3 className="text-xl font-bold sm:text-2xl">No esperes mas</h3>
-                        <p className="text-sm">Sumate a nuestra gran familia</p>
-                    </div>
-                </div>
+    <Carousel
+    transition={{ duration: 2 }}
+    className="rounded-xl overflow-hidden"
+    navigation={({ setActiveIndex, activeIndex, length }) => (
+        <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
+          {new Array(length).fill("").map((_, i) => (
+            <span
+              key={i}
+              className={`block h-1 cursor-pointer rounded-2xl transition-all content-[''] ${
+                activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
+              }`}
+              onClick={() => setActiveIndex(i)}
+            />
+          ))}
+        </div>
+      )}>
+        <div className="relative h-full w-full">
+        <img
+            src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80"
+            alt="img 1"
+            className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
+            <div className="w-3/4 text-center md:w-2/4">
+            <Typography
+                variant="h1"
+                color="white"
+                className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+            >
+                The Beauty of Nature
+            </Typography>
+            <Typography
+                variant="lead"
+                color="white"
+                className="mb-12 opacity-80"
+            >
+                It is not so much for its beauty that the forest makes a claim
+                upon men&apos;s hearts, as for that subtle something, that quality
+                of air that emanation from old trees, that so wonderfully changes
+                and renews a weary spirit.
+            </Typography>
             </div>
         </div>
+        </div>
+        <div className="relative h-full w-full">
+        <img
+            src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80"
+            alt="img 2"
+            className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
+            <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+            <Typography
+                variant="h1"
+                color="white"
+                className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+            >
+                The Beauty of Nature
+            </Typography>
+            <Typography
+                variant="lead"
+                color="white"
+                className="mb-12 opacity-80"
+            >
+                It is not so much for its beauty that the forest makes a claim
+                upon men&apos;s hearts, as for that subtle something, that quality
+                of air that emanation from old trees, that so wonderfully changes
+                and renews a weary spirit.
+            </Typography>
+            </div>
+        </div>
+        </div>
+        <div className="relative h-full w-full">
+        <img
+            src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80"
+            alt="image 3"
+            className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 grid h-full w-full items-end bg-black/75">
+            <div className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-32">
+            <Typography
+                variant="h1"
+                color="white"
+                className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+            >
+                The Beauty of Nature
+            </Typography>
+            <Typography
+                variant="lead"
+                color="white"
+                className="mb-12 opacity-80"
+            >
+                It is not so much for its beauty that the forest makes a claim
+                upon men&apos;s hearts, as for that subtle something, that quality
+                of air that emanation from old trees, that so wonderfully changes
+                and renews a weary spirit.
+            </Typography>
+            </div>
+        </div>
+        </div>
+  </Carousel>
     )
 }
 
