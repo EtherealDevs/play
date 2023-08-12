@@ -6,7 +6,7 @@ import { CgBoy } from "react-icons/cg";
 
 function Start() {
   return (
-    <section className='intro1 h-screen flex items-center justify-center' id='Start'>
+    <section className='intro1 w-full h-full flex items-center justify-center' id='Start'>
 
     <div className="flex items-center justify-evenly flex-col h-full sm:pt-16 sm:pb-6 pt-14 pb-6 w-full">
             <div className="flex flex-col w-full justify-center items-center text-white text-center">
