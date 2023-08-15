@@ -59,7 +59,7 @@
 
 /* Puzzle */
 .puzzle {
-  background-image: url('./assets/puzzle.svg');
+  background-image: url('./assets/puzzles.svg');
   background-repeat: no-repeat;
   background-position-x: center;
   width: 100%;
@@ -67,7 +67,7 @@
 
 @media only screen and (max-width: 1000px) { 
 	.puzzle { 
-		background-image: url('./assets/puzzle.svg');
+		background-image: none;
     background-repeat: no-repeat;
     background-size: cover; 
     width: 80%;
@@ -76,7 +76,7 @@
 
 @media only screen and (max-width: 800px) { 
 	.puzzle { 
-		background-image: url(./assets/puzzleres.svg );
+		background-image: none;
     background-repeat: no-repeat;
     background-size: cover; 
 	}   
