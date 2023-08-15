@@ -36,7 +36,7 @@ export default function Example() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className='flex justify-center sm:justify-end items-center'>
                   <a href="/" className="flex items-center mx-5 h-fit rounded-full transition ease-in-out delay-150 hover:scale-125">
-                  <img src={PlayLogo} className="h-10 w-10" alt="Play Logo" />
+                  <img src={PlayLogo} className="h-10 w-10 sm:float-right" alt="Play Logo" />
                   {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}
                   </a>
                 </div>
@@ -57,14 +57,14 @@ export default function Example() {
             </div>
           </div>
 
-          <Disclosure.Panel className="bg-white sm:hidden">
+          <Disclosure.Panel className="sm:hidden backdrop-blur-lg animate-fade-down  animate-once animate-duration-1000 animate-delay-150">
             <div className="space-y-1 w-screen h-3/6 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(item.current ? 'block py-2 pl-8 pr-8 font-black rounded hover:bg-fuchsia-800 hover:text-white text-violet-300 px-2 transition ease-in-out delay-50' : '','')}
+                  className={classNames(item.current ? 'block py-2 font-black rounded  text-gray-800 px-2 ' : '','')}
                   aria-current={item.current ? 'page' : undefined}>
                   {item.name}
                 </Disclosure.Button>

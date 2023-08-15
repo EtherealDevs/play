@@ -50,7 +50,7 @@ const Footer = ()=>{
                 </span>
                 <br />
                 <span className="text-sm text-[#602055]   sm:text-center place-content-center mb-10">
-                    Creado por <a href="https://ethereal-devs.vercel.app/" className=" hover:underline">Ethereal Devs</a>
+                    Creado por <a href="https://ethereal-devs.vercel.app/" className=" hover:underline">Ethereal Devs🪐</a>
                 </span>
             </div>
         </footer>
