@@ -35,7 +35,7 @@ export default function Example() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className='flex justify-center sm:justify-end items-center'>
-                  <a href="/" className="flex items-center mx-5 h-fit rounded-full hover:bg-sky-500 duration-300">
+                  <a href="/" className="flex items-center mx-5 h-fit rounded-full transition ease-in-out delay-150 hover:scale-125">
                   <img src={PlayLogo} className="h-10 w-10" alt="Play Logo" />
                   {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}
                   </a>
@@ -46,7 +46,7 @@ export default function Example() {
                       <a
                       key={item.name}
                       href={item.href}
-                      className={classNames(item.current ? 'block py-2 pl-8 pr-8 font-black rounded hover:bg-fuchsia-800 hover:text-white text-violet-300 px-2 transition ease-in-out delay-50' : '','')}
+                      className={classNames(item.current ? 'py-3 pl-8 pr-8 font-black text-white px-2 transition ease-in-out delay-100 hover:scale-110  ' : '','')}
                       aria-current={item.current ? 'page' : undefined}>
                       {item.name}
                     </a>

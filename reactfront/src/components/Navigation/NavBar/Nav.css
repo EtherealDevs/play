@@ -48,21 +48,3 @@ button:hover div:last-child {
     transform: rotate(-45deg);
 }
 
-
-/* #burguer{
-    min-width: 20px;
-    min-height: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    cursor: pointer;
-}
-
-#burguer span{
-    border-radius: 5px;
-    background-color: ;
-    width: ;
-    height: ;
-    transition: all 300ms;
-} */
