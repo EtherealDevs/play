@@ -4,7 +4,7 @@ import CardSkills from './CardSkills'
 function We() {
   return (
     <section id='We' className='flex flex-col h-screen items-center justify-center'>
-      <div className='flex flex-col w-full h-full justify-evenly sbottom-0'>
+      <div className='flex flex-col w-full h-full items-center justify-evenly sbottom-0'>
       <h2  className="text-2xl lg:mt-16 md:mt-16 mb-10 font-bold text-white sm:text-xl md:text-4xl">
             Nosotros
           </h2>
