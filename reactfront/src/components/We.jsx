@@ -4,11 +4,11 @@ import CardSkills from './CardSkills'
 function We() {
   return (
     <section id='We' className='flex flex-col h-screen items-center justify-center'>
-      <div className='flex flex-col justify-evenly sbottom-0'>
-          <h2  className="italic text-2xl mb-10 font-bold text-white lg:mt-2 sm:text-3xl md:text-5xl">
+      <div className='flex flex-col w-full h-full justify-evenly sbottom-0'>
+      <h2  className="italic text-2xl lg:mt-16 md:mt-16 mb-10 font-bold text-white sm:text-xl md:text-5xl">
             Nosotros
           </h2>
-          <div className='h-3/5 w-4/5 overflow-hidden'>
+          <div className='h-3/4   w-4/5 overflow-hidden'>
             <CardSkills/>
           </div>
       </div>
