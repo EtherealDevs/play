@@ -33,13 +33,16 @@ export default function Example() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className='flex justify-center sm:justify-end items-center'>
-                  <a href="/" className="flex items-center mx-5 h-fit rounded-full transition ease-in-out delay-150 hover:scale-125">
-                  <img src={PlayLogo} className="h-10 w-10 sm:float-right" alt="Play Logo" />
+              <div className='flex justify-end'>
+              <div className=''>
+              <a href="/" className="flex mx-16 h-fit rounded-full transition ease-in-out delay-150 hover:scale-125">
+                  <img src={PlayLogo} className="h-10 w-10" alt="Play Logo" />
                   {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}
                   </a>
+              </div>
                 </div>
+              <div className="flex flex-1 justify-end sm:items-stretch sm:justify-start">
+                
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
