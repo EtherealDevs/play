@@ -19,8 +19,8 @@ export default function Example() {
     <Disclosure as="nav" className="z-30 flex sticky top-0 bg-[#8c4c9d] justify-start h-[50px]">
       {({ open }) => (
         <nav>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
+          <div className="gap-6 max-w-7xl sm:px-6 lg:px-8">
+            <div className="relative flex h-full items-center justify-between">
               <div className=" content-end inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 ">
@@ -34,7 +34,7 @@ export default function Example() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className='m-1 flex justify-center sm:justify-end items-center'>
+                <div className='flex justify-center sm:justify-end items-center'>
                   <a href="/" className="flex items-center mx-5 h-fit rounded-full hover:bg-sky-500 duration-300">
                   <img src={PlayLogo} className="h-10 w-10" alt="Play Logo" />
                   {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}

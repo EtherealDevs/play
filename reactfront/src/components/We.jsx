@@ -5,10 +5,10 @@ function We() {
   return (
     <section id='We' className='flex flex-col h-screen items-center justify-center'>
       <div className='flex flex-col w-full h-full justify-evenly sbottom-0'>
-      <h2  className="italic text-2xl lg:mt-16 md:mt-16 mb-10 font-bold text-white sm:text-xl md:text-5xl">
+      <h2  className="text-2xl lg:mt-16 md:mt-16 mb-10 font-bold text-white sm:text-xl md:text-4xl">
             Nosotros
           </h2>
-          <div className='h-3/4   w-4/5 overflow-hidden'>
+          <div className='h-3/4 w-4/5 overflow-hidden'>
             <CardSkills/>
           </div>
       </div>
