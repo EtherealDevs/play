@@ -10,10 +10,10 @@ function Start() {
 
     <div className="flex items-center justify-evenly flex-col h-full sm:pt-16 sm:pb-6 pt-14 pb-6 w-full">
             <div className="flex flex-col w-full justify-center items-center text-white text-center">
-                <div className="text-2xl sm:text-3xl mt-2 font-bold font-sans">
+                <div className="text-4xl sm:text-3xl mt-2 font-bold font-sans">
                 <h2>Bienvenidos a Play</h2>
                 </div>
-                <div className="text-md sm:text-lg font-light">
+                <div className="text-3xl sm:text-lg font-light">
                 <span>El Espacio Infantil de los peques</span>
                 </div>
             </div>
