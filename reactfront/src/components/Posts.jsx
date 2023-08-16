@@ -20,7 +20,7 @@ function Posts() {
         })
     }
   return (
-    <section id='Posts' className='w-screen h-screen'>
+    <section id='Posts' className='w-full 2xl:w-screen h-screen'>
       <div className="text-yellow-50 pt-12 pr-0 pb-14 pl-0 bg-transparent">
         <div className=" pt-4 pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16 max-w-7xl">
           <div className="flex justify-center sm:px-5 md:flex-row">
