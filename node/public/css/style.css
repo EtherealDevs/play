@@ -5,15 +5,9 @@ body {
   background-color: #ffffff;
 }
 .play-background {
-  /*background: rgb(34,193,195);
-  /*background: linear-gradient(90deg, rgba(255,150,254,1) 43%, rgba(255,255,255,0.7021183473389356) 100%); */
-  /* background-color: #FFEF98; */
-  /* background-image:  url('/img/play-background-squares.svg'); */
-  background-size: contain;
-  /* background-size:  cover;
-  background-repeat: no-repeat, no-repeat;
-  background-attachment: fixed, fixed;
-  background-position: center center,center center; */
+  background-image:  url('/img/introNoLogo.svg'); 
+  background-position: center center;
+  background-size: cover;
 }
 
 .play-nav {
@@ -31,7 +25,7 @@ body {
 
 .card-background-opacity {
   background: rgb(238,174,202);
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(175,210,251,1) 100%);
+  background: linear-gradient(80deg, rgba(175,210,251,1) 0%, rgba(238,174,202,1) 100%);
   opacity: 100%;
 }
 
