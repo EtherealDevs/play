@@ -1,6 +1,18 @@
-<div class="pb-12">
-    <% var routeParams = ""%>
-    <% if (title == "Editar") { routeParams = route + '?_method=PUT' }%>
+<div class="pb-12" >
+    <script>
+            var routeParams = ""
+            var blog = null
+            window.onload = function (){
+                if ('<%= title %>' == "Editar"){
+                    routeParams = '<%= route %>';
+                    document.getElementById('title').value = '<%= data.title %>'
+                    document.getElementById('file-preview').innerHTML = `<span class="block w-40 h-40 rounded-full m-auto shadow" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('/img/<%=data.Image.filename%>');"></span>`
+                    document.getElementById('image').removeAttribute('required');
+                    $('#summernote').summernote('pasteHTML', '<%-data.content%>');
+                }
+            }
+    </script>
+    <% if (title == "Editar") { routeParams = route + '?_method=PUT'; blog = data;}%>
     <div class=" border-black text-center py-8">
         <h2 class="font-semibold text-2xl">
                 <%= title %> un post
@@ -8,14 +20,19 @@
     </div>
     <div class="grid justify-items-center">
         <form id="form1" class="grid -translate-y-2 -translate-x-2  card-background-opacity rounded-lg drop-shadow-2xl " enctype="multipart/form-data" method="post" action="/blogs/<%= routeParams %>">
+
+            <input type="hidden" id="originalFile" name="originalFile">
+
             <div class="p-2 px-8 rounded-lg translate-x-2 w-full translate-y-2 bg-white">
                 <input class="rounded-md bg-pink-200 px-2 my-4 text-black h-10 w-full placeholder-black text-lg" type="text" id="title" name="title" placeholder="Titulo" required>
                 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
                 <script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.3.x/dist/index.js"></script>
     
+                
+
     <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 ml-2 sm:col-span-4 md:mr-3">
         <!-- Photo File Input -->
-        <input type="file" class="hidden" name="image" x-ref="photo" x-on:change="
+        <input id="image" type="file" class="hidden" name="image" x-ref="photo" x-on:change="
                             photoName = $refs.photo.files[0].name;
                             const reader = new FileReader();
                             reader.onload = (e) => {
@@ -29,13 +46,16 @@
         </label>
         <div class="text-center">
             <!-- Current Profile Photo -->
+            
             <div class="mt-2" x-show="! photoPreview">
                 <div class="flex my-2 border-dashed rounded-lg  py-10 border border-[#0D0D0D] justify-center">
                     <div class="text-center">
                         <button type="button" class="" x-on:click.prevent="$refs.photo.click()">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current mx-auto w-10 h-10">
-                                <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
-                            </svg>
+                            <div id="file-preview">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current mx-auto w-10 h-10">
+                                    <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
                         </button>
                             <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF hasta 10MB</p>
                         </div>
@@ -81,9 +101,16 @@
                   ],
                 });
     
+                console.log('<%= data.Image.filename%>')
               var form = document.getElementById('form1')
               form.onsubmit = async function () {
                 event.preventDefault()
+                if ('<%= title %>' == "Editar"){
+                    if (!document.getElementById('image').file) {
+                        console.log('testtt')
+                        document.getElementById('originalFile').value = '<%= data.Image.filename%>';
+                    }
+                }
                 var fileList = document.getElementsByName('files').item(0).files
                 for (const file of fileList) {
                     var formdata = new FormData();
