@@ -62,7 +62,8 @@
   background-image: url('./assets/puzzles.svg');
   background-repeat: no-repeat;
   background-position-x: center;
-  width: 100%;
+  width: 80%;
+  background-size: contain;
 }
 
 @media only screen and (max-width: 1000px) { 

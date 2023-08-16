@@ -7,7 +7,7 @@ import '../../../App.css';
 const Footer = ()=>{
     return(
         <footer className="footer">
-            <div className="p-4  z-10 rounded-lg h-full shadow md:px-6 md:py-8 ">
+            <div className="p-2  z-10 rounded-lg h-full shadow md:px-6 sm:py-10 ">
                 <div className="grid grid-cols-3 mt-10">
                     <div className="sm:flex sm:items-center sm:justify-between">
                         <ul className="grid text-sm text-gray-500 sm:mb-0 dark:text-gray-400 text-left font-bold">
