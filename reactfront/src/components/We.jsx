@@ -13,7 +13,7 @@ function We() {
           </div>
       </div>
       <div className="flex justify-center">
-        <a href='#Posts' className="sm:mt-0 items-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-yellow-100 hover:text-black focus:outline-none focus:ring focus:ring-yellow-400">
+        <a href='#Posts' className="sm:mt-0 items-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-100 hover:text-black">
             Continuar
         </a>
       </div>

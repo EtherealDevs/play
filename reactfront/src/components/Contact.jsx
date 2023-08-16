@@ -1,19 +1,13 @@
 import React from 'react'
 import '../App.css'
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
+import { Card, Input, Button } from "@material-tailwind/react";
 
 function Contact() {
   return (
     <section id='Contact' className='h-full w-full'>
        <div className="flex mt-10 items-center justify-center mb-24">
         <div className=''>
-            <div className='mb-10'> 
+            <div className='mb-10'>
               <div className='puzzle mt-15 md:mt-10'>
                 <div className='justify-center'>
                     <div className=''>

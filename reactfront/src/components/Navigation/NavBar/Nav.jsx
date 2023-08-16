@@ -20,10 +20,10 @@ export default function Example() {
       {({ open }) => (
         <nav>
           <div className="gap-6 max-w-7xl sm:px-6 lg:px-8">
-            <div className="relative flex h-full items-center justify-between">
-              <div className=" content-end inset-y-0 left-0 flex items-center sm:hidden">
+            <div className="flex h-full items-center">
+              <div className="inset-y-0 left-0 sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 ">
+                <Disclosure.Button className="relative inline-flex items-center justify-center p-2 text-gray-400 ">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -35,21 +35,20 @@ export default function Example() {
               </div>
               <div className='flex justify-end'>
               <div className=''>
-              <a href="/" className="flex mx-16 h-fit rounded-full transition ease-in-out delay-150 hover:scale-125">
-                  <img src={PlayLogo} className="h-10 w-10" alt="Play Logo" />
+              <a href="/" className="flex h-fit transition ease-in-out delay-150 hover:scale-125">
+                  <img src={PlayLogo} className="h-9 w-9" alt="Play Logo" />
                   {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}
                   </a>
               </div>
                 </div>
-              <div className="flex flex-1 justify-end sm:items-stretch sm:justify-start">
-                
+              <div className="flex  justify-end sm:items-stretch sm:justify-start">
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <a
                       key={item.name}
                       href={item.href}
-                      className={classNames(item.current ? 'py-3 pl-8 pr-8 font-black text-white px-2 transition ease-in-out delay-100 hover:scale-110  ' : '','')}
+                      className={classNames(item.current ? 'py-3 pl-5 pr-5 font-black text-white text-sm transition ease-in-out delay-100 hover:scale-110  ' : '','')}
                       aria-current={item.current ? 'page' : undefined}>
                       {item.name}
                     </a>
