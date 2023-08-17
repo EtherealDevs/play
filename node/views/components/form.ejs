@@ -1,17 +1,19 @@
 <div class="pb-12" >
+    <% var routeParams = ""; %>
     <script>
-            var routeParams = ""
             var blog = null
-            window.onload = function (){
-                if ('<%= title %>' == "Editar"){
-                    routeParams = '<%= route %>';
-                    document.getElementById('title').value = '<%= data.title %>'
-                    document.getElementById('file-preview').innerHTML = `<span class="block w-40 h-40 rounded-full m-auto shadow" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('/img/<%=data.Image.filename%>');"></span>`
-                    document.getElementById('image').removeAttribute('required');
-                    $('#summernote').summernote('pasteHTML', '<%-data.content%>');
-                }
-            }
     </script>
+    <% if (title == "Editar") { %>
+        <script>
+            window.onload = function (){
+                        routeParams = '<%= route %>';
+                        document.getElementById('title').value = '<%= data.title %>'
+                        document.getElementById('file-preview').innerHTML = `<span class="block w-40 h-40 rounded-full m-auto shadow" style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('/img/<%=data.Image.filename%>');"></span>`
+                        document.getElementById('image').removeAttribute('required');
+                        $('#summernote').summernote('pasteHTML', '<%-data.content%>');
+                }
+        </script>
+      <% } %>
     <% if (title == "Editar") { routeParams = route + '?_method=PUT'; blog = data;}%>
     <div class=" border-black text-center py-8">
         <h2 class="font-semibold text-2xl">
@@ -84,7 +86,13 @@
                     <button onclick="" type="submit" class="rounded-md py-1 px-1 border-black bg-yellow-200"><%= submit %></button>
                 </div>
             </div>
-            
+        <% if (title == "Editar") { %>
+                <script>
+                    if (!document.getElementById('image').file) {
+                        document.getElementById('originalFile').value = '<%= data.Image.filename%>';
+                    }
+                </script>
+        <% } %>
         <script>
             $('#summernote').summernote({dialogsInBody: true,
                   placeholder: 'Contenido',
@@ -101,16 +109,10 @@
                   ],
                 });
     
-                console.log('<%= data.Image.filename%>')
+                
               var form = document.getElementById('form1')
               form.onsubmit = async function () {
                 event.preventDefault()
-                if ('<%= title %>' == "Editar"){
-                    if (!document.getElementById('image').file) {
-                        console.log('testtt')
-                        document.getElementById('originalFile').value = '<%= data.Image.filename%>';
-                    }
-                }
                 var fileList = document.getElementsByName('files').item(0).files
                 for (const file of fileList) {
                     var formdata = new FormData();
