@@ -45,10 +45,10 @@ function Posts() {
         </div>
       </div>
       <div className="flex justify-center">
-            <a href='#Contact' className="sm:mt-8 items-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-100 hover:text-black">
-                Continuar
-              </a>
-            </div>
+        <a href='#Contact' className="sm:mt-8 items-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-100 hover:text-black">
+            Continuar
+          </a>
+      </div>
     </section>
   )
 }
