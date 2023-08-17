@@ -25,27 +25,28 @@ const playLogoData = playLogoModel.dataValues
   
 // Aca se define la accion de Subir, Upload = Subir. Con la direccion (storage) especificada mas arriba. El comando completo es multer.Multer.upload. Esto se hace para reducir la verbosidad
 const upload = multer({ storage: storage, fileFilter: async (req, file, cb) => {
-    console.log(file)
-    var repeat = await ImageModel.findOne({
-        where: {
-            filename: file.originalname
-            }
-        })
-    if (repeat){
-        console.log(repeat)
-        cb(null, false)
-        req.body.repeatImage = true;
-        req.file = repeat;
-    } else {
-        cb(null, true);
+    console.log(file);
+        var repeat = await ImageModel.findOne({
+            where: {
+                filename: file.originalname
+                }
+            })
+        if (repeat){
+            console.log(repeat)
+            cb(null, false)
+            req.body.repeatImage = true;
+            req.file = repeat;
+        } else {
+            cb(null, true);
+        }
     }
-  } })
+  } )
 
 blogs.get('/create', isAuthenticated, (req,res)=>{
     res.render('pages/blogs/create', {title:"Crear", route: req.url})
 })
 blogs.get('/:id/edit', isAuthenticated, getBlog, (req,res)=>{
-    res.render('pages/blogs/edit', {title:"Editar", route: req.params.id})
+    res.render('pages/blogs/edit', {title:"Editar", route: req.params.id, data: req.data})
 })
 blogs.get('/', getAllBlogs, (req,res)=>{
     res.render('pages/blogs/index', {title:"Blogs", data:req.data})

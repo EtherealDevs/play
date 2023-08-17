@@ -25,10 +25,9 @@ export const getBlog = async (req, res, next) =>{
         const blog = await BlogModel.findOne({
             where: {
                 id: req.params.id
-            }
+            }, include: ImageModel
         });
-        const image = await blog.getImage()
-        req.data = [blog, image];
+        req.data = blog.toJSON();
         if (req.get('origin')){
             if (req.get('origin') != `${process.env.APP_HOST}`){
                 return res.json(blog)
@@ -63,7 +62,17 @@ export const createBlog = async (req, res) => {
 
 export const updateBlog = async (req, res) => {
     try {
-        const image = req.file;
+        var image = req.file;
+        if (image == null) {
+            console.log('null File, using Original...')
+            req.body.repeatImage = true;
+            image = await ImageModel.findOne({
+            where: {
+                filename: req.body.originalFile
+                }
+            });   
+        }
+        console.log(image)
         if (req.body.repeatImage){
             console.log("Repeated File!!!")
             await BlogModel.update({title: req.body.title, content: req.body.content, ImageId: image.id}, {
