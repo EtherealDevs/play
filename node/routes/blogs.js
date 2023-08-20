@@ -52,7 +52,7 @@ blogs.get('/', getAllBlogs, (req,res)=>{
     res.render('pages/blogs/index', {title:"Blogs", data:req.data})
 })
 blogs.get('/:id', getBlog, (req, res)=>{
-    res.render('pages/blogs/show', {title:req.data.title, blog: req.data[0], image:req.data[1]})
+    res.render('pages/blogs/show', {title:req.data.title, data: req.data})
 })
 blogs.post('/', isAuthenticated, upload.single('image'), createBlog)
 blogs.put('/:id', isAuthenticated, upload.single('image'), updateBlog)

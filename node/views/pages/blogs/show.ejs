@@ -1,15 +1,15 @@
  <%- include('../../components/open.ejs'); %>
 <article class="grid grid-cols-2 gap-2 items-center mx-20 my-10 p-4 border-4 border-black rounded-xl card-background-opacity">
     <div class="bg-emerald-300 flex place-content-center" >
-        <img height="200" width="200" src="/img/<%= image.filename %>"></img>
+        <img height="200" width="200" src="/img/<%= data.Image.filename %>"></img>
     </div>
     <div>
-        <h1 class="bg-transparent border-b-2 border-black text-center w-full text-2xl font-bold"><%= blog.title %></h1>
+        <h1 class="bg-transparent border-b-2 border-black text-center w-full text-2xl font-bold"><%= data.title %></h1>
         <div class="w-full p-10">
-        <%- blog.content %>
+        <%- data.content %>
         </div>
-        <div><%= blog.createdAt %></div>
-        <div class="flex place-content-center mt-2"><a class="bg-blue-400 border border-black py-1 px-6 rounded-lg" href="/blogs/<%=blog.id%>/edit">Edit</a></div>
+        <div><%= data.createdAt %></div>
+        <div class="flex place-content-center mt-2"><a class="bg-blue-400 border border-black py-1 px-6 rounded-lg" href="/blogs/<%=data.id%>/edit">Edit</a></div>
     </div>
 </article>
 <%- include('../../components/close.ejs'); %>

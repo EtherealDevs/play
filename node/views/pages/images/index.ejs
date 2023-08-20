@@ -1,9 +1,12 @@
 <%- include('../../components/open.ejs'); %>
-<ul class="grid grid-cols-2 sm:grid-cols-3 ">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 m-5 sm:m-10 md:m-20">
    <% data.forEach(function(image){ %>
-     <%- include('./show', {image: image}); %>
+    <div class="relative bg-white rounded-lg flex flex-col items-center justify-center">
+      <img class="h-auto max-w-full rounded-lg" src="/img/<%= image.filename %>" alt="">
+      <button class="absolute top-0 left-0" onclick="ajaxFunction('<%- image.id %>')">Delete</button>
+    </div>
    <% }); %>
-</ul>
+   </div>
 <script>
   async function ajaxFunction(ImageId) {
     if (!confirm('confirm')){
