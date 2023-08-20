@@ -1,7 +1,7 @@
 import express, { Router }  from "express";
 import cors  from 'cors'
-import db from "./database/db.js";
 
+import db from "./database/db.js";
 import methodOverride from 'method-override'
 import cookieParser from "cookie-parser";
 import multer from "multer";
