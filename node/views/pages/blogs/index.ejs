@@ -1,7 +1,7 @@
 <%- include('../../components/open.ejs'); %>
     <div class="flex mt-10 justify-center p-10">
       <table class="mx-[5%] grid-cols-8 w-full text-sm justify-content-center text-gray-500 rounded-lg overflow-hidden">
-          <thead class="text-white text-center h-14 bg-[#EA5B93] bg-opacity-80">
+          <thead class="text-white text-center h-14 bg-[#EA5B93]">
             <tr> 
               <th class="text-center rounded-tl p-4">Id</th>
               <th class="text-center ">Imagen</th>
@@ -13,13 +13,28 @@
           <tbody>
             <% data[0].forEach(function(blog){ %>
               <% var image = blog.Image %>
-                <tr class="bg-white border-b bg-opacity-50 rounded-lg">
+                <tr class="bg-white border-b  rounded-lg">
                   <td class="text-center"><%= blog.id %></td>
-                  <td class="w-32 p-4"><img height="200" width="200" src="/img/<%= image.filename %>"></img></td>
-                  <td class="text-center"><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></td>
+                  <td class="w-32 p-4">
+                    <img height="200" width="200" src="/img/<%= image.filename %>">
+                    </img>
+                  </td>
+                  <td class="text-center">
+                    <a href="/blogs/<%= blog.id %>">
+                      <%= blog.title %>
+                    </a>
+                  </td>
                   <td class="text-center p-5" colspan="2"><%- blog.content %></td>
-                  <td class="text-end"><a href="/blogs/<%=blog.id%>/edit" class="font-medium py-[10%] px-[15%] rounded-lg text-white bg-blue-300 border hover:bg-blue-400">Edit</a></td>
-                  <td class="text-center"><button onclick="ajaxFunction('<%=blog.id%>')" class="font-medium p-[5%] rounded-lg text-white bg-red-300 border hover:bg-red-400">Delete</button></td>
+                  <td class="text-end">
+                    <a href="/blogs/<%=blog.id%>/edit" class="font-medium py-[10%] px-[15%] rounded-lg text-white bg-blue-700 hover:bg-blue-500">
+                      Editar
+                    </a>
+                  </td>
+                  <td class="text-center">
+                    <button onclick="ajaxFunction('<%=blog.id%>')" class="font-medium py-[8%] px-[15%] rounded-lg text-white bg-red-500 hover:bg-red-300">
+                      Borrar
+                    </button>
+                  </td>
                 </tr>
               <% }); %>
           </tbody> 
