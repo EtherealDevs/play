@@ -4,7 +4,9 @@ import { Carousel, Typography } from "@material-tailwind/react";
 function CardSkills() {
     return (
     <Carousel
-    transition={{ duration: 2 }}
+    transition={{ duration: 1 }}
+    loop={{boolean: true}}
+    autoplay={{boolean: true}}
     className="rounded-xl overflow-hidden"
     navigation={({ setActiveIndex, activeIndex, length }) => (
         <div className="absolute bottom-4 left-2/4 z-10 flex -translate-x-2/4 gap-2">
@@ -37,7 +39,7 @@ function CardSkills() {
             <Typography
                 variant="lead"
                 color="white"
-                className="mb-12 opacity-80"
+                className="mb-12 opacity-80 text-sm sm:text-xl"
             >
                 Tenemos Variedad de Juegos y Juguetes para que tu Hijo se divierta y aprenda de la manera mas divertida
             </Typography>
@@ -57,12 +59,12 @@ function CardSkills() {
                 color="white"
                 className="mb-4 text-3xl md:text-4xl lg:text-5xl"
             >
-                Enseñanza 
+                Enseñanza
             </Typography>
             <Typography
                 variant="lead"
                 color="white"
-                className="mb-12 opacity-80"
+                className="mb-12 opacity-80 text-sm sm:text-xl"
             >
                Enseñamos a tu hijo cosas utiles para su desarrollo en la vida, dedicamos mucho tiempo para enseñar a tu hijo muchas cosas, preparate para que aprenda de la manera mas divertida
             </Typography>
@@ -87,9 +89,9 @@ function CardSkills() {
             <Typography
                 variant="lead"
                 color="white"
-                className="mb-12 opacity-80"
+                className="mb-12 opacity-80 text-sm sm:text-xl"
             >
-                Nuestro personal es el indicado para educar a tu Hijo, tenemos personal capacitado para educar y enseñar a tu hijo 
+                Nuestro personal es el indicado para educar a tu Hijo, tenemos personal capacitado para educar y enseñar a tu hijo
             </Typography>
             </div>
         </div>
