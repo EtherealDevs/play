@@ -43,17 +43,19 @@ export const getAllImages = async (req, res, next) =>{
 // Mostrar un registro
 export const getImage = async (req, res, next) =>{
   try {
-      const image = await ImageModel.findAll({
+      const image = await ImageModel.findOne({
           where: {
               id: req.params.id
           }
       });
+      req.data = image;
       if (req.get('origin')){
         if (req.get('origin') != `${process.env.APP_HOST}`){
-            res.json(image[0])
+            res.json(image)
         }
+    } else{
+      return next()
     }
-    return next()
   } catch (error) {
       res.json({ error: error.message})
   }

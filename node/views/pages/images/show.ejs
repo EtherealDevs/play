@@ -1,4 +1,5 @@
-<li class="border-2 border-sky-500 bg-red-400 flex flex-col col-span-auto items-center justify-evenly">
+<%- include('../../components/open.ejs'); %>
+<div class="h-screen grid content-center justify-center justify-items-center">
     <!-- <h1><%= image.filename %></h1> -->
     <h1><%= image.id %></h1>
     <img width="200" height="200" src="/img/<%= image.filename %>"></img>
@@ -6,3 +7,4 @@
     <!-- <p><%- image.path %></p> -->
     <button onclick="ajaxFunction('<%- image.id %>')">Delete</button>
 </li>
+<%- include('../../components/close.ejs'); %>

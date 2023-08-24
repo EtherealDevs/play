@@ -1,74 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="1440"
-   height="2152"
-   viewBox="0 0 1440 2152"
-   fill="none"
-   version="1.1"
-   id="svg280"
-   sodipodi:docname="Fondo.svg"
-   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs284">
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath345">
-      <rect
-         style="fill:#000000"
-         id="rect347"
-         width="1463.6971"
-         height="2191.3315"
-         x="-1.4046997"
-         y="-0.70234984" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath349">
-      <rect
-         style="fill:#000000"
-         id="rect351"
-         width="1463.6971"
-         height="2191.3315"
-         x="-1.4046997"
-         y="-0.70234984" />
-    </clipPath>
-  </defs>
-  <sodipodi:namedview
-     id="namedview282"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="false"
-     inkscape:zoom="0.25169321"
-     inkscape:cx="-556.23272"
-     inkscape:cy="675.42544"
-     inkscape:window-width="1882"
-     inkscape:window-height="964"
-     inkscape:window-x="-11"
-     inkscape:window-y="-11"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg280" />
-  <path
-     fill-rule="evenodd"
-     clip-rule="evenodd"
-     d="M-91.5972 -240.88L3.53975 -102.455C98.6767 35.9705 288.951 312.821 392.447 649.311C491.812 988.641 504.4 1387.61 723.599 1644.58C942.799 1901.55 1372.74 2013.68 1587.71 2069.75L1798.55 2128.65L550.618 2986.33L455.481 2847.91C360.344 2709.48 170.07 2432.63 -20.2034 2155.78C-210.477 1878.93 -400.751 1602.08 -591.025 1325.23C-781.299 1048.38 -971.573 771.533 -1066.71 633.107L-1161.85 494.682L-91.5972 -240.88Z"
-     fill="#F7C6CC"
-     id="path276"
-     clip-path="url(#clipPath349)" />
-  <path
-     fill-rule="evenodd"
-     clip-rule="evenodd"
-     d="m 1444.6,1018.81 -41.63,-54.749 C 1361.34,909.316 1278.09,799.827 1232.09,662.008 1187.86,522.84 1180.89,355.342 1085.21,255.296 989.536,155.251 783.51555,28.65282 690.43755,13.03082 L 599.13455,-3.9399803 1154.78,-316 l 41.63,54.744 c 41.62,54.745 150.7051,136.42226 233.9651,245.911164 83.26,109.4892 -6.3195,304.399656 76.9405,413.887656 83.26,109.489 313.5244,161.36818 355.1444,216.11318 l 41.63,54.744 z"
-     fill="#b1d3ec"
-     id="path278"
-     clip-path="url(#clipPath345)"
-     sodipodi:nodetypes="ccccccccscccc" />
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_40_81)">
+<rect width="390" height="844" fill="#FFE9AF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M173 844L205.319 828.851C237.638 815.867 299.968 787.733 295.351 759.6C290.734 731.467 219.17 703.333 205.319 675.2C191.468 647.067 237.638 618.933 251.489 590.8C263.032 562.667 246.872 534.533 258.415 506.4C272.266 478.267 318.436 450.133 313.819 422C309.202 393.867 256.106 365.733 219.17 337.6C182.234 309.467 166.074 281.333 182.234 253.2C200.702 225.067 253.798 196.933 281.5 168.8C309.202 140.667 309.202 112.533 309.202 84.4C309.202 56.2666 309.202 28.1333 309.202 12.9846V-3.88622e-05H390V12.9846C390 28.1333 390 56.2666 390 84.4C390 112.533 390 140.667 390 168.8C390 196.933 390 225.067 390 253.2C390 281.333 390 309.467 390 337.6C390 365.733 390 393.867 390 422C390 450.133 390 478.267 390 506.4C390 534.533 390 562.667 390 590.8C390 618.933 390 647.067 390 675.2C390 703.333 390 731.467 390 759.6C390 787.733 390 815.867 390 828.851V844H173Z" fill="#F7C6CC" stroke="white" stroke-width="7"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M203 0L170.681 15.1487C138.362 28.1333 76.0319 56.2667 80.6489 84.4C85.266 112.533 156.83 140.667 170.681 168.8C184.532 196.933 138.362 225.067 124.511 253.2C112.968 281.333 129.128 309.467 117.585 337.6C103.734 365.733 57.5638 393.867 62.1808 422C66.7979 450.133 119.894 478.267 156.83 506.4C193.766 534.533 209.926 562.667 193.766 590.8C175.298 618.933 122.202 647.067 94.5 675.2C66.7979 703.333 66.7979 731.467 66.7979 759.6C66.7979 787.733 66.7979 815.867 66.7979 831.015V844H-14V831.015C-14 815.867 -14 787.733 -14 759.6C-14 731.467 -14 703.333 -14 675.2C-14 647.067 -14 618.933 -14 590.8C-14 562.667 -14 534.533 -14 506.4C-14 478.267 -14 450.133 -14 422C-14 393.867 -14 365.733 -14 337.6C-14 309.467 -14 281.333 -14 253.2C-14 225.067 -14 196.933 -14 168.8C-14 140.667 -14 112.533 -14 84.4C-14 56.2667 -14 28.1333 -14 15.1487V0L203 0Z" fill="#B1D3EC" stroke="white" stroke-width="7"/>
+</g>
+<rect x="3.5" y="3.5" width="383" height="837" stroke="#FBFBFB" stroke-width="7"/>
+<defs>
+<clipPath id="clip0_40_81">
+<rect width="390" height="844" fill="white"/>
+</clipPath>
+</defs>
 </svg>

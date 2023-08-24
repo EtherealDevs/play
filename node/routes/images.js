@@ -36,12 +36,14 @@ const upload = multer({ storage: storage, fileFilter: async (req, file, cb) => {
   
 // Al ser Middleware, es necesario que se utilice el metodo de multer como handler en el images, y luego recien se pasa al controlador
 images.get('/', getAllImages, (req, res) =>{
-  res.render('pages/images/index', {title:"Blogs", data:req.data})
+  res.render('pages/images/index', {title:"Imagenes", data:req.data})
 });
 images.get('/upload', (req, res) =>{
   res.render('pages/images/create', {title:"Crear"})
 });
-images.get('/:id', getImage);
+images.get('/:id', getImage, (req, res) => {
+  res.render('pages/images/show', {title:"Imagen", image:req.data})
+});
 images.post('/upload', upload.single('file'), uploadImage);
 images.delete('/:id', deleteImage);
 
