@@ -4,10 +4,11 @@ import { Card, Input, Button } from "@material-tailwind/react";
 
 function Contact() {
   return (
-    <section id='Contact' className='h-full w-full'>
-      <div className="flex mt-10 items-center justify-center mb-24">
-        <div className='mb-10'>
-              <div className='puzzle mt-15 md:mt-10'>
+    <section id='Contact' className='h-full   w-full'>
+       <div className="flex mt-10 items-center justify-center mb-24">
+            <div className='mb-5'>
+              <div className=' mt-15 md:mt-10'>
+
                 <div className='justify-center'>
                       <div className='flex'>
                         <Card color="transparent" className='justify-center  xl:p-32 p-5' shadow={false}>
@@ -19,7 +20,7 @@ function Contact() {
                               <Input color='white' size="lg" label="Telefono" />
                               <Input color='white' size="lg" label="Mensaje" />
                             </div>
-                            <Button className="mt-16 bg-purple-300" fullWidth>
+                            <Button className="mt-16 bg-[#b17dc0]" fullWidth>
                               Enviar
                             </Button>
                           </form>
@@ -28,7 +29,7 @@ function Contact() {
                     </div>
                 </div>
               </div>
-      </div>
+        </div>
     </section>
   )
 }
