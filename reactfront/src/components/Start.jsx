@@ -39,7 +39,7 @@ function Start() {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center lg:hidden">
                 <a href='#We' className="sm:mt-8 items-center rounded-full bg-[#b17dc0] px-12 py-3 text-sm font-medium text-white transition hidden sm:block hover:bg-blue-100 hover:text-black">
                     Continuar
                 </a>
