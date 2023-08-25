@@ -1,11 +1,13 @@
 import React from 'react'
 import CardPosts from './CardPosts'
+import ViewMore from './ViewMore'
 import { useState , useEffect } from 'react'
 import axios from "axios";
 
 const URI = 'http://localhost:8000/blogs/'
 
-function Posts() {
+function Posts({blog}) {
+  /* const image = blog.Image; */
   const [blogs, setBlog] = useState([])
     useEffect(()=>{
         getAllBlogs()
@@ -35,12 +37,88 @@ function Posts() {
           </div>
 
           {/* Posts */}
-          <div className="grid grid-cols-12 sm:px-5 gap-x-8 gap-y-16">
+          <div className="grid  xl:grid-cols-4 grid-cols-1 sm:px-5 gap-x-8 gap-y-16">
+          
           {blogs.map((blog)=>(
             (
-              <CardPosts blog={blog}/>
+              <div class="group  rounded-2xl relative block bg-black">
+                <img
+                  alt="Developer"
+                  src={'http://localhost:8000/img/'+ blog.Image.filename}
+                  class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+                />
+
+                <div class="relative sm:p-6 lg:p-8">
+                  <p class="text-xl font-bold text-white sm:text-2xl">{blog.title}</p>
+
+                  <div class="mt-5 sm:mt-48 lg:mt-48">
+                    <div
+                      class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+                    >
+                      <p class="text-sm text-white">
+                      {blog.content}
+                      </p>
+                    </div>
+                  </div>
+                  <CardPosts className="justify-end" blog={blog}/>
+                </div>
+              </div>
+              
             )
           ))}
+          </div>
+          <ViewMore/>
+          <div class="inline-flex items-center justify-center rounded bg-blue-600 py-1 text-white">
+            <a href="./" class="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180">
+              <span class="sr-only">Prev Page</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+
+            <span class="h-4 w-px bg-white/25" aria-hidden="true"></span>
+
+            <div>
+              <label for="PaginationPage" class="sr-only">Page</label>
+
+              <input
+                type="number"
+                class="h-8 w-12 rounded border-none bg-transparent p-0 text-center text-xs font-medium [-moz-appearance:_textfield] focus:outline-none focus:ring-inset focus:ring-white [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                min="1"
+                value="2"
+                id="PaginationPage"
+              />
+            </div>
+
+            <span class="h-4 w-px bg-white/25"></span>
+
+            <a
+              href="./"
+              class="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
+            >
+              <span class="sr-only">Next Page</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3 w-3"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </div>

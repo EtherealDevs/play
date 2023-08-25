@@ -19,8 +19,8 @@ const __dirname = dirname(__filename);
 
 import images from './routes/images.js'
 import blogs from './routes/blogs.js'
-import auth from "./routes/auth.js";
-import users from "./routes/users.js";
+import auth from './routes/auth.js';
+import users from './routes/users.js';
 import { checkUserToken, isAuthenticated } from "./controllers/AuthController.js";
 import UserModel from "./models/UserModel.js";
 import session from "express-session";

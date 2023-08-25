@@ -4,7 +4,9 @@ import { isAuthenticated } from '../controllers/AuthController.js'
  
 const users = express.Router()
 
-users.get('/', getAllUsers)
+users.get('/', getAllUsers,(req,res)=>{
+    res.render('pages/account')
+})
 users.get('/:id', getUser)
 users.post('/',createUser)
 users.put('/:id', updateUser)
