@@ -16,24 +16,12 @@ function App() {
     <div className="App scroll-smooth snap-y snap-mandatory relative h-screen overflow-auto">
       <Nav/>
         <div className='paint'>
-        <div className='lg:snap-center'>
           <Intro />
-        </div>
-            <div className='lg:snap-center'>
-              <Start/>
-            </div>
-            <div className='lg:snap-center'>
-              <We />
-            </div>
-            <div className='lg:snap-center'>
-              <Posts />
-            </div>
-            <div className='lg:snap-center'>
-            <Contact />
-            </div>
-            <div className='lg:snap-end'>
-              <Footer/>
-            </div>
+          <Start/>
+          <We />
+          <Posts />
+          <Contact />
+          <Footer/>
         </div>
     </div>
   );
