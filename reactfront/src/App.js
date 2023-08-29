@@ -6,21 +6,21 @@ import './App.css';
 import Nav from './components//Navigation/NavBar/Nav';
 import Contact from './components/Contact.jsx'
 import Intro from './components/Intro/Intro.jsx'
-import We from './components/We.jsx'
+import About from './components/About.jsx'
 import Posts from './components/Posts.jsx'
 import Start from './components/Start.jsx'
 import Footer from './components/Navigation/Footer/Footer';
 
 function App() {
   return (
-    <div className="App scroll-smooth snap-y snap-mandatory relative h-screen overflow-auto">
+    <div className="App relative h-screen overflow-auto">
       <Nav/>
         <div className='paint'>
-          <Intro />
+          <Intro/>
           <Start/>
-          <We />
-          <Posts />
-          <Contact />
+          <About/>
+          <Posts/>
+          <Contact/>
           <Footer/>
         </div>
     </div>

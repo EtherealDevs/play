@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel, Typography } from "@material-tailwind/react";
 
-function CardSkills() {
+function Carrousel() {
     return (
     <Carousel
     transition={{ duration: 1 }}
@@ -100,4 +100,4 @@ function CardSkills() {
     )
 }
 
-export default CardSkills
+export default Carrousel
