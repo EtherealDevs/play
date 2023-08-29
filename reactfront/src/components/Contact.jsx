@@ -4,7 +4,6 @@ import { Card, Input, Button } from "@material-tailwind/react";
 
 function Contact() {
   return (
-<<<<<<< HEAD
     <section id='Contact' className='h-full   w-full'>
        <div className="flex mt-10 items-center justify-center mb-24">
             <div className='mb-5'>

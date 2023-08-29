@@ -1,12 +1,41 @@
 import React from 'react'
 import CardPosts from './CardPosts'
-import ViewMore from './ViewMore'
 import { useState , useEffect } from 'react'
 import axios from "axios";
 
 const URI = 'http://localhost:8000/blogs/'
 
+const ITEMS_PER_PAGE = 4;
+
 function Posts({blog}) {
+
+  // const [datosFromApi, setDatosFromApi] = useState(DATOS_API)
+  // const nextHandler = () => {
+  //   const totalElementos = datosFromApi.lenght;
+
+  //   const nextPage = currentPage + 1;
+
+  //   const firstIndex = nextPage + ITEMS_PER_PAGE;
+
+  //   if (firstIndex === totalElementos) return;
+
+  //   setItems([...datosFromApi].splice(firstIndex, ITEMS_PER_PAGE))
+  //   setCurrentPage(nextPage);
+  // }
+
+  // const prevHandler = () => {
+  //   const totalElementos = datosFromApi.lenght;
+
+  //   const prevPage = currentPage - 1;
+
+  //   const firstIndex = prevPage + ITEMS_PER_PAGE;
+
+  //   if (prevPage < 0) return;
+
+  //   setItems([...datosFromApi].splice(firstIndex, ITEMS_PER_PAGE))
+  //   setCurrentPage(prevPage);
+  // }
+
   /* const image = blog.Image; */
   const [blogs, setBlog] = useState([])
     useEffect(()=>{
@@ -21,6 +50,7 @@ function Posts({blog}) {
             console.log(error)
         })
     }
+
   return (
     <section id='Posts' className='w-full 2xl:w-screen h-screen'>
       <div className="text-yellow-50 pt-12 pr-0 pb-14 pl-0 bg-transparent">
@@ -41,7 +71,7 @@ function Posts({blog}) {
           
           {blogs.map((blog)=>(
             (
-              <div class="group  rounded-2xl relative block bg-black">
+              <div class="group rounded-2xl relative block bg-black">
                 <img
                   alt="Developer"
                   src={'http://localhost:8000/img/'+ blog.Image.filename}
@@ -49,27 +79,28 @@ function Posts({blog}) {
                 />
 
                 <div class="relative sm:p-6 lg:p-8">
-                  <p class="text-xl font-bold text-white sm:text-2xl">{blog.title}</p>
+                  <p class="text-xl mt-5 font-bold text-white sm:text-2xl">{blog.title}</p>
 
-                  <div class="mt-5 sm:mt-48 lg:mt-48">
-                    <div
-                      class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
-                    >
+                  <div class="mt-5 mb-5 md:py-24">
+                    <div class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
                       <p class="text-sm text-white">
-                      {blog.content}
+                        {blog.content}
                       </p>
                     </div>
                   </div>
-                  <CardPosts className="justify-end" blog={blog}/>
+
+                  <div className="mb-10"> 
+                    <CardPosts className="justify-end" blog={blog}/>
+                  </div>
+                  
                 </div>
               </div>
               
             )
           ))}
           </div>
-          <ViewMore/>
-          <div class="inline-flex items-center justify-center rounded bg-blue-600 py-1 text-white">
-            <a href="./" class="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180">
+          {/* <div class="inline-flex items-center justify-center rounded bg-[#8c4c9d] py-1 text-white">
+            <button onClick={props.prevHandler} class="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180">
               <span class="sr-only">Prev Page</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,12 +114,12 @@ function Posts({blog}) {
                   clip-rule="evenodd"
                 />
               </svg>
-            </a>
+            </button> 
 
             <span class="h-4 w-px bg-white/25" aria-hidden="true"></span>
 
             <div>
-              <label for="PaginationPage" class="sr-only">Page</label>
+              <label for="PaginationPage" class="sr-only">Page {props.currentPage}</label>
 
               <input
                 type="number"
@@ -101,8 +132,8 @@ function Posts({blog}) {
 
             <span class="h-4 w-px bg-white/25"></span>
 
-            <a
-              href="./"
+            <button
+              onClick={props.nextHandler}
               class="inline-flex h-8 w-8 items-center justify-center rtl:rotate-180"
             >
               <span class="sr-only">Next Page</span>
@@ -118,8 +149,8 @@ function Posts({blog}) {
                   clip-rule="evenodd"
                 />
               </svg>
-            </a>
-          </div>
+            </button>
+          </div> */}
         </div>
       </div>
     </section>
