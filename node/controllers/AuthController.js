@@ -1,22 +1,17 @@
 import jwt from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
+import {AuthManager} from '../manager/AuthManager.js'
 import db from "../database/db.js";
-import UserModel from "../models/UserModel.js";
 import AdminModel from "../database/models/admin.js";
-import {
-    promisify
-} from "util";
+import {promisify} from "util";
 
 //Crear un registro
 export const register = async (req, res) => {
     try {
-        const user = await UserModel.create(req.body);
-        const passHash = await bcryptjs.hash(req.body.password, 8);
-        user.password = passHash;
-        await user.save();
-        console.debug(user);
+        const manager = new AuthManager
+        manager.register(req.body)
     } catch (error) {
-        res.status(500).send({
+        res.send({
             error: error.message,
         });
     }
@@ -158,5 +153,4 @@ export const logout = (req, res) => {
         res.status(100);
         return res.redirect("/login");
     }
-    // res.header({Location: "http://localhost:3000/"})
 };
