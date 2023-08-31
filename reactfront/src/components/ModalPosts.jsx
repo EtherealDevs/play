@@ -1,5 +1,6 @@
 import { Button, Modal } from 'flowbite-react';
 import { useState } from 'react';
+import ParseHTML from './ParseHTMLComponent';
 
 export default function ModalPosts({blog}) {
   const [openModal, setOpenModal] = useState();
@@ -8,7 +9,7 @@ export default function ModalPosts({blog}) {
   return (
     <div class=" rounded-lg">
 
-      <button className="inline-flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-white bg-purple-400 hover:bg-indigo-900 rounded-lg hover:duration-700" onClick={() => props.setOpenModal('default')}>
+      <button className="inline-flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-white backdrop-blur-sm bg-transparent rounded-lg hover:duration-700" onClick={() => props.setOpenModal('default')}>
         <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
         </svg>
@@ -22,9 +23,7 @@ export default function ModalPosts({blog}) {
 
           <Modal.Body>
             <div className="space-y-6">
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                {blog.content}
-              </p>
+              <ParseHTML classes="mb-3 font-normal text-gray-700 dark:text-gray-400" html={blog.content} />
             </div>
           </Modal.Body>
 
