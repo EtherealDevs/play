@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs";
 import {AuthManager} from '../manager/AuthManager.js'
 import db from "../database/db.js";
 import AdminModel from "../database/models/admin.js";
+import { AdminManager } from "../manager/AdminManager.js";
 import {promisify} from "util";
 
 //Crear un registro
@@ -60,6 +61,7 @@ export const login = async (req, res, next) => {
                     },
                     `${process.env.JWT_SECRET}`
                 );
+
                 console.log("login correcto");
                 //Configurar httpOnly para la cookie generada, para que su valor no pueda ser accedido por client-side javascript 
                 const cookiesOptions = {

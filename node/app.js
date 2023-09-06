@@ -20,7 +20,7 @@ const __dirname = dirname(__filename);
 import images from './routes/images.js'
 import blogs from './routes/blogs.js'
 import auth from './routes/auth.js';
-import users from './routes/users.js';
+import admin from './routes/admin.js';
 import { checkUserToken, isAuthenticated } from "./controllers/AuthController.js";
 import UserModel from "./models/UserModel.js";
 import session from "express-session";
@@ -107,7 +107,7 @@ app.use(function(req, res, next){
 app.use('/blogs', blogs)
 app.use('/images', isAuthenticated, images)
 app.use('/', auth)
-app.use('/users', isAuthenticated, users)
+// app.use('/users', isAuthenticated, admin)
 
 app.use((req,res,next)=>{
     res.status(404).render('pages/404',{

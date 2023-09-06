@@ -5,7 +5,7 @@ import '../NavBar/Nav.css'
 
 const navigation = [
   { name: 'Inicio', href: '#Start', current: true },
-  { name: 'Nuestra Meta', href: '#We', current: true },
+  { name: 'Nuestra Meta', href: '#About', current: true },
   { name: 'Posts', href: '#Posts', current: true },
   { name: 'Contacto', href: '#Contact', current: true },
 ]

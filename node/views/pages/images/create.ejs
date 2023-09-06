@@ -3,9 +3,9 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
 <script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.3.x/dist/index.js"></script>
-<div class="py-12 px-48">
-    <form enctype="multipart/form-data" id="form2" action="/images/upload" method="post">
-        <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 ml-2 sm:col-span-4 md:mr-3">
+<div class=" h-full m-24">
+    <form enctype="multipart/form-data" id="form2" action="/images/upload" method="post" class="grid grid-cols-4">
+        <div x-data="{photoName: null, photoPreview: null}" class="col-start-3 col-span-3 sm:col-span-4 md:mr-3">
             <!-- Photo File Input -->
             <input id="test" type="file" class="hidden" name="file" x-ref="photo" x-on:change="
                                 photoName = $refs.photo.files[0].name;
@@ -13,17 +13,16 @@
                                 reader.onload = (e) => {
                                     photoPreview = e.target.result;
                                 };
-                                reader.readAsDataURL($refs.photo.files[0]);
-            " required />
-            <div class="bg-white border-b  rounded-lg">
-            <label class="block text-gray-700 text-sm font-bold mb-2 text-center" for="photo">
-                Subir Imagen <span class="text-red-600"> </span>
-            </label>
-
+                                reader.readAsDataURL($refs.photo.files[0]);" 
+            required />
+            <div class="bg-white border-b rounded-lg ">
+                <label class="block text-gray-700 text-lg font-bold py-2 text-center" for="photo">
+                    <span class="text-black-600 mt-4">Subir Imagen</span>
+                </label>
             <div class="text-center">
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <div class="flex my-2 border-dashed rounded-lg px-6 py-10 border-2 border-[#0D0D0D] justify-center">
+                    <div class="flex my-2 border-dashed rounded-lg px-6 mx-6 py-10 border-2 border-[#0D0D0D] justify-center">
                         <div class="text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                 class="fill-current mx-auto w-10 h-10">
@@ -49,8 +48,7 @@
                   background-size: cover;
                   background-repeat: no-repeat;
                   background-position: center center;
-                  background-image: url('null');
-                ">
+                  background-image: url('null');">
                             </span>
                             <p class="text-xs leading-5 text-gray-600">
                                 PNG, JPG, GIF hasta 10MB
@@ -63,10 +61,10 @@
                     x-on:click.prevent="$refs.photo.click()">
                     Seleccionar imagen
                 </button>
+                <div class="flex my-4 mx-2 justify-end">
+                    <button onclick="" type="submit" class="border-2 rounded-md py-1 px-1 border-black bg-yellow-200">Subir</button>
+                </div>
             </div>
-        </div>
-        <div class="flex my-4 mx-2 justify-end">
-            <button onclick="" type="submit" class="border-2 rounded-md py-1 px-1 border-black bg-yellow-200">Subir</button>
         </div>
     </form>
 </div>

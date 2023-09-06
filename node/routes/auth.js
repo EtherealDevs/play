@@ -1,5 +1,6 @@
 import express from 'express'
 import {isAuthenticated, login, logout, register} from '../controllers/AuthController.js'
+import { getAdmin } from '../controllers/AdminController.js';
 
 const auth = express.Router()
 
@@ -17,7 +18,7 @@ var allowCrossDomain = function (req, res, next) {
 auth.get('/', isAuthenticated, (req,res)=>{
     res.render('pages/index', {title:"Inicio"})
 })
-auth.get('/config', isAuthenticated, (req,res)=>{
+auth.get('/config', isAuthenticated, getAdmin, (req,res)=>{
     res.render('pages/account', {title:"Configuracion de Usuario"})
 })
 auth.post('/register', register);
