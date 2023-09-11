@@ -1,63 +1,110 @@
-<button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="absolute top-0 bg-black/20 left-0 items-center p-2 m-5 ml-3 text-sm text-white rounded-lg shadow-[0_30px_30px_6px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_20px_6px_rgba(0,0,0,0.15)] focus:outline-none focus:text-transparent focus:shadow-none">
+<button
+  data-drawer-target="default-sidebar"
+  data-drawer-toggle="default-sidebar"
+  aria-controls="default-sidebar"
+  type="button"
+  class="absolute top-0 bg-black/20 left-0 items-center p-2 m-5 ml-3 text-sm text-white rounded-lg shadow-[0_30px_30px_6px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_20px_6px_rgba(0,0,0,0.15)] focus:outline-none focus:text-transparent focus:shadow-none"
+>
   <span class="sr-only">Open sidebar</span>
-  <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-     <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+  <svg
+    class="w-6 h-6"
+    aria-hidden="true"
+    fill="currentColor"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+      d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+    ></path>
   </svg>
 </button>
-<aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full " aria-label="Sidebar">
+<aside
+  id="default-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full"
+  aria-label="Sidebar"
+>
   <div class="h-full px-3 py-4 overflow-y-auto bg-transparent">
     <a href="/" class="flex place-content-center pl-2.5 mb-5">
-      <img src="/img/logo.png" class="h-6 mr-3 sm:h-7 md:h-14" alt="Play Logo" />
+      <img
+        src="/img/logo.png"
+        class="h-6 mr-3 sm:h-7 md:h-14"
+        alt="Play Logo"
+      />
     </a>
-     <ul class="space-y-4 font-medium">
-        <li class="hover:opacity-90">
-           <a href="/blogs" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-               <i class="fas fa-paste"></i>
-              <span class="ml-3">Lista de Post</span>
-           </a>
-        </li>
-        <li class="hover:opacity-90">
-           <a href="/blogs/create" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-               <i class="fas fa-file-upload"></i>
-              <span class="flex-1 ml-3 whitespace-nowrap">Subir Post</span>
-           </a>
-        </li>
-        <li class="hover:opacity-90">
-           <a href="/images/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-               <i class="fas fa-images"></i>
-              <span class="flex-1 ml-3 whitespace-nowrap">Lista de Imagenes</span>
-           </a>
-        </li>
-        <li class="hover:opacity-90">
-          <a href="/images/upload" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-               <i class="fas fa-upload"></i>
-             <span class="flex-1 ml-3 whitespace-nowrap">Subir Imagen</span>
-          </a>
-       </li>
-        <li class="hover:opacity-90">
-           <a href="/config" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-               <i class="fas fa-user"></i>
-              <span class="flex-1 ml-3 whitespace-nowrap">Configuracion de Usuario</span>
-           </a>
-        </li>
-        <li class="hover:opacity-90">
-           <a href="http://localhost:3000/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-               <i class="fas fa-share-square"></i>
-              <span class="flex-1 ml-3 whitespace-nowrap">Volver a la Pagina</span>
-           </a>
-        </li>
-        <li class="hover:opacity-90">
-           <a href="/logout" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-               <i class="fas fa-power-off"></i>
-              <span class="flex-1 ml-3 whitespace-nowrap">Cerrar Sesion</span>
-           </a>
-        </li>
-     </ul>
+    <ul class="space-y-4 font-medium">
+      <li class="hover:opacity-90">
+        <a
+          href="/blogs"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white"
+        >
+          <i class="fas fa-paste"></i>
+          <span class="ml-3">Lista de Post</span>
+        </a>
+      </li>
+      <li class="hover:opacity-90">
+        <a
+          href="/blogs/create"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white"
+        >
+          <i class="fas fa-file-upload"></i>
+          <span class="flex-1 ml-3 whitespace-nowrap">Subir Post</span>
+        </a>
+      </li>
+      <li class="hover:opacity-90">
+        <a
+          href="/images/"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white"
+        >
+          <i class="fas fa-images"></i>
+          <span class="flex-1 ml-3 whitespace-nowrap">Lista de Imagenes</span>
+        </a>
+      </li>
+      <li class="hover:opacity-90">
+        <a
+          href="/images/upload"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white"
+        >
+          <i class="fas fa-upload"></i>
+          <span class="flex-1 ml-3 whitespace-nowrap">Subir Imagen</span>
+        </a>
+      </li>
+      <li class="hover:opacity-90">
+        <a
+          href="/config"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white"
+        >
+          <i class="fas fa-user"></i>
+          <span class="flex-1 ml-3 whitespace-nowrap"
+            >Configuracion de Usuario</span
+          >
+        </a>
+      </li>
+      <li class="hover:opacity-90">
+        <a
+          href="http://localhost:3000/"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white"
+        >
+          <i class="fas fa-share-square"></i>
+          <span class="flex-1 ml-3 whitespace-nowrap">Volver a la Pagina</span>
+        </a>
+      </li>
+      <li class="hover:opacity-90">
+        <a
+          href="/logout"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white"
+        >
+          <i class="fas fa-power-off"></i>
+          <span class="flex-1 ml-3 whitespace-nowrap">Cerrar Sesion</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </aside>
 <style>
-   .wrap{
-      box-shadow: 0 0 25px #222;
-      backdrop-filter: blur(10px);
-   }
+  .wrap {
+    box-shadow: 0 0 25px #222;
+    backdrop-filter: blur(10px);
+  }
 </style>
