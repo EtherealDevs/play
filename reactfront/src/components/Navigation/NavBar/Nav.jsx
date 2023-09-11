@@ -1,22 +1,25 @@
-import { Disclosure} from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import PlayLogo from '../../../assets/play.png'
-import '../NavBar/Nav.css'
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import PlayLogo from "../../../assets/play.png";
+import "../NavBar/Nav.css";
 
 const navigation = [
-  { name: 'Inicio', href: '#Start', current: true },
-  { name: 'Nuestra Meta', href: '#About', current: true },
-  { name: 'Posts', href: '#Posts', current: true },
-  { name: 'Contacto', href: '#Contact', current: true },
-]
+  { name: "Inicio", href: "#Start", current: true },
+  { name: "Nuestra Meta", href: "#About", current: true },
+  { name: "Posts", href: "#Posts", current: true },
+  { name: "Contacto", href: "#Contact", current: true },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Example() {
   return (
-    <Disclosure as="nav" className="z-30 flex sticky top-0 bg-[#8c4c9d] justify-start h-[50px]">
+    <Disclosure
+      as="nav"
+      className="z-30 flex sticky top-0 bg-[#8c4c9d] justify-start h-[50px]"
+    >
       {({ open }) => (
         <nav>
           <div className="gap-6 max-w-7xl sm:px-6 lg:px-8">
@@ -33,25 +36,34 @@ export default function Example() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className='flex justify-end'>
-              <div className=''>
-              <a href="/" className="flex h-fit transition ease-in-out delay-150 hover:scale-125">
-                  <img src={PlayLogo} className="h-9 w-9" alt="Play Logo" />
-                  {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}
+              <div className="flex justify-end">
+                <div className="">
+                  <a
+                    href="/"
+                    className="flex h-fit transition ease-in-out delay-150 hover:scale-125"
+                  >
+                    <img src={PlayLogo} className="h-9 w-9" alt="Play Logo" />
+                    {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white font-alfa"></span> */}
                   </a>
-              </div>
                 </div>
+              </div>
               <div className="flex  justify-end sm:items-stretch sm:justify-start">
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <a
-                      key={item.name}
-                      href={item.href}
-                      className={classNames(item.current ? 'py-3 pl-5 pr-5 font-black text-white text-sm transition ease-in-out delay-100 hover:scale-110  ' : '','')}
-                      aria-current={item.current ? 'page' : undefined}>
-                      {item.name}
-                    </a>
+                        key={item.name}
+                        href={item.href}
+                        className={classNames(
+                          item.current
+                            ? "py-3 pl-5 pr-5 font-black text-white text-sm transition ease-in-out delay-100 hover:scale-110  "
+                            : "",
+                          ""
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -66,8 +78,14 @@ export default function Example() {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(item.current ? 'block py-2 font-black rounded  text-gray-800 px-2 ' : '','')}
-                  aria-current={item.current ? 'page' : undefined}>
+                  className={classNames(
+                    item.current
+                      ? "block py-2 font-black rounded  text-gray-800 px-2 "
+                      : "",
+                    ""
+                  )}
+                  aria-current={item.current ? "page" : undefined}
+                >
                   {item.name}
                 </Disclosure.Button>
               ))}
@@ -76,5 +94,5 @@ export default function Example() {
         </nav>
       )}
     </Disclosure>
-  )
+  );
 }
