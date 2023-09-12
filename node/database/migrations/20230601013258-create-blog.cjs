@@ -1,47 +1,47 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Blogs', {
+    await queryInterface.createTable("Blogs", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       content: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       createdAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       ImageId: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'images'
+            tableName: "images",
           },
-          key: 'id'
+          key: "id",
         },
-        allowNull: true
-      }
+        allowNull: true,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.sequelize.query('DROP TABLE react_db.blogs;')
-  }
+    await queryInterface.sequelize.query("DROP TABLE react_db.blogs;");
+  },
 };
