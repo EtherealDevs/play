@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .leaflet-container{
- z-index: 10;
+ z-index: 40;
 }
 
 .zindex{
