@@ -21,25 +21,20 @@ export const IconLocation = L.icon({
 function Contact() {
   return (
 
-    <section className="text-gray-600 h-[100vh] justify-center flex align-middle body-font relative">
+    <section className="text-gray-600 h-[100vh] z-40 justify-center flex align-middle body-font relative">
 
 
     
 {/* Pantalla chica: h-5/6 w-5/6 */}
 {/* Pantalla Grande: h-3/5 w-5/6 */}
     <MapContainer className="xl:h-3/5 xl:w-5/6 h-5/6 w-5/6 flex xl:justify-end lg:items-center md:items-center justify-center rounded-3xl" center={{lat: '-27.4649353', lng: '-58.805059'}} zoom={14}>
-      <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'/>
-      <Marker position={{lat: '-27.4649353', lng: '-58.823859'}} icon={IconLocation}>
-      <Popup>
-        Visitanos <br /> Avenida Pujol 2011
-      </Popup>
-      </Marker>
+      
     
     {/* Pantalla Grande: px-5 h-5/6 my-12 */}
     {/* Pantalla Chica: px-4 h-3/6 */}
 
     <div className="container px-4 h-3/6 xl:h-5/6 xl:px-5 xl:my-12 mx-auto lg:items-center flex">
-      <div className="lg:w-1/3 md:w-1/2 z-40 bg-white rounded-3xl p-8 flex items-center flex-col md:ml-auto w-full 2xl:mt-10 mt-4 md:mt-0 relative shadow-md">
+      <div className="lg:w-1/3 md:w-1/2 bg-white rounded-3xl z-10  p-8 flex items-center flex-col md:ml-auto w-full 2xl:mt-10 mt-4 md:mt-0 relative shadow-md">
         <h2 className="text-gray-900 text-lg font-black title-font mt-16 mb-5">Contactanos</h2>
         <p className="leading-relaxed text-gray-600 font-bold mb-16">Contactate con nosotros para aplicar mejoras en este proyecto</p>
         <div class="flex justify-center justify-items-center gap-6">
@@ -86,6 +81,16 @@ function Contact() {
         
       </div>
     </div>
+
+    <div className="-z-40">
+    <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'/>
+      <Marker position={{lat: '-27.4649353', lng: '-58.823859'}} icon={IconLocation}>
+      <Popup>
+        Visitanos <br /> Avenida Pujol 2011
+      </Popup>
+      </Marker>
+    </div>
+    
     </MapContainer>
 
    

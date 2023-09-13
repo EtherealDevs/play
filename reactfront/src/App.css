@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 .leaflet-container{
- 
+ z-index: 10;
+}
+
+.zindex{
+  z-index: 30;
 }
 
 .App {
