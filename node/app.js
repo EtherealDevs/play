@@ -107,7 +107,7 @@ app.use(function(req, res, next){
 app.use('/blogs', blogs)
 app.use('/images', isAuthenticated, images)
 app.use('/', auth)
-// app.use('/users', isAuthenticated, admin)
+app.use('/admin', isAuthenticated, admin)
 
 app.use((req,res,next)=>{
     res.status(404).render('pages/404',{

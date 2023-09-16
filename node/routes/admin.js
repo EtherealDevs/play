@@ -1,5 +1,5 @@
 import express from "express";
-import { getAdmin } from "../controllers/AdminController.js";
+import { updateAdmin } from "../controllers/AdminController.js";
 import { isAuthenticated } from "../controllers/AuthController.js";
 
 const admin = express.Router();
@@ -8,8 +8,6 @@ const admin = express.Router();
 //   console.log(req.admin);
 //   res.render('pages/account')
 // });
-// admin.put('/pass', updatePassword)
-// admin.put('/username', updateUsername)
-// admin.put('/email', updateEmail)
+admin.put('/update', isAuthenticated, updateAdmin)
 
 export default admin;
