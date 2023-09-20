@@ -17,10 +17,23 @@ export const getAdmin = async (req, res, next) => {
 export const updateAdmin = async (req, res, next) => {
   const validator = new Validator
   try {
-    validator.validate(req.body)
-    const admin = new AdminManager(req.user.dataValues);
-    // admin.updateEmail(req.body.email)
-    return next();
+    const validationErrors = validator.validate(req.body)
+
+    if (validationErrors.length === 0) {
+      // Data is valid, proceed with signup
+      // Redirect to the homepage or continue processing
+      console.log("Data is valid.");
+      const admin = new AdminManager(req.user.dataValues);
+      // admin.updateEmail(req.body.email)
+      return next();
+    } else {
+      // Data is invalid, handle errors
+      // Redirect back to the signup form with error messages or indications
+      console.error("Validation errors:", validationErrors);
+      res.redirect("/config")
+    }
+    
+    
   }
    catch (error) {
     res.json({ error: error.message });
