@@ -30,7 +30,7 @@ export const updateAdmin = async (req, res, next) => {
       // Data is invalid, handle errors
       // Redirect back to the signup form with error messages or indications
       console.error("Validation errors:", validationErrors);
-      res.redirect("/config")
+      res.redirect("/admin/config")
     }
     
     
