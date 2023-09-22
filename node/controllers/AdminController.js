@@ -23,8 +23,24 @@ export const updateAdmin = async (req, res, next) => {
       // Data is valid, proceed with signup
       // Redirect to the homepage or continue processing
       console.log("Data is valid.");
+
       const admin = new AdminManager(req.user.dataValues);
-      // admin.updateEmail(req.body.email)
+
+      const validatedFields = validator.validatedFields
+      for (const [key, value] of Object.entries(validatedFields)) {
+        switch (key) {
+          case "username":
+            admin.updateUsername(value)
+            break;
+          case "email":
+            admin.updateEmail(value)
+            break;
+          case "newPassword":
+            admin.updatePassword(value)
+            break;
+        }
+      }
+
       return next();
     } else {
       // Data is invalid, handle errors

@@ -1,6 +1,7 @@
 export default class Validator {
   constructor() {
     this.errors = new Object();
+    this.validatedFields = new Object();
   }
 
   validate(data) {
@@ -9,12 +10,15 @@ export default class Validator {
       switch (key) {
         case "username":
           this.validateUsername(value);
+          this.validatedFields.username = value
           break;
         case "email":
           this.validateEmail(value);
+          this.validatedFields.email = value
           break;
         case "newPassword":
           this.validatePassword(value);
+          this.validatedFields.newPassword = value
           break;
         case "confirmPassword":
           this.validateConfirmPassword(value, data.newPassword);

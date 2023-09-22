@@ -8,8 +8,7 @@ export class AdminManager {
   async get(data) {}
   async updatePassword(data) {
     try {
-      if (data.verifyPassword === data.password) {
-        const passHash = await bcryptjs.hash(data.password, 8);
+        const passHash = await bcryptjs.hash(data, 8);
         await AdminModel.update(
           {
             password: passHash,
@@ -21,11 +20,43 @@ export class AdminManager {
         res.json({
           message: "¡REGISTRO ACTUALIZADO!",
         });
-      }
     } catch (error) {
       res.json({ error: error.message });
     }
   }
-  async updateUsername(data) {}
-  async updateEmail(data) {}
+
+  async updateUsername(data) {
+    try {
+      await AdminModel.update(
+        {
+          username: data,
+        },
+        {
+          where: { id: this.currentAdminInSession.id },
+        }
+      );
+      res.json({
+        message: "¡REGISTRO ACTUALIZADO!",
+      });
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+  }
+  async updateEmail(data) {
+    try {
+      await AdminModel.update(
+        {
+          email: data,
+        },
+        {
+          where: { id: this.currentAdminInSession.id },
+        }
+      );
+      res.json({
+        message: "¡REGISTRO ACTUALIZADO!",
+      });
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+  }
 }
