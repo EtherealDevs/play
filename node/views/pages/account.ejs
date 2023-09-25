@@ -1,47 +1,101 @@
 <%- include('../components/open.ejs'); %>
 
-<section id='Config' class='h-full '>
-        <div class="xl:m-24 justify-center content-center align-middle rounded-2xl bg-black/25 backdrop-blur-lg border-4 border-stone-50">
-                <div class="justify-center px-4 sm:px-0">
-                  <h3 class="ml-12 mt-12 justify-center text-base font-semibold leading-7 text-white">Configuracion de Usuarios</h3>
-                  <p class="ml-12 mt-1 max-w-2xl text-sm leading-6 text-white">Bienvenido, Pepito</p>
-                </div>
-                <div class="xl:m-12 mt-6 border-t border-gray-100">
-                  <dl class="divide-y divide-gray-100">
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <p class="text-sm font-bold leading-6 text-white">Nombre de usuario</p>
-                      <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">Margot Foster</p>
-                     
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <p class="text-sm font-bold leading-6 text-white">Email</p>
-                      <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">margotfoster@example.com</p>
-                      
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <p class="text-sm font-bold leading-6 text-white">Contraseña</p>
-                      <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">-----</p>
-                      
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                      <p class="text-sm font-bold leading-6 text-white">Contraseña Nueva</p>
-                      <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">--------</p>
-                      
-                    </div>
-                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                        <p class="text-sm font-bold leading-6 text-white">Confirmar Contraseña Nueva</p>
-                        <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">---------</p>
-                        
-                      </div>
-                  </dl>
-                </div>
-                <button className="inline-flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-white backdrop-blur-sm bg-transparent rounded-lg hover:duration-700">
-                        Guardar
-                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                        </svg>
-               </button>
-              </div>
-                  </section>
+<section id="Config" class="h-full flex justify-center">
+  <div
+    class="xl:m-24 w-4/5 content-center align-middle rounded-2xl mt-16 bg-black/25 backdrop-blur-lg border-4 p-10 border-stone-50"
+  >
+    <div class="justify-center px-4 sm:px-0">
+      <h3
+        class="ml-12 mt-12 justify-center text-base font-semibold leading-7 text-white"
+      >
+        Configuracion de Usuarios
+      </h3>
+      <p class="ml-12 mt-1 max-w-2xl text-sm leading-6 text-white">
+        Bienvenido, Pepito
+      </p>
+    </div>
+    <div class="xl:m-12 mt-6 border-t border-gray-100">
+      <dl class="divide-y divide-gray-100">
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-bold leading-6 text-white">
+            Nombre de usuario
+          </p>
+          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+            Pepito
+          </p>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-bold leading-6 text-white">Email</p>
+          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+            pepito@example.com
+          </p>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-bold leading-6 text-white">Contraseña</p>
+          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+            *****
+          </p>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-bold leading-6 text-white">Contraseña Nueva</p>
+          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+            *****
+          </p>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <p class="text-sm font-bold leading-6 text-white">
+            Confirmar Contraseña Nueva
+          </p>
+          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+            *****
+          </p>
+        </div>
+      </dl>
+    </div>
 
-  <%- include('../components/close.ejs'); %>
+    <div class="grid grid-cols-2 gap-2">
+      <div class="p-8">
+        <button
+          class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-white backdrop-blur-sm bg-transparent rounded-lg hover:duration-700"
+        >
+          Guardar
+          <svg
+            class="w-3.5 h-3.5 m-2"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.99998 20.4199L2.78998 14.2099L5.61998 11.3799L8.99998 14.7699L18.88 4.87988L21.71 7.70988L8.99998 20.4199Z"
+              fill="white"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="p-8">
+        <button
+          class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-white backdrop-blur-sm bg-transparent rounded-lg hover:duration-700"
+        >
+          Editar
+          <svg
+            class="w-3.5 h-3.5 m-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../components/close.ejs'); %>

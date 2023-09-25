@@ -1,10 +1,10 @@
 <%- include('../../components/open.ejs'); %>
 
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script> 
 
 <script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.3.x/dist/index.js"></script>
 <div class=" h-full m-24">
-    <form enctype="multipart/form-data" id="form2" action="/images/upload" method="post" class="grid grid-cols-4">
+    <form enctype="multipart/form-data" id="form2" action="/images/upload" method="post" class="grid grid-cols-4 w-4/5">
         <div x-data="{photoName: null, photoPreview: null}" class="col-start-3 col-span-3 sm:col-span-4 md:mr-3">
             <!-- Photo File Input -->
             <input id="test" type="file" class="hidden" name="file" x-ref="photo" x-on:change="
