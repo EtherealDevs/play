@@ -1,15 +1,13 @@
 import express from "express";
-import { getAdmin } from "../controllers/AdminController.js";
+import { updateAdmin, getAdmin } from "../controllers/AdminController.js";
 import { isAuthenticated } from "../controllers/AuthController.js";
 
 const admin = express.Router();
 
-// admin.get("/config", isAuthenticated, getAdmin, (req, res) => {
-//   console.log(req.admin);
-//   res.render('pages/account')
-// });
-// admin.put('/pass', updatePassword)
-// admin.put('/username', updateUsername)
-// admin.put('/email', updateEmail)
+admin.get("/config", getAdmin, (req, res) => {
+  console.log(req.adminData);
+  res.render('pages/account')
+});
+admin.put('/update', updateAdmin)
 
 export default admin;

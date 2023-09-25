@@ -25,10 +25,10 @@ var allowCrossDomain = function (req, res, next) {
 auth.get("/", isAuthenticated, (req, res) => {
   res.render("pages/index", { title: "Inicio" });
 });
-auth.get("/config", isAuthenticated, getAdmin, (req, res) => {
-  console.log(req.adminData);
-  res.render("pages/account", { title: "Configuracion de Usuario" });
-});
+// auth.get("/config", isAuthenticated, getAdmin, (req, res) => {
+//   console.log(req.adminData);
+//   res.render("pages/account", { title: "Configuracion de Usuario" });
+// });
 auth.post("/register", register);
 auth.get("/login", (req, res) => {
   var error = null;
