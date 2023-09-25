@@ -14,6 +14,7 @@
         Bienvenido, Pepito
       </p>
     </div>
+    <form action="/admin/update?_method=PUT" method="post">
     <div class="xl:m-12 mt-6 border-t border-gray-100">
       <dl class="divide-y divide-gray-100">
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -23,12 +24,14 @@
           <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
             Pepito
           </p>
+          <input id="usernameField" type="hidden" name="username">
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <p class="text-sm font-bold leading-6 text-white">Email</p>
           <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
             pepito@example.com
           </p>
+          <input id="emailField" type="hidden" name="email">
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <p class="text-sm font-bold leading-6 text-white">Contraseña</p>
@@ -41,6 +44,7 @@
           <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
             *****
           </p>
+          <input id="newPasswordField" type="hidden" name="newPassword">
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <p class="text-sm font-bold leading-6 text-white">
@@ -49,13 +53,14 @@
           <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
             *****
           </p>
+          <input id="confirmPasswordField" type="hidden" name="confirmPassword">
         </div>
       </dl>
     </div>
 
     <div class="grid grid-cols-2 gap-2">
       <div class="p-8">
-        <button
+        <button type="submit"
           class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-white backdrop-blur-sm bg-transparent rounded-lg hover:duration-700"
         >
           Guardar
@@ -95,6 +100,7 @@
         </button>
       </div>
     </div>
+  </form>
   </div>
 </section>
 
