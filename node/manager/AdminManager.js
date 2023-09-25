@@ -17,9 +17,6 @@ export class AdminManager {
             where: { id: this.currentAdminInSession.id },
           }
         );
-        res.json({
-          message: "¡REGISTRO ACTUALIZADO!",
-        });
     } catch (error) {
       res.json({ error: error.message });
     }
@@ -35,9 +32,6 @@ export class AdminManager {
           where: { id: this.currentAdminInSession.id },
         }
       );
-      res.json({
-        message: "¡REGISTRO ACTUALIZADO!",
-      });
   } catch (error) {
     res.json({ error: error.message });
   }
@@ -52,9 +46,6 @@ export class AdminManager {
           where: { id: this.currentAdminInSession.id },
         }
       );
-      res.json({
-        message: "¡REGISTRO ACTUALIZADO!",
-      });
   } catch (error) {
     res.json({ error: error.message });
   }
