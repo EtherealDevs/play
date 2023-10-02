@@ -21,39 +21,33 @@
           <p class="text-sm font-bold leading-6 text-white">
             Nombre de usuario
           </p>
-          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
-            Pepito
+          <p class="inputLabel mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+            <%= data.username %>
           </p>
-          <input id="usernameField" type="hidden" name="username">
+          <input id="usernameField" class="input hidden" type="text" value="<%= data.username %>" name="username">
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <p class="text-sm font-bold leading-6 text-white">Email</p>
-          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
-            pepito@example.com
+          <p class="inputLabel mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+            <%= data.email %>
           </p>
-          <input id="emailField" type="hidden" name="email">
+          <input id="emailField" class="input hidden" type="email" value="<%= data.email %>" name="email">
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <p class="text-sm font-bold leading-6 text-white">Contraseña</p>
-          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+          <p class="inputLabel mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
             *****
           </p>
-        </div>
-        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <p class="text-sm font-bold leading-6 text-white">Contraseña Nueva</p>
-          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
-            *****
-          </p>
-          <input id="newPasswordField" type="hidden" name="newPassword">
+          <input id="newPasswordField" type="password" class="input hidden" name="newPassword">
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <p class="text-sm font-bold leading-6 text-white">
             Confirmar Contraseña Nueva
           </p>
-          <p class="mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
+          <p class="inputLabel mt-1 text-sm leading-6 text-white sm:col-span-2 sm:mt-0">
             *****
           </p>
-          <input id="confirmPasswordField" type="hidden" name="confirmPassword">
+          <input id="confirmPasswordField" class="input hidden" type="password" name="confirmPassword">
         </div>
       </dl>
     </div>
@@ -78,7 +72,8 @@
         </button>
       </div>
       <div class="p-8">
-        <button
+        <button type="button"
+        onclick="edit()"
           class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-white backdrop-blur-sm bg-transparent rounded-lg hover:duration-700"
         >
           Editar
@@ -103,5 +98,36 @@
   </form>
   </div>
 </section>
+
+<script>
+  let toggled = false
+  function edit(){
+    let elements = Array.from(document.getElementsByClassName('inputLabel'))
+    let inputs = Array.from(document.getElementsByClassName('input'))
+
+    if (toggled == false){
+      elements.forEach(element => {
+        element.classList.add('hidden')
+      });
+      inputs.forEach(element => {
+        element.classList.remove('hidden')
+      });
+      toggled = true;
+      return;
+    }
+    if (toggled == true){
+      let elements = Array.from(document.getElementsByClassName('inputLabel'))
+      elements.forEach(element => {
+        element.classList.remove('hidden')
+      });
+      let inputs = Array.from(document.getElementsByClassName('input'))
+      inputs.forEach(element => {
+        element.classList.add('hidden')
+      });
+      toggled = false;
+      return;
+    }
+  }
+</script>
 
 <%- include('../components/close.ejs'); %>

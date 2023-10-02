@@ -6,7 +6,7 @@ const admin = express.Router();
 
 admin.get("/config", getAdmin, (req, res) => {
   console.log(req.adminData);
-  res.render('pages/account')
+  res.render('pages/account', {data: req.adminData})
 });
 admin.put('/update', updateAdmin)
 

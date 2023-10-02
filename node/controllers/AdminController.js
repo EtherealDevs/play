@@ -41,7 +41,7 @@ export const updateAdmin = async (req, res, next) => {
         }
       }
 
-      return next();
+      return redirect('/');
     } else {
       // Data is invalid, handle errors
       // Redirect back to the signup form with error messages or indications

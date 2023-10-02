@@ -1,6 +1,6 @@
 export default class Validator {
   constructor() {
-    this.errors = new Object();
+    this.errors = new Array();
     this.validatedFields = new Object();
   }
 
@@ -37,13 +37,13 @@ export default class Validator {
     if (data) {
       switch (data) {
         case !(typeof data === "string" || data instanceof String):
-          this.errors.username = "Field Username is not a string";
+          this.errors.push("Field Username is not a string");
           break;
         case data.length > 12:
-          this.errors.username = "Field Username is too long";
+          this.errors.push("Field Username is too long");
           break;
       }
-    } else this.errors.username = "Field Username is empty";
+    } else this.errors.push("Field Username is empty");
   }
 
   validateEmail(data) {
@@ -53,31 +53,31 @@ export default class Validator {
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       switch ((data, emailRegex)) {
         case !(typeof data === "string" || data instanceof String):
-          this.errors.email = 'Field "Email" is not a string';
+          this.errors.push('Field "Email" is not a string');
           break;
         case data.length > 20:
-          this.errors.email = "Email is too long";
+          this.errors.push("Email is too long");
           break;
-        case !re.test(data):
-          this.errors.email = "Email is invalid";
+        case !emailRegex.test(data):
+          this.errors.push("Email is invalid");
       }
-    } else this.errors.email = 'Field "Email" is empty';
+    } else this.errors.push('Field "Email" is empty');
   }
   validatePassword(data) {
     console.log("password validator running");
     if (data) {
       if (typeof data !== "string") {
-        this.errors.password = 'Field "New Password" is not a string';
+        this.errors.push('Field "New Password" is not a string');
       }
       if (data.length < 5) {
-        this.errors.password = "Password is too short";
+        this.errors.push("Password is too short");
       }
-    } else this.errors.password = 'Field "New Password" is empty';
+    } else this.errors.push('Field "New Password" is empty');
   }
   validateConfirmPassword(data, password) {
     console.log("confirm password validator running");
     if (typeof data !== "string" || data !== password) {
-      this.errors.password = "Passwords do not match";
+      this.errors.push("Passwords do not match");
     }
   }
 }
