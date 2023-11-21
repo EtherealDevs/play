@@ -34,9 +34,10 @@ auth.get("/login", (req, res) => {
   var error = null;
   if (req.body.error) {
     error = req.body.error;
-    console.log("this works");
+    console.log("there is an error");
+  } else {
+    console.log("there is no error");
   }
-  console.log("this does not work");
   res.render("pages/login", { error: error });
 });
 auth.post(

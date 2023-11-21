@@ -1,4 +1,5 @@
 import express, { response } from "express";
+import sanitizeHtml from 'sanitize-html';
 import multer from "multer";
 import {
   createBlog,
@@ -65,7 +66,14 @@ blogs.get("/", getAllBlogs, (req, res) => {
 blogs.get("/:id", getBlog, (req, res) => {
   res.render("pages/blogs/show", { title: req.data.title, data: req.data });
 });
-blogs.post("/", isAuthenticated, upload.single("image"), createBlog);
+blogs.post("/", isAuthenticated, upload.single("image"), (req, res, next) =>{
+  console.log(req.body);
+  req.body.title = sanitizeHtml(req.body.title)
+  req.body.content = sanitizeHtml(req.body.content)
+  console.log(req.body.title);
+  console.log(req.body.content);
+  next();
+}, createBlog);
 blogs.put("/:id", isAuthenticated, upload.single("image"), updateBlog);
 blogs.delete("/:id", isAuthenticated, deleteBlog);
 
