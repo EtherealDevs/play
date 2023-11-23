@@ -7,8 +7,6 @@ import L from "leaflet";
 import { Popup } from "react-leaflet";
 
 export const IconLocation = L.icon({
-  iconUrl: require("../assets/location.svg"),
-  iconRetinaUrl: require("../assets/location.svg"),
   iconAnchor: null,
   shadowUrl: null,
   shadowSize: null,
@@ -19,7 +17,7 @@ export const IconLocation = L.icon({
 
 function Contact() {
   return (
-    <section className="text-gray-600 h-[100vh] w-full 2xl:w-screen flex content-center justify-center body-font relative">
+    <section className="text-gray-600 h-screen w-full 2xl:w-screen flex content-center justify-center body-font relative">
       {/* Pantalla chica: h-5/6 w-5/6 */}
       {/* Pantalla Grande: h-3/5 w-5/6 */}
       <div className="w-11/12 rounded-3xl flex  justify-center">
@@ -31,12 +29,9 @@ function Contact() {
           <div className="-z-40">
             <TileLayer
               url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              attribution=""
             />
-            <Marker
-              position={{ lat: "-27.4649353", lng: "-58.823859" }}
-              iconUrl="../assets/location.svg"
-            >
+            <Marker position={{ lat: "-27.4649353", lng: "-58.823859" }}>
               <Popup>
                 Visitanos <br /> Avenida Pujol 2011
               </Popup>

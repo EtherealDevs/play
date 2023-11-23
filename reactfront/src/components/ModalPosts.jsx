@@ -7,9 +7,9 @@ export default function ModalPosts({ blog }) {
   const props = { openModal, setOpenModal };
   const image = blog.Image;
   return (
-    <div class=" rounded-lg">
+    <div class="rounded-lg">
       <button
-        className="inline-flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-white backdrop-blur-sm bg-transparent rounded-lg hover:duration-700"
+        className="inline-flex items-center justify-center px-2 py-1 text-sm bg-blue-400 font-medium text-center text-white backdrop-blur-sm rounded-lg hover:duration-700"
         onClick={() => props.setOpenModal("default")}
       >
         <svg
@@ -40,7 +40,7 @@ export default function ModalPosts({ blog }) {
         </Modal.Header>
 
         <img
-          class="rounded-t-lg"
+          class="rounded-t-lg h-3/4"
           src={"http://localhost:8000/img/" + image.filename}
           alt=""
         />

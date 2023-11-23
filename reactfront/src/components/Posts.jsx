@@ -33,14 +33,11 @@ function Posts({ blog }) {
     );
   };
 
-  //Cantidad de blogs
-  const cantBlogs = blogs.length;
-
   return (
-    <section id="Posts" className="w-full 2xl:w-screen 2xl:h-screen">
+    <section id="Posts" className="w-full 2xl:w-screen h-full">
       <div className="text-yellow-50 pt-12 pr-0 pb-14 pl-0">
         <div className=" pt-4 pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16 max-w-7xl">
-          <div className="flex justify-center sm:px-5 md:flex-row">
+          <div className="mb-10 flex justify-center sm:px-5 md:flex-row">
             <div className="flex flex-col pt-6 pr-0 pb-6 pl-0 mb-6 md:mb-0 md:w-1/2">
               <div className="flex flex-col h-full space-y-3 transform md:pr-10 lg:pr-16 md:space-y-5">
                 <div className="px-12 py-12 justify-center rounded-xl">
@@ -55,114 +52,28 @@ function Posts({ blog }) {
             </div>
           </div>
 
-          {/* Carrousel de Posts */}
-          <div className="container mx-auto ">
-            <div className="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
-              {/* Carousel for desktop and large size devices */}
-              <CarouselProvider
-                className="lg:block "
-                naturalSlideWidth={100}
-                isIntrinsicHeight={true}
-                totalSlides={cantBlogs}
-                visibleSlides={4}
-                step={1}
-                infinite={true}
-              >
-                <div className="w-full relative flex items-center justify-center">
-                  <ButtonBack
-                    role="button"
-                    aria-label="slide backward"
-                    className="absolute z-30 left-0 cursor-pointer"
-                    id="prev"
-                  >
-                    <svg
-                      width={8}
-                      height={14}
-                      viewBox="0 0 8 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M7 1L1 7L7 13"
-                        stroke="#8c4c9d"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+          <div className="container mx-auto">
+            <div className="flex items-center justify-center py-24 sm:py-8 px-4">
+              <div class="container mx-auto p-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+                  {blogs.map((blog) => (
+                    <div class="bg-white rounded-lg border p-4">
+                      <img
+                        src={"http://localhost:8000/img/" + blog.Image.filename}
+                        alt="Placeholder Images"
+                        class="w-full h-48 rounded-md object-cover"
                       />
-                    </svg>
-                  </ButtonBack>
-
-                  <div className="w-[90%] h-full mx-auto overflow-x-hidden overflow-y-hidden">
-                    <Slider>
-                      <div
-                        id="slider"
-                        className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
-                      >
-                        {blogs.map((blog) => (
-                          <Slide index={blog.id}>
-                            <div className="flex flex-shrink-0 relative w-[296px] h-[480px] sm:w-auto">
-                              <button></button>
-                              <img
-                                src={
-                                  "http://localhost:8000/img/" +
-                                  blog.Image.filename
-                                }
-                                alt="black chair and white table"
-                                className="object-cover object-center w-full h-full rounded-2xl"
-                              />
-                              <div className="bg-gray-800 rounded-2xl bg-opacity-30 absolute w-full h-full p-6">
-                                <div className="xl:h-[80%]">
-                                  <h2 className="lg:text-xl xl:mb-24 xl:mt-10 font-bold leading-4 text-base lg:leading-5 text-white">
-                                    {blog.title}
-                                  </h2>
-
-                                  <div className="flex xl:mb-10 justify-center items-center pb-6">
-                                    <ParseHTML
-                                      classes={
-                                        "justify-center lg:text-md font-semilight lg:leading-5 break-all text-white"
-                                      }
-                                      html={blog.content}
-                                    />
-                                  </div>
-                                </div>
-                                <div className="items-end xl:mt-2">
-                                  <ModalPosts
-                                    className="justify-center"
-                                    blog={blog}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </Slide>
-                        ))}
+                      <div class="px-1 py-4">
+                        <div class="font-bold text-xl mb-2">{blog.title}</div>
+                        <p class="text-gray-700 text-base">{blog.content}</p>
                       </div>
-                    </Slider>
-                  </div>
-
-                  <ButtonNext
-                    role="button"
-                    aria-label="slide forward"
-                    className="absolute z-30 -right-5 cursor-pointer text-black"
-                    id="next"
-                  >
-                    <svg
-                      width={8}
-                      height={14}
-                      viewBox="0 0 8 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 1L7 7L1 13"
-                        stroke="#8c4c9d"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </ButtonNext>
+                      <div class="px-1 py-4">
+                        <ModalPosts className="justify-center" blog={blog} />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </CarouselProvider>
+              </div>
             </div>
           </div>
         </div>
