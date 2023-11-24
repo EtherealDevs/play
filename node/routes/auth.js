@@ -7,6 +7,7 @@ import {
 } from "../controllers/AuthController.js";
 import { getAdmin } from "../controllers/AdminController.js";
 
+
 const auth = express.Router();
 
 var allowCrossDomain = function (req, res, next) {
@@ -25,6 +26,10 @@ var allowCrossDomain = function (req, res, next) {
 auth.get("/", isAuthenticated, (req, res) => {
   res.render("pages/index", { title: "Inicio" });
 });
+auth.get("/tables", isAuthenticated, (req, res) => {
+  res.render("pages/tables/test", { title: "Inicio" });
+});
+
 
 auth.get("/login", (req, res) => {
   var error = null;
