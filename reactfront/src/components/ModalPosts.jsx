@@ -9,7 +9,7 @@ export default function ModalPosts({ blog }) {
   return (
     <div class="rounded-lg">
       <button
-        className="inline-flex items-center justify-center px-2 py-1 text-sm bg-blue-400 font-medium text-center text-white backdrop-blur-sm rounded-lg hover:duration-700"
+        className="inline-flex items-center justify-center px-2 py-1 text-sm bg-[#a0679b] font-medium text-center text-white backdrop-blur-sm rounded-lg"
         onClick={() => props.setOpenModal("default")}
       >
         <svg

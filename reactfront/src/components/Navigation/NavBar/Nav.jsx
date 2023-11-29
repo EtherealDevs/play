@@ -18,7 +18,7 @@ export default function Example() {
   return (
     <Disclosure
       as="nav"
-      className="z-50 flex sticky top-0 bg-[#8c4c9d] justify-start h-[50px]"
+      className="z-50 flex sticky top-0 bg-[#a0679b] justify-start h-[50px]"
     >
       {({ open }) => (
         <nav>

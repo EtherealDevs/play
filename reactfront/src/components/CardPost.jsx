@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+// import { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
 
 function Modal({ blog }) {
   console.log(blog);

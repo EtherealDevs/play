@@ -2,7 +2,7 @@ import React from "react";
 import CarrouselLg from "./Carrousel/CarrouselLg";
 import CarrouselMd from "./Carrousel/CarrouselMd";
 import CarrouselSm from "./Carrousel/CarrouselSm";
-import ParseHTML from "./ParseHTMLComponent";
+// import ParseHTML from "./ParseHTMLComponent";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -58,30 +58,6 @@ function Posts({ blog }) {
               <CarrouselSm blogs={blogs} className="md:hidden" />
             </div>
           </div>
-          {/* <div className="container mx-auto">
-            <div className="flex items-center justify-center py-24 sm:py-8 px-4">
-              <div class="container mx-auto p-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
-                  {blogs.map((blog) => (
-                    <div class="bg-white rounded-lg border p-4">
-                      <div class=" text-2xl mb-2 text-black">{blog.title}</div>
-                      <img
-                        src={"http://localhost:8000/img/" + blog.Image.filename}
-                        alt="Placeholder Images"
-                        class="w-full h-48 rounded-md object-cover"
-                      />
-                      <div class="px-1 py-4">
-                        <p class="text-gray-700 text-base">{blog.content}</p>
-                      </div>
-                      <div class="px-1 py-4">
-                        <ModalPosts className="justify-center" blog={blog} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </section>
