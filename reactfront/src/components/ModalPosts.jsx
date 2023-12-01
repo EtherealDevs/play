@@ -40,7 +40,7 @@ export default function ModalPosts({ blog }) {
         </Modal.Header>
 
         <img
-          class="rounded-t-lg h-3/4"
+          class="rounded-lg h-1/3"
           src={"http://localhost:8000/img/" + image.filename}
           alt=""
         />
@@ -56,7 +56,7 @@ export default function ModalPosts({ blog }) {
 
         <Modal.Footer>
           <Button
-            className="inline-flex justify-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-sky-800 focus:ring-4 hover:duration-700 focus:outline-none"
+            className="inline-flex justify-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-sky-800 focus:ring-4 hover:duration-300 focus:outline-none"
             color="gray"
             onClick={() => props.setOpenModal(undefined)}
           >
