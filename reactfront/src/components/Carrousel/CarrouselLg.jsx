@@ -47,7 +47,7 @@ function CarrouselLg({ blogs }) {
           <Slider>
             <div
               id="slider"
-              className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
+              className="h-full w-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700"
             >
               {blogs.map((blog) => (
                 <Slide index={blog.id}>
