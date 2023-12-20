@@ -24,6 +24,7 @@ import admin from './routes/admin.js';
 import { checkUserToken, isAuthenticated } from "./controllers/AuthController.js";
 import UserModel from "./models/UserModel.js";
 import session from "express-session";
+import spreadsheets from "./routes/spreadsheets.js";
 
 const app = express();
 
@@ -107,6 +108,7 @@ app.use(function(req, res, next){
 app.use('/blogs', blogs)
 app.use('/images', isAuthenticated, images)
 app.use('/', auth)
+app.use('/spreadsheets', isAuthenticated, spreadsheets)
 app.use('/admin', isAuthenticated, admin)
 
 app.use((req,res,next)=>{

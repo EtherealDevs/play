@@ -7,6 +7,7 @@ import L from "leaflet";
 import { Popup } from "react-leaflet";
 
 export const IconLocation = L.icon({
+  iconUrl:'/play.png',
   iconAnchor: null,
   shadowUrl: null,
   shadowSize: null,
@@ -31,7 +32,7 @@ function Contact() {
               url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution=""
             />
-            <Marker position={{ lat: "-27.4649353", lng: "-58.823859" }}>
+            <Marker position={{ lat: "-27.4649353", lng: "-58.823859" }} icon={IconLocation}>
               <Popup>
                 Visitanos <br /> Avenida Pujol 2011
               </Popup>

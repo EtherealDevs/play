@@ -1,0 +1,23 @@
+<%- include('../../components/open.ejs'); %>
+
+    <div class="m-5 mx-16 grid grid-cols-1 gap-2 p-5">
+        <% if (spreadsheets.length === 0) { %>
+            <div>
+                No hay plantillas...
+
+                <a class="text-blue-700" href="/spreadsheets/create">
+                    Crear o subir una plantilla
+                </a>
+                    
+            </div>
+        <% } else { %>
+         
+        <% spreadsheets.forEach(spreadsheet => { %>
+            <div class="p-2 text-center border border-black">
+                <%= spreadsheet %>
+            </div>
+        <% }) %>
+        <% } %>
+    </div>
+
+<%- include('../../components/close.ejs'); %>
