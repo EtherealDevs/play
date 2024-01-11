@@ -29,7 +29,7 @@ export const login = async (req, res, next) => {
     const pass = req.body.pass;
     // Si cualquiera de los datos esta vacio.
     if (!username || !pass) {
-      req.session.sessionFlash = "No username or password";
+      req.session.sessionFlash = "Proporcione un nombre de usuario y una contraseña";
       return next();
     } else {
       //GET User
@@ -42,16 +42,14 @@ export const login = async (req, res, next) => {
       const results = user;
       //Si No existe User. No hay resultado.
       if (!results) {
-        return res.status(401).send({
-          error: "Usuario no encontrado!",
-        });
+        req.session.sessionFlash = "Usuario no encontrado!";
+        return next();
       }
       // Comprobar contraseña.
       //Si la contraseña no es correcta. Bcryptjs.compare devuelve FALSE
       if (!(await bcryptjs.compare(pass, results.password))) {
-        return res.status(401).send({
-          error: "Contraseña incorrecta!",
-        });
+        req.session.sessionFlash = "Contraseña incorrecta!";
+        return next();
         //Si la contraseña es correcta. Bcryptjs.compare devuelve TRUE
       } else {
         console.log(results.id);

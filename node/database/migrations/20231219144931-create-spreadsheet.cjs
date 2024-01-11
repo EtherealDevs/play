@@ -9,8 +9,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      data: {
+      title: {
+        allowNull: false,
         type: Sequelize.STRING
+      },
+      data: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

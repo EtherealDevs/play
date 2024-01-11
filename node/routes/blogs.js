@@ -11,7 +11,7 @@ import {
 import { isAuthenticated } from "../controllers/AuthController.js";
 import ImageModel from "../models/ImageModel.js";
 import { Op, or } from "sequelize";
-import { getAllImages } from "../controllers/imageController.js";
+import { getAllImages } from "../controllers/ImageController.js";
 
 const blogs = express.Router();
 

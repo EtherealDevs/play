@@ -7,6 +7,7 @@ const SpreadsheetModel = db.define(
   "Spreadsheet",
   {
     data: { type: DataTypes.TEXT },
+    title: { type: DataTypes.STRING },
   },
   {
     tableName: "spreadsheets",

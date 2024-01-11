@@ -3,19 +3,24 @@
     <div class="m-5 mx-16 grid grid-cols-1 gap-2 p-5">
         <% if (spreadsheets.length === 0) { %>
             <div>
-                No hay plantillas...
+                No hay planillas...
 
                 <a class="text-blue-700" href="/spreadsheets/create">
-                    Crear o subir una plantilla
+                    Crear o subir una planilla
                 </a>
                     
             </div>
         <% } else { %>
+            <a class="text-blue-700" href="/spreadsheets/create">
+                Crear o subir una planilla
+            </a>
          
         <% spreadsheets.forEach(spreadsheet => { %>
-            <div class="p-2 text-center border border-black">
-                <%= spreadsheet %>
-            </div>
+            <a href="/spreadsheets/<%= spreadsheet.id %>">
+                <div class="p-2 text-center border border-black">
+                    <%= spreadsheet.id %> <%= spreadsheet.title %>
+                </div>
+            </a>
         <% }) %>
         <% } %>
     </div>
